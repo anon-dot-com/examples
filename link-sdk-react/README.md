@@ -1,0 +1,35 @@
+# Anon Web Link Example - React
+
+To get started, set your `NPM_TOKEN` environment variable, or copy the `.npmrc` file you may have received from Anon.
+
+```sh
+export NPM_TOKEN=YOUR_NPM_TOKEN
+```
+
+Install your dependencies with npm or yarn
+
+```sh
+npm install
+# or
+yarn install --update-checksums
+# the --update-checksums is necessary to support patched packages in the SDK.
+# this will be removed in future versions!
+```
+
+Install the playwright browser binaries if you do not have them already.
+
+```sh
+yarn add @playwright/test
+npx playwright install
+```
+
+Please verify that the environment variables from `../.env` and `.env` are correctly loaded.
+If they aren't loaded (check the Console for the log), you may need to hardcode them in `src/App.vue`.
+
+Then run
+
+```sh
+npm run start
+# or
+yarn run start
+```
