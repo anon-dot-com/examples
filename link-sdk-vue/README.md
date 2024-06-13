@@ -3,7 +3,8 @@
 To get started, set your `NPM_TOKEN` environment variable, or copy the `.npmrc` file you may have received from Anon.
 
 ```sh
-export NPM_TOKEN=YOUR_NPM_TOKEN
+export ANON_NPM_TOKEN=YOUR_NPM_TOKEN
+sed "s/\${ANON_NPM_TOKEN}/${ANON_NPM_TOKEN}/g" .npmrc.template >.npmrc
 ```
 
 Install your dependencies with npm or yarn

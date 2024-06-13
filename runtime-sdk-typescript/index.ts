@@ -4,9 +4,11 @@ import {
   executeRuntimeScript,
 } from "@anon/sdk-typescript";
 import { Page } from "playwright";
+import "dotenv/config";
 
 const APP_USER_ID = process.env.ANON_APP_USER_ID!;
 const API_KEY = process.env.ANON_API_KEY!;
+const CLIENT_ENV = process.env.ANON_ENV!; // "sandbox" or "prod", based on your credentials
 
 const account = {
   // check out our list of supported apps here: https://docs.anon.com/docs/getting-started/overview
@@ -17,7 +19,7 @@ const account = {
 };
 
 const client = new Client({
-  environment: "sandbox",
+  environment: CLIENT_ENV,
   // create a server SdkClient and use its api_key
   // for testing, can alternately use an admin member's api_key
   apiKey: API_KEY,
@@ -136,7 +138,7 @@ const actions: { [key: string]: any } = {
 
 const main = async () => {
   console.log(
-    `Requesting ${account.app} session for app user id ${APP_USER_ID}`,
+    `Requesting ${account.app} session for appUserId ${account.userId}`,
   );
   const { browserContext } = await setupAnonBrowserWithContext(
     client,
