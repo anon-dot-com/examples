@@ -1,9 +1,8 @@
 # Anon Web Link Example - Vue
 
-To get started, set your `NPM_TOKEN` environment variable, or copy the `.npmrc` file you may have received from Anon.
+To get started, set your `ANON_NPM_TOKEN` environment variable, or copy the `.npmrc` file you may have received from Anon.
 
 ```sh
-export ANON_NPM_TOKEN=YOUR_NPM_TOKEN
 sed "s/\${ANON_NPM_TOKEN}/${ANON_NPM_TOKEN}/g" .npmrc.template >.npmrc
 ```
 
@@ -13,9 +12,6 @@ Install your dependencies with npm or yarn
 npm install
 # or
 yarn install --update-checksums
-# the --update-checksums is necessary to
-# support patched packages in the SDK.
-# this will be removed in future versions!
 ```
 
 Set your config by editing static values in `src/App.vue`, or loading them via environment variables.
