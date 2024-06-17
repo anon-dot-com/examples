@@ -9,11 +9,12 @@ import "dotenv/config";
 const APP_USER_ID = process.env.ANON_APP_USER_ID!;
 const API_KEY = process.env.ANON_API_KEY!;
 const CLIENT_ENV = process.env.ANON_ENV!; // "sandbox" or "prod", based on your credentials
+const APP = "instagram";
 
 const account = {
   // check out our list of supported apps here: https://docs.anon.com/docs/getting-started/overview
   // this should align with a session you uploaded with the web-link example
-  app: "instagram",
+  app: APP,
   // this is the "sub" field of your user's JWTs
   userId: APP_USER_ID,
 };
@@ -145,13 +146,23 @@ const main = async () => {
     account,
     { type: "local", input: { headless: false } },
   );
-  executeRuntimeScript({
+  await executeRuntimeScript({
     client,
     account,
     target: { browserContext: browserContext },
     initialUrl: appUrls[account.app],
     run: actions[account.app],
   });
+
+  // DEMONSTRATION of `getSessionStatus`, `deleteSession`
+  let sessionStatus;
+  sessionStatus = await client.getSessionStatus({account: { ownerId: APP_USER_ID, domain: account.app }} as any);
+  console.log(`Before deleting session, client session status: ${sessionStatus}`);
+
+  await client.deleteSession({account: { ownerId: APP_USER_ID, domain: account.app }} as any);
+
+  sessionStatus = await client.getSessionStatus({account: { ownerId: APP_USER_ID, domain: account.app }}  as any);
+  console.log(`After deleting session, client session status: ${sessionStatus}`);
 };
 
 main();
