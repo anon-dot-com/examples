@@ -153,15 +153,17 @@ const main = async () => {
     initialUrl: appUrls[account.app],
     run: actions[account.app],
   });
+  const accountInfo = { ownerId: APP_USER_ID, domain: account.app };
 
   // DEMONSTRATION of `getSessionStatus`, `deleteSession`
   let sessionStatus;
-  sessionStatus = await client.getSessionStatus({account: { ownerId: APP_USER_ID, domain: account.app }} as any);
+  sessionStatus = await client.getSessionStatus({ account: accountInfo });
   console.log(`Before deleting session, client session status: ${sessionStatus}`);
 
-  await client.deleteSession({account: { ownerId: APP_USER_ID, domain: account.app }} as any);
+  await client.deleteSession({ account: accountInfo });
+  console.log(`Session deleted for ${accountInfo}`);
 
-  sessionStatus = await client.getSessionStatus({account: { ownerId: APP_USER_ID, domain: account.app }}  as any);
+  sessionStatus = await client.getSessionStatus({ account: accountInfo });
   console.log(`After deleting session, client session status: ${sessionStatus}`);
 };
 
