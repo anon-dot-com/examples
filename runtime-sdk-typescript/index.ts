@@ -6,23 +6,24 @@ import {
 import { Page } from "playwright";
 import "dotenv/config";
 
+// this is the "sub" field of your user's JWTs
 const APP_USER_ID = process.env.ANON_APP_USER_ID!;
+// create a server SdkClient and use its api_key
+// for testing, can alternately use an admin member's api_key
 const API_KEY = process.env.ANON_API_KEY!;
-const CLIENT_ENV = process.env.ANON_ENV!; // "sandbox" or "prod", based on your credentials
+// "sandbox" or "prod", based on your credentials
+const CLIENT_ENV = process.env.ANON_ENV!;
+// check out our list of supported apps here: https://docs.anon.com/docs/getting-started/overview
+// this should align with a session you uploaded with the web-link example
 const APP = "instagram";
 
 const account = {
-  // check out our list of supported apps here: https://docs.anon.com/docs/getting-started/overview
-  // this should align with a session you uploaded with the web-link example
   app: APP,
-  // this is the "sub" field of your user's JWTs
   userId: APP_USER_ID,
 };
 
 const client = new Client({
   environment: CLIENT_ENV,
-  // create a server SdkClient and use its api_key
-  // for testing, can alternately use an admin member's api_key
   apiKey: API_KEY,
 });
 
