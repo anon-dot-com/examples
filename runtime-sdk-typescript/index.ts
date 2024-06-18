@@ -96,11 +96,9 @@ const actions: { [key: string]: any } = {
     await page.waitForTimeout(100000);
   },
   instagram: async (page: Page) => {
-    // for messages, please use Actions API instead of Runtime SDK
+    // toy example: navigate to messages
     await page.goto("https://instagram.com/direct/inbox");
     await page.mainFrame().waitForLoadState();
-
-    // example use case: liking a post
   },
   linkedin: async (page: Page) => {
     console.log("sending a message!");
@@ -159,13 +157,13 @@ const main = async () => {
   // DEMONSTRATION of `getSessionStatus`, `deleteSession`
   let sessionStatus;
   sessionStatus = await client.getSessionStatus({ account: accountInfo });
-  console.log(`Before deleting session, client session status: ${sessionStatus}`);
+  console.log(`Before deleting session, client session status: ${JSON.stringify(sessionStatus)}`);
 
   await client.deleteSession({ account: accountInfo });
-  console.log(`Session deleted for ${accountInfo}`);
+  console.log(`Session deleted for ${JSON.stringify(accountInfo)}`);
 
   sessionStatus = await client.getSessionStatus({ account: accountInfo });
-  console.log(`After deleting session, client session status: ${sessionStatus}`);
+  console.log(`After deleting session, client session status: ${JSON.stringify(sessionStatus)}`);
 };
 
 main();
