@@ -6,22 +6,24 @@ import {
 import { Page } from "playwright";
 import "dotenv/config";
 
+// this is the "sub" field of your user's JWT
 const APP_USER_ID = process.env.ANON_APP_USER_ID!;
+// create a server SdkClient and use its api_key
+// for testing, can alternately use an admin member's api_key
 const API_KEY = process.env.ANON_API_KEY!;
-const CLIENT_ENV = process.env.ANON_ENV!; // "sandbox" or "prod", based on your credentials
+// "sandbox" or "prod", based on your credentials
+const CLIENT_ENV = process.env.ANON_ENV!;
+// check out our list of supported apps here: https://docs.anon.com/docs/getting-started/overview
+// this should align with a session you uploaded with the web-link example
+const APP = "instagram";
 
 const account = {
-  // check out our list of supported apps here: https://docs.anon.com/docs/getting-started/overview
-  // this should align with a session you uploaded with the web-link example
-  app: "instagram",
-  // this is the "sub" field of your user's JWTs
+  app: APP,
   userId: APP_USER_ID,
 };
 
 const client = new Client({
   environment: CLIENT_ENV,
-  // create a server SdkClient and use its api_key
-  // for testing, can alternately use an admin member's api_key
   apiKey: API_KEY,
 });
 
@@ -94,11 +96,9 @@ const actions: { [key: string]: any } = {
     await page.waitForTimeout(100000);
   },
   instagram: async (page: Page) => {
-    // for messages, please use Actions API instead of Runtime SDK
+    // toy example: navigate to messages
     await page.goto("https://instagram.com/direct/inbox");
     await page.mainFrame().waitForLoadState();
-
-    // example use case: liking a post
   },
   linkedin: async (page: Page) => {
     console.log("sending a message!");
@@ -145,13 +145,28 @@ const main = async () => {
     account,
     { type: "local", input: { headless: false } },
   );
-  executeRuntimeScript({
+  await executeRuntimeScript({
     client,
     account,
     target: { browserContext: browserContext },
     initialUrl: appUrls[account.app],
     run: actions[account.app],
   });
+  const accountInfo = { ownerId: APP_USER_ID, domain: account.app };
+
+  const demoDeleteSession = async () => {
+    // Demo `getSessionStatus`, `deleteSession`
+    let sessionStatus = await client.getSessionStatus({ account: accountInfo });
+    console.log(`Before deleting session, client session status: ${JSON.stringify(sessionStatus)}`);
+
+    await client.deleteSession({ account: accountInfo });
+    console.log(`Session deleted for ${JSON.stringify(accountInfo)}`);
+
+    sessionStatus = await client.getSessionStatus({ account: accountInfo });
+    console.log(`After deleting session, client session status: ${JSON.stringify(sessionStatus)}`);
+  }
+
+  await demoDeleteSession();
 };
 
 main();
