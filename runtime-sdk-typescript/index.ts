@@ -6,7 +6,7 @@ import {
 import { Page } from "playwright";
 import "dotenv/config";
 
-// this is the "sub" field of your user's JWTs
+// this is the "sub" field of your user's JWT
 const APP_USER_ID = process.env.ANON_APP_USER_ID!;
 // create a server SdkClient and use its api_key
 // for testing, can alternately use an admin member's api_key
