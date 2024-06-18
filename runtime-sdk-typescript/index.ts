@@ -154,16 +154,19 @@ const main = async () => {
   });
   const accountInfo = { ownerId: APP_USER_ID, domain: account.app };
 
-  // DEMONSTRATION of `getSessionStatus`, `deleteSession`
-  let sessionStatus;
-  sessionStatus = await client.getSessionStatus({ account: accountInfo });
-  console.log(`Before deleting session, client session status: ${JSON.stringify(sessionStatus)}`);
+  const demoDeleteSession = async () => {
+    // Demo `getSessionStatus`, `deleteSession`
+    let sessionStatus = await client.getSessionStatus({ account: accountInfo });
+    console.log(`Before deleting session, client session status: ${JSON.stringify(sessionStatus)}`);
 
-  await client.deleteSession({ account: accountInfo });
-  console.log(`Session deleted for ${JSON.stringify(accountInfo)}`);
+    await client.deleteSession({ account: accountInfo });
+    console.log(`Session deleted for ${JSON.stringify(accountInfo)}`);
 
-  sessionStatus = await client.getSessionStatus({ account: accountInfo });
-  console.log(`After deleting session, client session status: ${JSON.stringify(sessionStatus)}`);
+    sessionStatus = await client.getSessionStatus({ account: accountInfo });
+    console.log(`After deleting session, client session status: ${JSON.stringify(sessionStatus)}`);
+  }
+
+  await demoDeleteSession();
 };
 
 main();
