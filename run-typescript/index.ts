@@ -5,7 +5,15 @@ import {
   Environment,
 } from "@anon/sdk-typescript";
 import { Page } from "playwright";
-import "dotenv/config";
+import dotenv from "dotenv";
+
+import { fileURLToPath } from "url";
+import path from "path";
+
+// Load environment variables from parent .env file
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 // this is the "sub" field of your user's JWT
 const APP_USER_ID = process.env.ANON_APP_USER_ID!;

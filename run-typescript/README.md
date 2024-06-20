@@ -11,6 +11,7 @@ Copy the repo's `.env.example` file into `.env` and fill in the necessary values
 Environment variables needed:
 
 ```
+ANON_ENV=sandbox
 ANON_APP_USER_ID=
 ANON_API_KEY=
 NPM_TOKEN=
