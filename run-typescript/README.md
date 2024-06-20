@@ -37,16 +37,7 @@ Install your dependencies with npm or yarn, which uses the above mentioned `NPM_
 ```sh
 npm install
 # or
-yarn install
-```
-
-Install the playwright browser binaries:
-
-```sh
-npx playwright install
-# or
-yarn install
-yarn add @playwright/test
+yarn
 ```
 
 ## Running the example
