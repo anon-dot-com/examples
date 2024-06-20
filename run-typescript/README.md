@@ -17,12 +17,6 @@ ANON_API_KEY=
 NPM_TOKEN=
 ```
 
-Load the environment variables:
-
-```sh
-source ../.env
-```
-
 ### NPM Token
 
 Set your `NPM_TOKEN` environment variable in the file `.npmrc`:
