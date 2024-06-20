@@ -4,59 +4,59 @@ This sample demonstrates how to use the Anon's TypeScript SDK to connect to serv
 
 ## Setup
 
-Copy the repo's `.env.example` file into `.env` and fill in the necessary values.
+To run this example, you'll need to set up environment variables and install dependencies.
 
 ### Environment Variables
 
-Environment variables needed:
+Copy the repo's `.env.example` file into `.env` and fill in the necessary values given credentials from Anon.
+
+At minimum, the `.env` file should have the following variables:
 
 ```
 ANON_ENV=sandbox
-ANON_APP_USER_ID=
-ANON_API_KEY=
-NPM_TOKEN=
+ANON_APP_USER_ID=...
+ANON_API_KEY=...
+NPM_TOKEN=...
 ```
 
 ### NPM Token
 
-Set your `NPM_TOKEN` environment variable in the file `.npmrc`:
+Set your `NPM_TOKEN` environment variable in the file `.npmrc` using this command:
 
 ```sh
+source ../.env
 sed "s/\${NPM_TOKEN}/${NPM_TOKEN}/g" .npmrc.template >.npmrc
 ```
 
 Alternatively, copy the `.npmrc` file you may have received from Anon.
 
-## Running the example
+## Install Dependencies
 
 Install your dependencies with npm or yarn, which uses the above mentioned `NPM_TOKEN`:
 
 ```sh
-# If you're using npm
 npm install
 # or
-yarn install --update-checksums
-# the --update-checksums is necessary to
-# support patched packages in the SDK.
-# this will be removed in future versions!
+yarn install
 ```
 
 Install the playwright browser binaries:
 
 ```sh
 npx playwright install
-
-# If you're using yarn
-yarn install --update-checksums
+# or
+yarn install
 yarn add @playwright/test
 ```
 
-Configure your `SdkClient` API_KEY by editing static values in `index.ts`, or loading them via environment variables.
+## Running the example
 
-Then start your app with:
+Start your app with:
 
 ```sh
 npm run dev
 # or
 yarn run dev
 ```
+
+You should see a Playwright browser open and navigate to Instagram using Anon's browser context.
