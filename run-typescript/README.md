@@ -28,7 +28,7 @@ source ../.env
 sed "s/\${NPM_TOKEN}/${NPM_TOKEN}/g" .npmrc.template >.npmrc
 ```
 
-Alternatively, copy the `.npmrc` file you may have received from Anon.
+Alternatively, copy the `.npmrc` file you received from Anon.
 
 ## Install Dependencies
 
@@ -40,7 +40,7 @@ npm install
 yarn
 ```
 
-## Running the example
+## Running the Example
 
 Start your app with:
 
@@ -50,4 +50,6 @@ npm run dev
 yarn run dev
 ```
 
-You should see a Playwright browser open and navigate to Instagram using Anon's browser context.
+You should see a Playwright browser open and navigate to Instagram using Anon's browser context. From there, you can interact with Instagram as if you were this user.
+
+Other examples in this folder demonstrate how to use the Anon SDK to interact with other services like Amazon and LinkedIn.
