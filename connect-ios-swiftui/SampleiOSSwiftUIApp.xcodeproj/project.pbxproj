@@ -123,7 +123,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AAF14E3E2B27EBE700165479 /* Build configuration list for PBXProject "SampleiOSSwiftUI" */;
+			buildConfigurationList = AAF14E3E2B27EBE700165479 /* Build configuration list for PBXProject "SampleiOSSwiftUIApp" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -135,6 +135,7 @@
 			packageReferences = (
 				AA7599552B72EAE500255285 /* XCRemoteSwiftPackageReference "JWTDecode" */,
 				AA2D81602B731E4D00654ED7 /* XCLocalSwiftPackageReference "../../sdk-ios/AnonKitPkg" */,
+				D25CA5C72C24EEF400C3C11B /* XCRemoteSwiftPackageReference "sdk-ios-pkg" */,
 			);
 			productRefGroup = AAF14E442B27EBE700165479 /* Products */;
 			projectDirPath = "";
@@ -358,7 +359,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AAF14E3E2B27EBE700165479 /* Build configuration list for PBXProject "SampleiOSSwiftUI" */ = {
+		AAF14E3E2B27EBE700165479 /* Build configuration list for PBXProject "SampleiOSSwiftUIApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAF14E652B27EBE800165479 /* Debug */,
@@ -392,6 +393,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 3.1.0;
+			};
+		};
+		D25CA5C72C24EEF400C3C11B /* XCRemoteSwiftPackageReference "sdk-ios-pkg" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/anon-dot-com/sdk-ios-pkg";
+			requirement = {
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
