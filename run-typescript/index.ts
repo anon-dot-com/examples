@@ -2,6 +2,7 @@ import {
   Client,
   setupAnonBrowserWithContext,
   executeRuntimeScript,
+  Environment,
 } from "@anon/sdk-typescript";
 import { Page } from "playwright";
 import "dotenv/config";
@@ -12,10 +13,23 @@ const APP_USER_ID = process.env.ANON_APP_USER_ID!;
 // for testing, can alternately use an admin member's api_key
 const API_KEY = process.env.ANON_API_KEY!;
 // "sandbox" or "prod", based on your credentials
-const CLIENT_ENV = process.env.ANON_ENV!;
+const ANON_ENV = process.env.ANON_ENV! as Environment;
 // check out our list of supported apps here: https://docs.anon.com/docs/getting-started/overview
 // this should align with a session you uploaded with the web-link example
 const APP = "instagram";
+
+if (!APP_USER_ID) {
+  console.error("Error: Please set the ANON_APP_USER_ID environment variable.");
+  process.exit(1);
+}
+if (!API_KEY) {
+  console.error("Error: Please set the ANON_API_KEY environment variable.");
+  process.exit(1);
+}
+if (!ANON_ENV) {
+  console.error("Error: Please set the ANON_ENV environment variable.");
+  process.exit(1);
+}
 
 const account = {
   app: APP,
@@ -23,7 +37,7 @@ const account = {
 };
 
 const client = new Client({
-  environment: CLIENT_ENV,
+  environment: ANON_ENV,
   apiKey: API_KEY,
 });
 
@@ -138,7 +152,7 @@ const actions: { [key: string]: any } = {
 
 const main = async () => {
   console.log(
-    `Requesting ${account.app} session for appUserId ${account.userId}`,
+    `Requesting ${account.app} session for app user id "${APP_USER_ID}"…`,
   );
   const { browserContext } = await setupAnonBrowserWithContext(
     client,
@@ -157,14 +171,22 @@ const main = async () => {
   const demoDeleteSession = async () => {
     // Demo `getSessionStatus`, `deleteSession`
     let sessionStatus = await client.getSessionStatus({ account: accountInfo });
-    console.log(`Before deleting session, client session status: ${JSON.stringify(sessionStatus)}`);
+    console.log(
+      `Before deleting session, client session status: ${JSON.stringify(
+        sessionStatus,
+      )}`,
+    );
 
     await client.deleteSession({ account: accountInfo });
     console.log(`Session deleted for ${JSON.stringify(accountInfo)}`);
 
     sessionStatus = await client.getSessionStatus({ account: accountInfo });
-    console.log(`After deleting session, client session status: ${JSON.stringify(sessionStatus)}`);
-  }
+    console.log(
+      `After deleting session, client session status: ${JSON.stringify(
+        sessionStatus,
+      )}`,
+    );
+  };
 
   await demoDeleteSession();
 };
