@@ -1,3 +1,0 @@
-@anon:registry=https://npm.cloudsmith.io/anon/anon-sdk/
-//npm.cloudsmith.io/anon/anon-sdk/:_authToken=${NPM_TOKEN}
-@npm:registry=https://registry.npmjs.org/
