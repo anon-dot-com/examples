@@ -1,3 +1,4 @@
 .env
 .vscode
 .npmrc
+.DS_Store
