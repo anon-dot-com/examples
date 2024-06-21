@@ -1,9 +1,9 @@
 # Anon Web Link Example - React
 
-To get started, set your `ANON_NPM_TOKEN` environment variable, or copy the `.npmrc` file you may have received from Anon.
+To get started, set your `NPM_TOKEN` environment variable, or copy the `.npmrc` file you may have received from Anon.
 
 ```sh
-sed "s/\${ANON_NPM_TOKEN}/${ANON_NPM_TOKEN}/g" .npmrc.template >.npmrc
+sed "s/\${NPM_TOKEN}/${NPM_TOKEN}/g" .npmrc.template >.npmrc
 ```
 
 Install your dependencies with npm or yarn
