@@ -40,7 +40,7 @@ struct ContentView: View {
             // Present Anon SDK UI
             AnonUIView(
                 // Example app identifier
-                app: "grubdash",
+                app: "instagram",
                 config: anonConfig,
                 ui: AnonKit.UIConfig(
                     organizationName: "My Company",
