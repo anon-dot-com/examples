@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@anon/sdk-typescript": "^0.4.1",
+    "@playwright/test": "^1.44.1",
     "dotenv": "^16.4.5",
     "node-fetch": "^3.3.2"
   }
