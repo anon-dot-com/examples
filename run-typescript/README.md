@@ -24,7 +24,6 @@ NPM_TOKEN=...
 Set your `NPM_TOKEN` environment variable in the file `.npmrc` using this command:
 
 ```sh
-source ../.env
 sed "s/\${NPM_TOKEN}/${NPM_TOKEN}/g" .npmrc.template >.npmrc
 ```
 
