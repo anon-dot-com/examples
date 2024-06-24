@@ -1,0 +1,60 @@
+{
+  "name": "browser-extension",
+  "displayName": "Anon Link",
+  "version": "0.4.1",
+  "description": "Your new magic swiss army knife for login.",
+  "author": "Anonymity Labs",
+  "scripts": {
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "package": "plasmo package --source-maps"
+  },
+  "dependencies": {
+    "@anon/sdk-browser-extension": "^0.4.0",
+    "jose": "^5.2.4",
+    "plasmo": "0.88.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@plasmohq/prettier-plugin-sort-imports": "4.0.1",
+    "@types/chrome": "0.0.266",
+    "@types/node": "20.12.7",
+    "@types/react": "18.2.79",
+    "@types/react-dom": "18.2.25",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-react": "^7.32.2",
+    "prettier": "3.2.5",
+    "typescript": "5.4.5",
+    "web-push": "3.6.7"
+  },
+  "manifest": {
+    "host_permissions": [
+      "*://*.anon.com/*",
+      "https://*.instagram.com/*",
+      "https://*.facebook.com/*",
+      "https://*.linkedin.com/*",
+      "*://*.uber.com/*",
+      "*://*.delta.com/*",
+      "https://www.united.com/*",
+      "*://*.github.com/*",
+      "https://*.instacart.com/*",
+      "https://*.resy.com/*",
+      "https://*.opentable.com/*",
+      "https://*.amazon.com/*",
+      "https://*.netflix.com/*"
+    ],
+    "permissions": [
+      "notifications",
+      "scripting",
+      "cookies"
+    ],
+    "externally_connectable": {
+      "matches": [
+        "*://*.anon.com/*"
+      ]
+    }
+  }
+}
