@@ -1587,17 +1587,17 @@
     "@parcel/utils" "2.9.3"
     nullthrows "1.1.1"
 
-"@plasmohq/parcel-compressor-utf8@0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@plasmohq/parcel-compressor-utf8/-/parcel-compressor-utf8-0.0.6.tgz#17ee86d97e997a95b6f894e50c703b8df34164ff"
-  integrity sha512-dtbZXi2gAHyVhxqxF2SvJtwDOy02QYRjwCJYOFsQR79qwAiuUBaeQ47p++vFrqNX86mo1lUtZniJl63xNQi08w==
+"@plasmohq/parcel-compressor-utf8@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@plasmohq/parcel-compressor-utf8/-/parcel-compressor-utf8-0.1.0.tgz#5eb3c3163d0b791a03e08b0fbe5e5bc6656c8c21"
+  integrity sha512-UxljXY+cUVO0ZdszoQRfQjbRjyWYIhGKCjFD48yOcnbSkOZmS5MPPhKrT79x+PMGSK5T6fUXaDjzqbnMb45MZw==
   dependencies:
     "@parcel/plugin" "2.9.3"
 
-"@plasmohq/parcel-config@0.40.5":
-  version "0.40.5"
-  resolved "https://registry.yarnpkg.com/@plasmohq/parcel-config/-/parcel-config-0.40.5.tgz#513046494736615bd421aae3fefbc0d38e05a340"
-  integrity sha512-2uXGCURaKazxG8UKGnwZCQ0cfi9sns9JkyC5ERVQJqTmjE81Rwzd/QxjuoufQ2/kvcg3klb3952X1znmD7prlQ==
+"@plasmohq/parcel-config@0.41.0":
+  version "0.41.0"
+  resolved "https://registry.yarnpkg.com/@plasmohq/parcel-config/-/parcel-config-0.41.0.tgz#ac52cf89e22ffb46440bb10865c0e1c5fd6a8045"
+  integrity sha512-MHtuEyjSCqVT0J584KF4ZrnNF1KTGz3+0+wEBgYiiWEW+WW91/Hv/5pboBrPH4tu/knxSQjzE9zlY5Rq2xh9Rg==
   dependencies:
     "@parcel/compressor-raw" "2.9.3"
     "@parcel/config-default" "2.9.3"
@@ -1621,18 +1621,18 @@
     "@parcel/transformer-svg-react" "2.9.3"
     "@parcel/transformer-worklet" "2.9.3"
     "@plasmohq/parcel-bundler" "0.5.5"
-    "@plasmohq/parcel-compressor-utf8" "0.0.6"
+    "@plasmohq/parcel-compressor-utf8" "0.1.0"
     "@plasmohq/parcel-namer-manifest" "0.3.12"
     "@plasmohq/parcel-optimizer-encapsulate" "0.0.7"
     "@plasmohq/parcel-optimizer-es" "0.4.0"
     "@plasmohq/parcel-packager" "0.6.14"
     "@plasmohq/parcel-resolver" "0.14.0"
     "@plasmohq/parcel-resolver-post" "0.4.4"
-    "@plasmohq/parcel-runtime" "0.23.1"
+    "@plasmohq/parcel-runtime" "0.25.0"
     "@plasmohq/parcel-transformer-inject-env" "0.2.11"
     "@plasmohq/parcel-transformer-inline-css" "0.3.11"
-    "@plasmohq/parcel-transformer-manifest" "0.18.0"
-    "@plasmohq/parcel-transformer-svelte" "0.5.2"
+    "@plasmohq/parcel-transformer-manifest" "0.19.0"
+    "@plasmohq/parcel-transformer-svelte" "0.6.0"
     "@plasmohq/parcel-transformer-vue" "0.5.0"
 
 "@plasmohq/parcel-core@0.1.8":
@@ -1727,13 +1727,14 @@
     fs-extra "11.1.1"
     got "13.0.0"
 
-"@plasmohq/parcel-runtime@0.23.1":
-  version "0.23.1"
-  resolved "https://registry.yarnpkg.com/@plasmohq/parcel-runtime/-/parcel-runtime-0.23.1.tgz#465a31a6cb5fcd9e058855f96220af2192a2b052"
-  integrity sha512-EiBjAJcJjVFarUmiIqywKd+MHGIThWTkcZe5IYfR7ecaJRNhhZF1B/gPgoAwv1nLcxfvRIC2CF9z9frwQvrOYQ==
+"@plasmohq/parcel-runtime@0.25.0":
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/@plasmohq/parcel-runtime/-/parcel-runtime-0.25.0.tgz#d671ca10ea14efc6708956e4a2a2b37061d47b9c"
+  integrity sha512-jtb77WDCYhKDPi/jRweSNX9GEe/REQUQU50d18YkDpQDyo/enVTyWVeYqfo3Q21iGLX8x9E5nF2rXtIVtoOAmw==
   dependencies:
     "@parcel/core" "2.9.3"
     "@parcel/plugin" "2.9.3"
+    "@types/trusted-types" "2.0.7"
     react-refresh "0.14.0"
 
 "@plasmohq/parcel-transformer-inject-env@0.2.11":
@@ -1756,10 +1757,10 @@
     browserslist "4.22.1"
     lightningcss "1.21.8"
 
-"@plasmohq/parcel-transformer-manifest@0.18.0":
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/@plasmohq/parcel-transformer-manifest/-/parcel-transformer-manifest-0.18.0.tgz#882ee29c84403f8797251e83831bdcda984479bb"
-  integrity sha512-6X6ubo37Ic7u1y3MjY+vt23Gb3ULtOsH1MbKw3jZMiG8nLGXqXRfiHSyNxJWAdpk7N7ASE8dHnZ+5g3E57bldA==
+"@plasmohq/parcel-transformer-manifest@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@plasmohq/parcel-transformer-manifest/-/parcel-transformer-manifest-0.19.0.tgz#45c8e3d13c7aed6cbad5ccfe8a956febcdfc4f76"
+  integrity sha512-cDmca0jPVFVnRQPqCWcsPPwre27/yAGxSF1+JmPVUeXZYMCrg5wdNepRDSw+/dDBO2VmNHh/Tv+Hgj1fLIM8CQ==
   dependencies:
     "@mischnic/json-sourcemap" "0.1.0"
     "@parcel/core" "2.9.3"
@@ -1772,17 +1773,17 @@
     json-schema-to-ts "2.9.2"
     nullthrows "1.1.1"
 
-"@plasmohq/parcel-transformer-svelte@0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@plasmohq/parcel-transformer-svelte/-/parcel-transformer-svelte-0.5.2.tgz#8f3bbfad7f6fd86232178c6af09f87c5833570c5"
-  integrity sha512-kZevkKYgYB7KZqi1+8k5ELqrSNKakqBwuTLnIT0BOx/8VKTJ6fwkzW0SR1OFsDJIACRFbMLO77u+erwHkodBEA==
+"@plasmohq/parcel-transformer-svelte@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@plasmohq/parcel-transformer-svelte/-/parcel-transformer-svelte-0.6.0.tgz#dad25dfb771d2b888694468d0e08b287723ba63c"
+  integrity sha512-5lZW6NBtzhJaCyjpKaZF1/YzY9CF+kbfNknvASJB/Cf6uJPJlrgdxoWiVJ8IWMs3DyLgAnJXTdIU+uwjwXP1wg==
   dependencies:
     "@parcel/core" "2.9.3"
     "@parcel/diagnostic" "2.9.3"
     "@parcel/plugin" "2.9.3"
     "@parcel/source-map" "2.1.1"
     "@parcel/utils" "2.9.3"
-    svelte "4.0.1"
+    svelte "4.2.2"
 
 "@plasmohq/parcel-transformer-vue@0.5.0":
   version "0.5.0"
@@ -2180,6 +2181,11 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
+
+"@types/trusted-types@2.0.7":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@types/trusted-types/-/trusted-types-2.0.7.tgz#baccb07a970b91707df3a3e8ba6896c57ead2d11"
+  integrity sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==
 
 "@typescript-eslint/eslint-plugin@^7.7.0":
   version "7.13.1"
@@ -4746,7 +4752,7 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-magic-string@^0.30.0:
+magic-string@^0.30.0, magic-string@^0.30.4:
   version "0.30.10"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.30.10.tgz#123d9c41a0cb5640c892b041d4cfb3bd0aa4b39e"
   integrity sha512-iIRwTIf0QKV3UAnYK4PU8uiEc4SRh5jX0mwpIwETPpHdhVM4f53RSwS/vXvN1JhGX+Cs7B8qIq3d6AH49O5fAQ==
@@ -5227,10 +5233,10 @@ pirates@^4.0.1:
   resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.6.tgz#3018ae32ecfcff6c29ba2267cbf21166ac1f36b9"
   integrity sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==
 
-plasmo@0.85.2:
-  version "0.85.2"
-  resolved "https://registry.yarnpkg.com/plasmo/-/plasmo-0.85.2.tgz#56e7e2992ce1f48c1033502f0a5c6aba34f2d7a1"
-  integrity sha512-qf9mONnb0JV0quYMM3qi23wuAIabzlhsDmHw4HMuBXjDp0ysruzGoOiFQmAbEMK7lMMFFepPkcDftu0c8MNhBw==
+plasmo@0.88.0:
+  version "0.88.0"
+  resolved "https://registry.yarnpkg.com/plasmo/-/plasmo-0.88.0.tgz#7a97c2f62740cf95c6e4dcacb1e5d12b6592814d"
+  integrity sha512-pL0xA9Y4zZuqQTyOwt0rQ8cahFMZI9toGMCa3aosB3dtzRztSe2rm3LA8hS52UdvnAUXm2A4ecmTlweaGN69Uw==
   dependencies:
     "@expo/spawn-async" "1.7.2"
     "@parcel/core" "2.9.3"
@@ -5238,7 +5244,7 @@ plasmo@0.85.2:
     "@parcel/package-manager" "2.9.3"
     "@parcel/watcher" "2.2.0"
     "@plasmohq/init" "0.7.0"
-    "@plasmohq/parcel-config" "0.40.5"
+    "@plasmohq/parcel-config" "0.41.0"
     "@plasmohq/parcel-core" "0.1.8"
     buffer "6.0.3"
     chalk "5.3.0"
@@ -5929,10 +5935,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-svelte@4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-4.0.1.tgz#5c01f5f7cb05ac21ffe3a741e0c942972dc47c05"
-  integrity sha512-7n2u7A5cu8xCY6MBiXh/Mg6Lh3+Mw2qXlTDBYhzvCvmSM4L4gc4MVo540UtGcjqBiA48E1VDW+EUpBr7iuBlPg==
+svelte@4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-4.2.2.tgz#07d42eefc1bce46e48d2056c5f11dc4cc1e06555"
+  integrity sha512-My2tytF2e2NnHSpn2M7/3VdXT4JdTglYVUuSuK/mXL2XtulPYbeBfl8Dm1QiaKRn0zoULRnL+EtfZHHP0k4H3A==
   dependencies:
     "@ampproject/remapping" "^2.2.1"
     "@jridgewell/sourcemap-codec" "^1.4.15"
@@ -5945,7 +5951,7 @@ svelte@4.0.1:
     estree-walker "^3.0.3"
     is-reference "^3.0.1"
     locate-character "^3.0.0"
-    magic-string "^0.30.0"
+    magic-string "^0.30.4"
     periscopic "^3.1.0"
 
 svg-parser@^2.0.4:

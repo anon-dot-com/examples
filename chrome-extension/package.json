@@ -12,7 +12,7 @@
   "dependencies": {
     "@anon/sdk-browser-extension": "^0.4.0",
     "jose": "^5.2.4",
-    "plasmo": "0.85.2",
+    "plasmo": "0.88.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
