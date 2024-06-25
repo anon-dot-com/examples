@@ -14,7 +14,7 @@ git clone https://github.com/anon-dot-com/examples.git && cd ./examples
 
 ### Environment Variables
 
-Copy `.env.example` to a new file called `.env` and fill in each of the environment variables, using the credentials Anon provided you.
+Copy `.env.example` to a new file in this directory called `.env` and fill in each of the environment variables, using the credentials Anon provided you.
 
 At minimum, the `.env` file should have the following variables:
 
