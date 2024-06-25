@@ -2,21 +2,19 @@
 
 This repository accompanies Anon's setup guides at [the Anon docs](https://docs.anon.com/).
 
-To get started, clone the repository, `cd` into one of the folders,
-and follow the instructions in the corresponding `README`. Enjoy!
+## Setup
+
+To run these examples, you'll need credentials from Anon. You can request access [here](https://anondotcom.typeform.com/request-access).
+
+To get started, clone the repository.
 
 ```sh
 git clone https://github.com/anon-dot-com/examples.git && cd ./examples
 ```
 
-## Setup
-
-To run these examples, you'll need credentials from Anon. You can request access [here](https://anondotcom.typeform.com/request-access).
-
 ### Environment Variables
 
-Copy `.env.example` to a new file called `.env` and fill in each of the environment variables.
-Get your environment variables from the credentials Anon provided you.
+Copy `.env.example` to a new file called `.env` and fill in each of the environment variables, using the credentials Anon provided you.
 
 At minimum, the `.env` file should have the following variables:
 
@@ -34,6 +32,8 @@ ANON_API_KEY=...
 
 ## Testing
 
-You could quickly test by connecting a user session, then running a user session, using our examples.
+You could quickly test out Anon by connecting a user session (examples prefixed `connect-*`), then running a user session (examples prefixed `run-*`).
 
 For example, run our [Web Link - React example](https://github.com/anon-dot-com/examples/tree/main/connect-react), followed by our [Backend SDK - Typescript example](https://github.com/anon-dot-com/examples/tree/main/run-typescript). You could tweak the Typescript example with your own Playwright sessions to test Anon for your use case.
+
+To try out an example, `cd` into one of the folders and follow the instructions in the corresponding `README`. Enjoy!
