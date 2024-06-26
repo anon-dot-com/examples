@@ -14,7 +14,7 @@ This folder should have an `.env` symbolic link that points to the `.env` file i
 
 You could sanity check for the environment variables with eg
 ```
-echo $ANON_APP_USER_ID
+echo $VITE_ANON_APP_USER_ID_TOKEN
 ```
 
 ### NPM Token
