@@ -1,12 +1,35 @@
 # Anon Web Link Example - Vue
 
-To get started, set your `NPM_TOKEN` environment variable, or copy the `.npmrc` file you may have received from Anon.
+This sample demonstrates how to use the Anon's linking library to connect to integrations like Instagram.
+
+## Setup
+
+First, follow this repo's `README`.
+
+To run this example, you'll need to verify environment variables and install dependencies.
+
+### Environment Variables
+
+This folder should have an `.env` symbolic link that points to the `.env` file in this repo, which you had filled in using the credentials from Anon.
+
+You could sanity check for the environment variables with eg
+```
+echo $ANON_APP_USER_ID
+```
+
+### NPM Token
+
+Set your `NPM_TOKEN` environment variable in the file `.npmrc` using this command:
 
 ```sh
 sed "s/\${NPM_TOKEN}/${NPM_TOKEN}/g" .npmrc.template >.npmrc
 ```
 
-Install your dependencies with npm or yarn
+Alternatively, copy the `.npmrc` file you received from Anon.
+
+## Install Dependencies
+
+Install your dependencies with npm or yarn, which uses the above mentioned `NPM_TOKEN`:
 
 ```sh
 npm install
@@ -14,21 +37,14 @@ npm install
 yarn install --update-checksums
 ```
 
-Set your config by editing static values in `src/App.vue`, or loading them via environment variables.
+## Running the Example
 
-- UserPool SdkClient ID: `config.clientId` or `VITE_CLIENT_ID`
-- A JWT from one of your users: `config.appUserIdToken` or `VITE_APP_USER_ID_TOKEN`
-
-> Optionally set the Chrome extension id to your extension's id if you are embedding
-> the `@anon/sdk-browser-extension` into your own.
-
-Please verify that the environment variables are correctly loaded.
-If they aren't loaded (check the Console for the log), you may need to hardcode them in `src/App.vue`
-
-Run the app and follow the instructions to upload one of your sessions!
+Start your app with:
 
 ```sh
 npm run dev
 # or
 yarn run dev
 ```
+
+You should see a window pop up for Anon to connect to your account (eg Instagram). Click "Continue", then "Login to X" to save your user session!

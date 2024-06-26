@@ -1,22 +1,20 @@
 # Anon Backend SDK Typescript Example
 
-This sample demonstrates how to use the Anon's TypeScript SDK to connect to services like Instagram.
+This sample demonstrates how to use the Anon's TypeScript SDK to connect to integrations like Instagram.
 
 ## Setup
 
-To run this example, you'll need to set up environment variables and install dependencies.
+First, follow this repo's `README`.
+
+To run this example, you'll need to verify environment variables and install dependencies.
 
 ### Environment Variables
 
-Copy the repo's `.env.example` file into `.env` and fill in the necessary values given credentials from Anon.
+This folder should have an `.env` symbolic link that points to the `.env` file in this repo, which you had filled in using the credentials from Anon.
 
-At minimum, the `.env` file should have the following variables:
-
+You could sanity check for the environment variables with eg
 ```
-ANON_ENV=sandbox
-ANON_APP_USER_ID=...
-ANON_API_KEY=...
-NPM_TOKEN=...
+echo $ANON_APP_USER_ID
 ```
 
 ### NPM Token
