@@ -114,11 +114,15 @@ const amazonCheckoutHeadphones = async (page: any) => {
 const actions: { [key: string]: any } = {
   amazon: async (page: Page) => {
     await amazonAddHeadphonesToCart(page);
-    await amazonCheckoutHeadphones(page);
+    // await amazonCheckoutHeadphones(page);
     await page.waitForTimeout(100000);
   },
   instagram: async (page: Page) => {
     // toy example: navigate to messages
+    console.log("navigating to messages!");
+    await page.goto("https://instagram.com");
+    await page.mainFrame().waitForLoadState();
+
     await page.goto("https://instagram.com/direct/inbox");
     await page.mainFrame().waitForLoadState();
   },
@@ -196,7 +200,7 @@ const main = async () => {
     );
   };
 
-  await demoDeleteSession();
+  // await demoDeleteSession();
 };
 
 main();
