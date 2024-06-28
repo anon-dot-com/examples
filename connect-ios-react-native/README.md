@@ -4,7 +4,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 ## Get started
 
-0. Using your credentials provided by Anon, go to `app/(tabs)/index.tsx` and update the values `clientId` and `appUserIdToken`.
+0. Using your credentials provided by Anon, go to `app/(tabs)/index.tsx` and fill in the values `clientId` and `appUserIdToken`.
 
 1. Set your `NPM_TOKEN` environment variable, or copy the `.npmrc` file you may have received from Anon.
 
