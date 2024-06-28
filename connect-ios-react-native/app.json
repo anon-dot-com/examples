@@ -38,8 +38,8 @@
             "extraPods": [
               {
                 "name": "AnonKit",
-                "source": "https://github.com/anon-dot-com/sdk-ios-pkg.git",
-                "version": "~> 0.3.0"
+                "source": "ssh://git@github.com/anon-dot-com/sdk-ios-pkg.git",
+                "version": "~> 0.3.1"
               }
             ]
           }
