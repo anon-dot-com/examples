@@ -8,19 +8,23 @@ export default function MyScreen() {
     <SafeAreaView style={styles.container}>
       {showAnon ? (
         <AnonKit
-          appName="resy"
+          appName="instagram"
           style={styles.container}
           onDismiss={() => setShowAnon(false)}
           ui={{
             theme: "light",
-            orgName: "Your Company",
+            // todo: fill out
+            orgName: "YourCompany",
+            // todo: fill out
             orgIconUrl: "https://example.com/logo.png",
             showAnonLogo: true,
             showPrivacyPolicy: true,
           }}
           config={{
-            environment: AnonKitEnvironment.local,
+            environment: AnonKitEnvironment.sandbox,
+            // todo: grab from env.ANON_SDKCLIENT_ID
             clientId: "XXXX-XXXX-XXXX-XXXX-XXXX",
+            // todo: grab from env.ANON_APP_USER_ID_TOKEN
             appUserIdToken: "ey************",
           }}
         />
