@@ -30,8 +30,6 @@ ANON_API_KEY=...
 ANON_CHROME_EXTENSION_ID=...
 ```
 
-Next, install the Anon Link Chrome extension [here](https://chromewebstore.google.com/detail/anon-link/lbgbplnejdpahnfmnphghjlbedpjjbgd?hl=en&authuser=0&pli=1); `ANON_CHROME_EXTENSION_ID` should match the extension id in your "My Extensions" page in Chrome.
-
 Then, source the `.env` file.
 ```
 source .env
