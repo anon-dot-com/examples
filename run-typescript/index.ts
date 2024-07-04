@@ -56,7 +56,7 @@ const appUrls: { [key: string]: string } = {
   uber: "https://uber.com",
 };
 
-const amazonAddHeadphonesToCart = async (page: any) => {
+const amazonAddHeadphonesToCart = async (page: Page) => {
   // Focus on the search bar using the known CSS selector for Amazon's search input
   await page.focus("#twotabsearchtextbox");
   await page.keyboard.type("AirPods");
@@ -90,7 +90,7 @@ const amazonAddHeadphonesToCart = async (page: any) => {
   await page.click("#attachSiNoCoverage");
 };
 
-const amazonCheckoutHeadphones = async (page: any) => {
+const amazonCheckoutHeadphones = async (page: Page) => {
   await page.click("a#nav-cart"); // This is a typical selector for the cart on Amazon
 
   // Wait for the cart page to load
@@ -108,12 +108,37 @@ const amazonCheckoutHeadphones = async (page: any) => {
 
   // Click the button by targeting the input inside the span with the specific name attribute
   await page.waitForTimeout(3000);
-  // await page.click('input[name="placeYourOrder1"]');
+  await page.click('input[name="placeYourOrder1"]');
+};
+
+const linkedInSendMessage = async (page: Page) => {
+  // send a message
+  const recipient = "Daniel Mason";
+  const message = `hello from Anon! :) The time is ${new Date().toLocaleTimeString()}`;
+
+  await page.getByPlaceholder("Search messages").pressSequentially(recipient);
+  await page.waitForTimeout(1000);
+  await page.getByPlaceholder("Search messages").press("Enter");
+  await page.waitForTimeout(1000);
+
+  await page
+    .getByRole("listitem")
+    .filter({ hasText: recipient, hasNot: page.locator("#ember") })
+    .first()
+    .click();
+  await page.waitForTimeout(1000);
+
+  await page.getByLabel("Write a message").pressSequentially(message);
+  await page.waitForTimeout(1000);
+
+  await page.getByRole("button", { name: "Send", exact: true }).click();
+  await page.waitForTimeout(3000);
 };
 
 const actions: { [key: string]: any } = {
   amazon: async (page: Page) => {
-    console.log("Amazing: starting action!");
+    console.log("Amazon: starting action!");
+
     await amazonAddHeadphonesToCart(page);
     // await amazonCheckoutHeadphones(page);
     await page.waitForTimeout(100000);
@@ -128,37 +153,16 @@ const actions: { [key: string]: any } = {
     await page.mainFrame().waitForLoadState();
   },
   linkedin: async (page: Page) => {
-    console.log("LinkedIn: sending a message!");
-    // send a message
-    const recipient = "Daniel Mason";
-    const message = `hello from Anon! :) The time is ${new Date().toLocaleTimeString()}`;
-
+    console.log("LinkedIn: navigating to messages!");
     await page.goto("https://linkedin.com/messaging/?");
     await page.mainFrame().waitForLoadState();
-    await page.getByPlaceholder("Search messages").pressSequentially(recipient);
-    await page.waitForTimeout(1000);
-    await page.getByPlaceholder("Search messages").press("Enter");
-    await page.waitForTimeout(1000);
 
-    await page
-      .getByRole("listitem")
-      .filter({ hasText: recipient, hasNot: page.locator("#ember") })
-      .first()
-      .click();
-    await page.waitForTimeout(1000);
-
-    await page.getByLabel("Write a message").pressSequentially(message);
-    await page.waitForTimeout(1000);
-
-    await page.getByRole("button", { name: "Send", exact: true }).click();
-    await page.waitForTimeout(3000);
+    await linkedInSendMessage(page);
   },
   uber: async (page: Page) => {
-    console.log("Uber: booking a ride!");
-    // book a ride
-    await page.goto("https://m.uber.com/go/pickup");
+    console.log("Uber: navigating to ride booking page!");
 
-    // your code here!
+    await page.goto("https://m.uber.com/go/pickup");
     await page.waitForTimeout(300000);
   },
 };
