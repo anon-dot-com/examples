@@ -24,7 +24,7 @@ const API_KEY = process.env.ANON_API_KEY!;
 const ANON_ENV = process.env.ANON_ENV! as Environment;
 // check out our list of supported apps here: https://docs.anon.com/docs/getting-started/overview
 // this should align with a session you uploaded with the web-link example
-const APP = "instagram";
+const APP = "linkedin";
 
 if (!APP_USER_ID) {
   console.error("Error: Please set the ANON_APP_USER_ID environment variable.");
@@ -113,13 +113,14 @@ const amazonCheckoutHeadphones = async (page: any) => {
 
 const actions: { [key: string]: any } = {
   amazon: async (page: Page) => {
+    console.log("Amazing: starting action!");
     await amazonAddHeadphonesToCart(page);
     // await amazonCheckoutHeadphones(page);
     await page.waitForTimeout(100000);
   },
   instagram: async (page: Page) => {
     // toy example: navigate to messages
-    console.log("navigating to messages!");
+    console.log("Instagram: navigating to messages!");
     await page.goto("https://instagram.com");
     await page.mainFrame().waitForLoadState();
 
@@ -127,7 +128,7 @@ const actions: { [key: string]: any } = {
     await page.mainFrame().waitForLoadState();
   },
   linkedin: async (page: Page) => {
-    console.log("sending a message!");
+    console.log("LinkedIn: sending a message!");
     // send a message
     const recipient = "Daniel Mason";
     const message = `hello from Anon! :) The time is ${new Date().toLocaleTimeString()}`;
@@ -153,7 +154,7 @@ const actions: { [key: string]: any } = {
     await page.waitForTimeout(3000);
   },
   uber: async (page: Page) => {
-    console.log("booking a ride!");
+    console.log("Uber: booking a ride!");
     // book a ride
     await page.goto("https://m.uber.com/go/pickup");
 
@@ -169,7 +170,7 @@ const main = async () => {
   const { browserContext } = await setupAnonBrowserWithContext(
     client,
     account,
-    { type: "local", input: { headless: false } },
+    { type: "managed", input: { } },
   );
   await executeRuntimeScript({
     client,
