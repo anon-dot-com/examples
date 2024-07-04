@@ -138,6 +138,7 @@ const linkedInSendMessage = async (page: Page) => {
 const actions: { [key: string]: any } = {
   amazon: async (page: Page) => {
     console.log("Amazon: starting action!");
+    await page.goto("https://amazon.com");
 
     await amazonAddHeadphonesToCart(page);
     // await amazonCheckoutHeadphones(page);
@@ -154,15 +155,20 @@ const actions: { [key: string]: any } = {
   },
   linkedin: async (page: Page) => {
     console.log("LinkedIn: navigating to messages!");
+    await page.goto("https://linkedin.com");
+    await page.mainFrame().waitForLoadState();
+
     await page.goto("https://linkedin.com/messaging/?");
     await page.mainFrame().waitForLoadState();
 
-    await linkedInSendMessage(page);
+    // await linkedInSendMessage(page);
   },
   uber: async (page: Page) => {
     console.log("Uber: navigating to ride booking page!");
+    await page.goto("https://uber.com");
+    await page.mainFrame().waitForLoadState();
 
-    await page.goto("https://m.uber.com/go/pickup");
+    await page.goto("https://uber.com/go/pickup");
     await page.waitForTimeout(300000);
   },
 };
@@ -171,15 +177,18 @@ const main = async () => {
   console.log(
     `Requesting ${account.app} session for app user id "${APP_USER_ID}"…`,
   );
-  const { browserContext } = await setupAnonBrowserWithContext(
+  const { browser, } = await setupAnonBrowserWithContext(
     client,
     account,
     { type: "managed", input: { } },
   );
+
+  const page = browser.contexts()[0].pages()[0];
+
   await executeRuntimeScript({
     client,
     account,
-    target: { browserContext: browserContext },
+    target: { page: page },
     initialUrl: appUrls[account.app],
     run: actions[account.app],
   });
