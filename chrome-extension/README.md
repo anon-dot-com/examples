@@ -8,6 +8,7 @@ This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with
 Set your `NPM_TOKEN` environment variable, or copy the `.npmrc` file you may have received from Anon.
 
 ```sh
+source .env
 sed "s/\${NPM_TOKEN}/${NPM_TOKEN}/g" .npmrc.template >.npmrc
 ```
 
