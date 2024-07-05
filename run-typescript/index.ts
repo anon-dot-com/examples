@@ -158,7 +158,7 @@ const actions: { [key: string]: any } = {
     await page.goto("https://linkedin.com");
     await page.mainFrame().waitForLoadState();
 
-    await page.goto("https://linkedin.com/messaging/?");
+    await page.goto('https://linkedin.com/messaging', { waitUntil: 'load', timeout: 5000 }); // 5 seconds
     await page.mainFrame().waitForLoadState();
 
     // await linkedInSendMessage(page);
@@ -190,6 +190,7 @@ const main = async () => {
     account,
     target: { page: page },
     initialUrl: appUrls[account.app],
+    cleanupOptions: {closePage: true, closeBrowserContext: true},
     run: actions[account.app],
   });
   const accountInfo = { ownerId: APP_USER_ID, domain: account.app };
