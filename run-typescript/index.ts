@@ -61,7 +61,7 @@ const main = async () => {
     const { browser } = await setupAnonBrowserWithContext(
       client,
       account,
-      { type: "managed", input: { } },
+      { type: "managed", input: {} },
     );
     console.log("Anon browser setup complete.");
 
@@ -75,7 +75,7 @@ const main = async () => {
       account,
       target: { page: page },
       initialUrl: APP_CONFIG[APP].url,
-      cleanupOptions: {closePage: true, closeBrowserContext: true},
+      cleanupOptions: { closePage: true, closeBrowserContext: true },
       run: async (page) => await APP_CONFIG[APP].action(page),
     });
     console.log("Runtime script execution completed.");
@@ -88,4 +88,6 @@ const main = async () => {
 };
 
 console.log("Starting main function...");
-main().then(() => console.log("Script execution completed.")).catch(error => console.error("Unhandled error in main:", error));
+main()
+  .then(() => console.log("Script execution completed."))
+  .catch(error => console.error("Unhandled error in main:", error));
