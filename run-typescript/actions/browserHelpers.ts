@@ -11,6 +11,16 @@ export const waitForNetworkIdle = async (page: Page, timeout = NETWORK_TIMEOUT) 
     }
 };
 
+export const waitForPageLoad = async (page: Page) => {
+    console.log("Waiting for page to load...");
+    try {
+        await page.waitForLoadState('load');
+        console.log("Page loaded.");
+    } catch (error) {
+        console.warn("Page did not load within timeout, continuing...");
+    }
+};
+
 export const retryWithBackoff = async (
     action: () => Promise<void>,
     maxRetries = MAX_RETRIES,

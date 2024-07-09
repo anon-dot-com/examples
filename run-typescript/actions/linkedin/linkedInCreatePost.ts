@@ -1,5 +1,5 @@
 import { Page } from "playwright";
-import { waitForNetworkIdle, retryWithBackoff, takeScreenshot } from "../browserHelpers";
+import { waitForPageLoad, retryWithBackoff, takeScreenshot } from "../browserHelpers";
 import { NETWORK_TIMEOUT, MAX_RETRIES } from "../config";
 
 const LINKEDIN_URL = "https://www.linkedin.com";
@@ -15,7 +15,7 @@ export const linkedInCreatePost = async (page: Page) => {
   await takeScreenshot(page, "linkedin", "1-linkedin-homepage");
 
   console.log("Step 2: Waiting for page to load...");
-  await waitForNetworkIdle(page);
+  await waitForPageLoad(page);
   await takeScreenshot(page, "linkedin", "2-after-page-load");
 
   console.log("Step 3: Locating 'Start a post' button...");
