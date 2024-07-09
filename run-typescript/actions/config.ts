@@ -1,7 +1,7 @@
 import { Page } from "playwright";
 import { linkedInCreatePost } from "./linkedin/linkedInCreatePost";
 import { instagramNavigateToMessages } from "./instagram/instagramMessage";
-import { amazonAddHeadphonesToCart } from './amazon/amazonAddHeadphonesToCart'
+import { amazonAddAirpodsToCart } from './amazon/amazonAddHeadphonesToCart'
 
 export const DEFAULT_APP: AppName = "linkedin";
 export const NETWORK_TIMEOUT = 10000; // 10 seconds
@@ -15,7 +15,7 @@ export interface AppConfig {
 export const APP_CONFIG: { [key: string]: AppConfig } = {
   amazon: {
     url: "https://www.amazon.com",
-    action: amazonAddHeadphonesToCart,
+    action: amazonAddAirpodsToCart,
   },
   instagram: {
     url: "https://www.instagram.com",
