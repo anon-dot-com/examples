@@ -7,7 +7,6 @@ const AMAZON_URL = "https://amazon.com";
 export const amazonAddAirpodsToCart = async (page: Page) => {
     console.log("Starting amazonAddAirpodsToCart function...");
 
-    // Step 0: Navigate to Amazon
     console.log("Step 0: Navigating to Amazon homepage...");
     await retryWithBackoff(async () => {
       await page.goto(AMAZON_URL, { timeout: NETWORK_TIMEOUT });
@@ -15,8 +14,7 @@ export const amazonAddAirpodsToCart = async (page: Page) => {
       await takeScreenshot(page, "amazon", "0-amazon-homepage-loaded");
     });
 
-    // Step 1: Focus on the search bar and type "AirPods"
-    console.log("Step 1: Searching for AirPods...");
+    console.log("Step 1: Focusing on the search bar and searching for AirPods...");
     await retryWithBackoff(async () => {
       await page.focus("#twotabsearchtextbox");
       await page.keyboard.type("AirPods");
@@ -25,14 +23,11 @@ export const amazonAddAirpodsToCart = async (page: Page) => {
       await takeScreenshot(page, "amazon", "1-search-submitted");
     });
 
-    // Step 2: Wait for navigation after the search
     console.log("Step 2: Waiting for search results...");
     await page.waitForSelector(".s-main-slot.s-result-list");
     console.log("Search results loaded.");
     await takeScreenshot(page, "amazon", "2-search-results-loaded");
 
-    // TODO: automagically select first product
-    // Step 3: Navigate to Specific Product Page
     console.log("Step 3: Navigating to AirPods product page...");
     await retryWithBackoff(async () => {
       await page.goto("https://www.amazon.com/Apple-AirPods-Charging-Latest-Model/dp/B07PXGQC1Q");
@@ -40,7 +35,6 @@ export const amazonAddAirpodsToCart = async (page: Page) => {
       await takeScreenshot(page, "amazon", "3-product-page-loaded");
     });
 
-    // Step 4: Wait for "Add to Cart" button to be visible and enabled
     console.log("Step 4: Waiting for 'Add to Cart' button...");
     await retryWithBackoff(async () => {
       await page.waitForSelector("#add-to-cart-button", { state: "visible" });
@@ -48,7 +42,6 @@ export const amazonAddAirpodsToCart = async (page: Page) => {
       await takeScreenshot(page, "amazon", "4-add-to-cart-visible");
     });
 
-    // Step 5: Click on the "Add to Cart" button
     console.log("Step 5: Clicking 'Add to Cart' button...");
     await retryWithBackoff(async () => {
       const addToCartButton = await page.$("#add-to-cart-button");
@@ -61,7 +54,6 @@ export const amazonAddAirpodsToCart = async (page: Page) => {
       }
     });
 
-    // Step 6: Handle Insurance Option
     console.log("Step 6: Handling insurance option...");
     await retryWithBackoff(async () => {
       await page.waitForSelector("#attachSiNoCoverage", { state: "visible", timeout: 5000 });
@@ -70,7 +62,6 @@ export const amazonAddAirpodsToCart = async (page: Page) => {
       await takeScreenshot(page, "amazon", "6-insurance-option-handled");
     });
 
-    // Step 7: Navigate to Cart
     console.log("Step 7: Navigating to Cart...");
     await retryWithBackoff(async () => {
         await page.click("a#nav-cart"); // Click on the cart icon to navigate to the cart page
@@ -78,7 +69,6 @@ export const amazonAddAirpodsToCart = async (page: Page) => {
         await takeScreenshot(page, "amazon", "7-cart-navigated");
     });
 
-    // Step 8: Wait for Checkout Button
     console.log("Step 8: Waiting for Checkout Button...");
     await retryWithBackoff(async () => {
         await page.waitForSelector('input[name="proceedToRetailCheckout"]', { state: "visible" });
