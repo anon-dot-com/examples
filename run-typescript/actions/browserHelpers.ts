@@ -40,6 +40,7 @@ export const retryWithBackoff = async (
 };
 
 export const takeScreenshot = async (page: Page, prefix: string, name: string) => {
-    await page.screenshot({ path: `screenshot-${prefix}-${name}-${Date.now()}.png`, fullPage: true });
-    console.log(`Screenshot taken: ${name}`);
+    const screenshotPath = `screenshot-${prefix}-${name}-${Date.now()}.png`;
+    await page.screenshot({ path: screenshotPath, fullPage: true });
+    console.log(`Screenshot taken: ${screenshotPath}`);
 };

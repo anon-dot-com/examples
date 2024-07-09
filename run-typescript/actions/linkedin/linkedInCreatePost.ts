@@ -1,6 +1,6 @@
 import { Page } from "playwright";
 import { waitForPageLoad, retryWithBackoff, takeScreenshot } from "../browserHelpers";
-import { NETWORK_TIMEOUT, MAX_RETRIES } from "../config";
+import { NETWORK_TIMEOUT } from "../config";
 
 const LINKEDIN_URL = "https://www.linkedin.com";
 
