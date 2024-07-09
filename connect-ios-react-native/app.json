@@ -39,7 +39,7 @@
               {
                 "name": "AnonKit",
                 "source": "ssh://git@github.com/anon-dot-com/sdk-ios-pkg.git",
-                "version": "~> 0.3.1"
+                "version": "~> 0.3.4"
               }
             ]
           }
