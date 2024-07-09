@@ -21,3 +21,5 @@ export const APP_CONFIG: { [key: string]: AppConfig } = {
 export type AppName = keyof typeof APP_CONFIG;
 
 export const DEFAULT_APP: AppName = "linkedin";
+export const NETWORK_TIMEOUT = 60000; // 60 seconds
+export const MAX_RETRIES = 5;
