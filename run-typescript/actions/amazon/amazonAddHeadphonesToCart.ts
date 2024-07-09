@@ -27,7 +27,6 @@ export const amazonAddAirpodsToCart = async (page: Page) => {
 
     // Step 2: Wait for navigation after the search
     console.log("Step 2: Waiting for search results...");
-    await page.waitForNavigation();
     await page.waitForSelector(".s-main-slot.s-result-list");
     console.log("Search results loaded.");
     await takeScreenshot(page, "amazon", "2-search-results-loaded");
@@ -44,7 +43,7 @@ export const amazonAddAirpodsToCart = async (page: Page) => {
     // Step 4: Wait for "Add to Cart" button to be visible and enabled
     console.log("Step 4: Waiting for 'Add to Cart' button...");
     await retryWithBackoff(async () => {
-      const addToCartButton = await page.waitForSelector("#add-to-cart-button", { state: "visible" });
+      await page.waitForSelector("#add-to-cart-button", { state: "visible" });
       console.log("'Add to Cart' button is visible and enabled.");
       await takeScreenshot(page, "amazon", "4-add-to-cart-visible");
     });
@@ -69,6 +68,22 @@ export const amazonAddAirpodsToCart = async (page: Page) => {
       await page.click("#attachSiNoCoverage");
       console.log("Insurance option handled.");
       await takeScreenshot(page, "amazon", "6-insurance-option-handled");
+    });
+
+    // Step 7: Navigate to Cart
+    console.log("Step 7: Navigating to Cart...");
+    await retryWithBackoff(async () => {
+        await page.click("a#nav-cart"); // Click on the cart icon to navigate to the cart page
+        console.log("Navigated to Cart.");
+        await takeScreenshot(page, "amazon", "7-cart-navigated");
+    });
+
+    // Step 8: Wait for Checkout Button
+    console.log("Step 8: Waiting for Checkout Button...");
+    await retryWithBackoff(async () => {
+        await page.waitForSelector('input[name="proceedToRetailCheckout"]', { state: "visible" });
+        console.log("Checkout button is visible.");
+        await takeScreenshot(page, "amazon", "8-checkout-button-visible");
     });
 
     console.log("Amazon Airpods addition to cart process completed.");
