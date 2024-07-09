@@ -41,7 +41,7 @@ export const linkedInCreatePost = async (page: Page) => {
   await takeScreenshot(page, "linkedin", "5-post-creation-modal");
 
   console.log("Step 6: Locating and interacting with text editor...");
-  const postContent = "I'm testing Anon.com and automatically generated this post in < 5 minutes.\n Find out more about using Anon to automate your agent automations at Anon.com.";
+  const postContent = "I'm testing Anon.com and automatically generated this post in < 5 minutes.\nFind out more about using Anon to automate your agent automations at Anon.com.";
   await retryWithBackoff(async () => {
     const textEditor = page.getByRole('textbox', { name: 'Text editor for creating' });
     await textEditor.waitFor({ state: 'visible', timeout: NETWORK_TIMEOUT });
