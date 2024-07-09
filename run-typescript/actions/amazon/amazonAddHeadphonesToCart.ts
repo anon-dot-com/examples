@@ -1,11 +1,11 @@
 import { Page } from "playwright";
-import { waitForPageLoad, retryWithBackoff, takeScreenshot } from "../browserHelpers";
-import { NETWORK_TIMEOUT, MAX_RETRIES } from "../config";
+import { retryWithBackoff, takeScreenshot } from "../browserHelpers";
+import { NETWORK_TIMEOUT } from "../config";
 
 const AMAZON_URL = "https://amazon.com";
 
-export const amazonAddHeadphonesToCart = async (page: Page) => {
-    console.log("Starting amazonAddHeadphonesToCart function...");
+export const amazonAddAirpodsToCart = async (page: Page) => {
+    console.log("Starting amazonAddAirpodsToCart function...");
 
     // Step 0: Navigate to Amazon
     console.log("Step 0: Navigating to Amazon homepage...");
@@ -27,12 +27,10 @@ export const amazonAddHeadphonesToCart = async (page: Page) => {
 
     // Step 2: Wait for navigation after the search
     console.log("Step 2: Waiting for search results...");
-    await retryWithBackoff(async () => {
-      await page.waitForNavigation();
-      await page.waitForSelector(".s-main-slot.s-result-list");
-      console.log("Search results loaded.");
-      await takeScreenshot(page, "amazon", "2-search-results-loaded");
-    });
+    await page.waitForNavigation();
+    await page.waitForSelector(".s-main-slot.s-result-list");
+    console.log("Search results loaded.");
+    await takeScreenshot(page, "amazon", "2-search-results-loaded");
 
     // TODO: automagically select first product
     // Step 3: Navigate to Specific Product Page

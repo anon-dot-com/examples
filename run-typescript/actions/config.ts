@@ -1,10 +1,10 @@
 import { Page } from "playwright";
 import { linkedInCreatePost } from "./linkedin/linkedInCreatePost";
-import { instagramSendMessageToSelf, instagramNavigateToMessages } from "./instagram/instagramMessage";
+import { instagramNavigateToMessages } from "./instagram/instagramMessage";
 import { amazonAddHeadphonesToCart } from './amazon/amazonAddHeadphonesToCart'
 
-export const DEFAULT_APP: AppName = "amazon";
-export const NETWORK_TIMEOUT = 60000; // 60 seconds
+export const DEFAULT_APP: AppName = "linkedin";
+export const NETWORK_TIMEOUT = 10000; // 10 seconds
 export const MAX_RETRIES = 5;
 
 export interface AppConfig {
