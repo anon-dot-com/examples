@@ -4,11 +4,10 @@ import {
   executeRuntimeScript,
   Environment,
 } from "@anon/sdk-typescript";
-import { Page } from "playwright";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import path from "path";
-import { APP_CONFIG, AppName, DEFAULT_APP } from "./actions/config";
+import { APP_CONFIG, AppName, DEFAULT_APP, DO_DELETE_SESSION } from "./actions/config";
 
 console.log("Starting script execution...");
 
@@ -81,6 +80,23 @@ const main = async () => {
     console.log("Runtime script execution completed.");
 
     const accountInfo = { ownerId: APP_USER_ID, domain: account.app };
+
+    // Demo `getSessionStatus`
+    let sessionStatus = await client.getSessionStatus({ account: accountInfo });
+    console.log(`Client session status: ${JSON.stringify(sessionStatus)}`);
+
+    if (DO_DELETE_SESSION) {
+      const demoDeleteSession = async () => {
+        // Demo `deleteSession`
+        await client.deleteSession({ account: accountInfo });
+        console.log(`Session deleted for ${JSON.stringify(accountInfo)}`);
+
+        sessionStatus = await client.getSessionStatus({ account: accountInfo });
+        console.log(`After deleting session, client session status: ${JSON.stringify(sessionStatus)}`);
+      }
+
+      await demoDeleteSession();
+    }
     console.log("Script execution finished successfully.");
   } catch (error) {
     console.error("Error in main function:", error);

@@ -6,6 +6,7 @@ import { amazonAddAirpodsToCart } from './amazon/amazonAddHeadphonesToCart'
 export const DEFAULT_APP: AppName = "instagram";
 export const NETWORK_TIMEOUT = 10000; // 10 seconds
 export const MAX_RETRIES = 5;
+export const DO_DELETE_SESSION = false;
 
 export interface AppConfig {
   url: string;
