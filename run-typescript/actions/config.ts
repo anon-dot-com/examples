@@ -3,7 +3,7 @@ import { linkedInCreatePost } from "./linkedin/linkedInCreatePost";
 import { instagramNavigateToMessages } from "./instagram/instagramMessage";
 import { amazonAddAirpodsToCart } from './amazon/amazonAddHeadphonesToCart'
 
-export const DEFAULT_APP: AppName = "linkedin";
+export const DEFAULT_APP: AppName = "instagram";
 export const NETWORK_TIMEOUT = 10000; // 10 seconds
 export const MAX_RETRIES = 5;
 

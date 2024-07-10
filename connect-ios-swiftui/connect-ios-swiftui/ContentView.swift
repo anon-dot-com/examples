@@ -17,12 +17,12 @@ struct ContentView: View {
         environment: .sandbox,
         // The uuid of your SdkClient /associated with your UserPool/
         // ie the one which returned   "auth": { "type": "userPool", "userPoolId": "..." }
-        clientId: "your-client-id-here",
+        clientId: "c424a79f-6415-4779-8384-073583585a92",
         // Your application user ID token, eg the JWT
         // May be Anon-provided as the `example_app_user_id_token` from 1pass
-        appUserIdToken: "your-jwt-id-token-here"
+        appUserIdToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6Ik5veC03NDQ1NCJ9.eyJhdWQiOiJ1cm46ZXhhbXBsZTphdWRpZW5jZSIsImVtYWlsIjoibW9sbHkrc2FuZGJveEBoZXlub3guY29tIiwiZXhwIjoxNzIxMzMyMDc4LCJpYXQiOjE3MTg3NDAwNzgsImlzcyI6InVybjpleGFtcGxlOmlzc3VlciIsInN1YiI6IjgyMjcxMjgwLWIyNjQtNGUxOS05Y2NiLTVlN2Q0ZDA1YjhjOCJ9.S7Nb1NZZAdC1EZZ_XNKNTDj1YkyuOzcdG0HyDoB-9H4VuxBZARJ6WlQ1m0Iee13YPKZPqhXj4UHOvQ89TD0X0ws6dnx-bLAeZW9SEVTRO27gm2K-YnMK6PcJUBqoDGHqmX579LJ5faNoBermKij7mu8FaR_jdKhKjrRwNHEScdIYRMU7pfve_RFMA6xlqDDH_TQm0Uef5BgznJiZqUZFv5tUOfrR2IcAZDWWfvhCvFeAnvuSl7Hpgzo4qfWcj8gwSRekGEXOa_jjV18xbEqxRI3Ok8Nr2_RB_oHBPzO53yBcXlB6Xl12YGFnlkB21IFO1ZDonfc6lNYGSCFkrqoHkA"
     )
-
+    
     var body: some View {
         NavigationView {
             VStack {
