@@ -1,6 +1,15 @@
 {
-  "originHash" : "bd1531fe8c4ff73dbebca0d1c320d2c9f035d0778de0d23dee44e5dc5315a956",
+  "originHash" : "42f8cbc54f200d39627141498fce4646dc72d5bd711e2d1f019ea19fed15de5d",
   "pins" : [
+    {
+      "identity" : "dd-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/DataDog/dd-sdk-ios.git",
+      "state" : {
+        "revision" : "65854b3fe0a2aff3dec470e3f74835d1abffe2c7",
+        "version" : "2.14.1"
+      }
+    },
     {
       "identity" : "jwtdecode.swift",
       "kind" : "remoteSourceControl",
@@ -11,12 +20,21 @@
       }
     },
     {
-      "identity" : "sdk-ios-pkg",
+      "identity" : "opentelemetry-swift-packages",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/anon-dot-com/sdk-ios-pkg",
+      "location" : "https://github.com/DataDog/opentelemetry-swift-packages.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "c23eaa799655fbb0017b467c94b42f8e05538d9f"
+        "revision" : "adcfc3d7fc6ad411bb576cfa4512c2d3f8b2dbc7",
+        "version" : "1.6.0"
+      }
+    },
+    {
+      "identity" : "plcrashreporter",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/microsoft/plcrashreporter.git",
+      "state" : {
+        "revision" : "6752f71de206f6a53fa6a758c3660fd9a7fe7527",
+        "version" : "1.11.2"
       }
     }
   ],

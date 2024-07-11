@@ -12,10 +12,27 @@
 		D25FA3702C2621D200ED0F2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA36F2C2621D200ED0F2F /* Assets.xcassets */; };
 		D25FA3742C2621D200ED0F2F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA3732C2621D200ED0F2F /* Preview Assets.xcassets */; };
 		D25FA37C2C2621E200ED0F2F /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = D25FA37B2C2621E200ED0F2F /* JWTDecode */; };
-		D25FA37F2C2621EA00ED0F2F /* AnonKit in Frameworks */ = {isa = PBXBuildFile; productRef = D25FA37E2C2621EA00ED0F2F /* AnonKit */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		51A72B452C3FB97200439AA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 51A72B402C3FB97200439AA8 /* AnonKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAC976862B23C36F00C991B2;
+			remoteInfo = AnonKit;
+		};
+		51A72B472C3FB97200439AA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 51A72B402C3FB97200439AA8 /* AnonKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAC976902B23C36F00C991B2;
+			remoteInfo = AnonKitTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		51A72B402C3FB97200439AA8 /* AnonKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AnonKit.xcodeproj; path = "../../das/lib/sdk-ios/AnonKit/AnonKit.xcodeproj"; sourceTree = "<group>"; };
 		D25FA3682C2621D100ED0F2F /* connect-ios-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "connect-ios-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25FA36B2C2621D100ED0F2F /* connect_ios_swiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = connect_ios_swiftuiApp.swift; sourceTree = "<group>"; };
 		D25FA36D2C2621D100ED0F2F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -30,16 +47,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				D25FA37C2C2621E200ED0F2F /* JWTDecode in Frameworks */,
-				D25FA37F2C2621EA00ED0F2F /* AnonKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51A72B412C3FB97200439AA8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				51A72B462C3FB97200439AA8 /* AnonKit.framework */,
+				51A72B482C3FB97200439AA8 /* AnonKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D25FA35F2C2621D100ED0F2F = {
 			isa = PBXGroup;
 			children = (
+				51A72B402C3FB97200439AA8 /* AnonKit.xcodeproj */,
 				D25FA36A2C2621D100ED0F2F /* connect-ios-swiftui */,
 				D25FA3692C2621D100ED0F2F /* Products */,
 			);
@@ -91,7 +117,6 @@
 			name = "connect-ios-swiftui";
 			packageProductDependencies = (
 				D25FA37B2C2621E200ED0F2F /* JWTDecode */,
-				D25FA37E2C2621EA00ED0F2F /* AnonKit */,
 			);
 			productName = "connect-ios-swiftui";
 			productReference = D25FA3682C2621D100ED0F2F /* connect-ios-swiftui.app */;
@@ -123,16 +148,38 @@
 			mainGroup = D25FA35F2C2621D100ED0F2F;
 			packageReferences = (
 				D25FA37A2C2621E200ED0F2F /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
-				D25FA37D2C2621EA00ED0F2F /* XCRemoteSwiftPackageReference "sdk-ios-pkg" */,
 			);
 			productRefGroup = D25FA3692C2621D100ED0F2F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 51A72B412C3FB97200439AA8 /* Products */;
+					ProjectRef = 51A72B402C3FB97200439AA8 /* AnonKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D25FA3672C2621D100ED0F2F /* connect-ios-swiftui */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		51A72B462C3FB97200439AA8 /* AnonKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AnonKit.framework;
+			remoteRef = 51A72B452C3FB97200439AA8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		51A72B482C3FB97200439AA8 /* AnonKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AnonKitTests.xctest;
+			remoteRef = 51A72B472C3FB97200439AA8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D25FA3662C2621D100ED0F2F /* Resources */ = {
@@ -377,14 +424,6 @@
 				minimumVersion = 3.1.0;
 			};
 		};
-		D25FA37D2C2621EA00ED0F2F /* XCRemoteSwiftPackageReference "sdk-ios-pkg" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/anon-dot-com/sdk-ios-pkg";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -392,11 +431,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D25FA37A2C2621E200ED0F2F /* XCRemoteSwiftPackageReference "JWTDecode.swift" */;
 			productName = JWTDecode;
-		};
-		D25FA37E2C2621EA00ED0F2F /* AnonKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D25FA37D2C2621EA00ED0F2F /* XCRemoteSwiftPackageReference "sdk-ios-pkg" */;
-			productName = AnonKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
