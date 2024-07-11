@@ -7,14 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		512F3B492C3ED597005C33F7 /* AnonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 512F3B482C3ED597005C33F7 /* AnonKit */; };
 		512F3B4E2C3ED739005C33F7 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 512F3B4D2C3ED739005C33F7 /* JWTDecode */; };
-		512F3B512C3ED770005C33F7 /* AnonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 512F3B502C3ED770005C33F7 /* AnonKit */; };
+		512F3B682C3F50F2005C33F7 /* LinkClipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F3B672C3F50F2005C33F7 /* LinkClipApp.swift */; };
+		512F3B6C2C3F50F3005C33F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512F3B6B2C3F50F3005C33F7 /* Assets.xcassets */; };
+		512F3B6F2C3F50F3005C33F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512F3B6E2C3F50F3005C33F7 /* Preview Assets.xcassets */; };
+		512F3B752C3F50F3005C33F7 /* LinkClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 512F3B652C3F50F2005C33F7 /* LinkClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		512F3B7C2C3F56AE005C33F7 /* AnonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512F3B5B2C3EF086005C33F7 /* AnonKit.framework */; };
+		512F3B7D2C3F56AE005C33F7 /* AnonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512F3B5B2C3EF086005C33F7 /* AnonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		512F3B7F2C3F5E53005C33F7 /* AnonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512F3B5B2C3EF086005C33F7 /* AnonKit.framework */; platformFilter = ios; };
+		512F3B802C3F5E53005C33F7 /* AnonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512F3B5B2C3EF086005C33F7 /* AnonKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		512F3B812C3F8D09005C33F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36D2C2621D100ED0F2F /* ContentView.swift */; };
 		D25FA36C2C2621D100ED0F2F /* connect_ios_swiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36B2C2621D100ED0F2F /* connect_ios_swiftuiApp.swift */; };
 		D25FA36E2C2621D100ED0F2F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36D2C2621D100ED0F2F /* ContentView.swift */; };
 		D25FA3702C2621D200ED0F2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA36F2C2621D200ED0F2F /* Assets.xcassets */; };
 		D25FA3742C2621D200ED0F2F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA3732C2621D200ED0F2F /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		512F3B5A2C3EF086005C33F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 512F3B552C3EF086005C33F7 /* AnonKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAC976862B23C36F00C991B2;
+			remoteInfo = AnonKit;
+		};
+		512F3B5C2C3EF086005C33F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 512F3B552C3EF086005C33F7 /* AnonKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAC976902B23C36F00C991B2;
+			remoteInfo = AnonKitTests;
+		};
+		512F3B5F2C3EF0A8005C33F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 512F3B552C3EF086005C33F7 /* AnonKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AAC976852B23C36F00C991B2;
+			remoteInfo = AnonKit;
+		};
+		512F3B722C3F50F3005C33F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D25FA3602C2621D100ED0F2F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 512F3B642C3F50F2005C33F7;
+			remoteInfo = LinkClip;
+		};
+		512F3B792C3F552A005C33F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 512F3B552C3EF086005C33F7 /* AnonKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AAC976852B23C36F00C991B2;
+			remoteInfo = AnonKit;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		512F3B462C3EBFE4005C33F7 /* Embed Frameworks */ = {
@@ -23,6 +68,29 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				512F3B802C3F5E53005C33F7 /* AnonKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		512F3B742C3F50F3005C33F7 /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				512F3B752C3F50F3005C33F7 /* LinkClip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		512F3B7E2C3F56AE005C33F7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				512F3B7D2C3F56AE005C33F7 /* AnonKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -30,6 +98,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		512F3B552C3EF086005C33F7 /* AnonKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AnonKit.xcodeproj; path = "../../das/lib/sdk-ios/AnonKit/AnonKit.xcodeproj"; sourceTree = "<group>"; };
+		512F3B652C3F50F2005C33F7 /* LinkClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		512F3B672C3F50F2005C33F7 /* LinkClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkClipApp.swift; sourceTree = "<group>"; };
+		512F3B6B2C3F50F3005C33F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		512F3B6E2C3F50F3005C33F7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		512F3B702C3F50F3005C33F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		512F3B712C3F50F3005C33F7 /* LinkClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LinkClip.entitlements; sourceTree = "<group>"; };
 		D25FA3682C2621D100ED0F2F /* connect-ios-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "connect-ios-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25FA36B2C2621D100ED0F2F /* connect_ios_swiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = connect_ios_swiftuiApp.swift; sourceTree = "<group>"; };
 		D25FA36D2C2621D100ED0F2F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,19 +114,55 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		512F3B622C3F50F2005C33F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				512F3B7C2C3F56AE005C33F7 /* AnonKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D25FA3652C2621D100ED0F2F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512F3B512C3ED770005C33F7 /* AnonKit in Frameworks */,
 				512F3B4E2C3ED739005C33F7 /* JWTDecode in Frameworks */,
-				512F3B492C3ED597005C33F7 /* AnonKit in Frameworks */,
+				512F3B7F2C3F5E53005C33F7 /* AnonKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		512F3B562C3EF086005C33F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				512F3B5B2C3EF086005C33F7 /* AnonKit.framework */,
+				512F3B5D2C3EF086005C33F7 /* AnonKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		512F3B662C3F50F2005C33F7 /* LinkClip */ = {
+			isa = PBXGroup;
+			children = (
+				512F3B672C3F50F2005C33F7 /* LinkClipApp.swift */,
+				512F3B6B2C3F50F3005C33F7 /* Assets.xcassets */,
+				512F3B702C3F50F3005C33F7 /* Info.plist */,
+				512F3B712C3F50F3005C33F7 /* LinkClip.entitlements */,
+				512F3B6D2C3F50F3005C33F7 /* Preview Content */,
+			);
+			path = LinkClip;
+			sourceTree = "<group>";
+		};
+		512F3B6D2C3F50F3005C33F7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				512F3B6E2C3F50F3005C33F7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		51EC0A8E2C3947FE00A7E1B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -62,7 +173,9 @@
 		D25FA35F2C2621D100ED0F2F = {
 			isa = PBXGroup;
 			children = (
+				512F3B552C3EF086005C33F7 /* AnonKit.xcodeproj */,
 				D25FA36A2C2621D100ED0F2F /* connect-ios-swiftui */,
+				512F3B662C3F50F2005C33F7 /* LinkClip */,
 				D25FA3692C2621D100ED0F2F /* Products */,
 				51EC0A8E2C3947FE00A7E1B5 /* Frameworks */,
 			);
@@ -72,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				D25FA3682C2621D100ED0F2F /* connect-ios-swiftui.app */,
+				512F3B652C3F50F2005C33F7 /* LinkClip.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,6 +213,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		512F3B642C3F50F2005C33F7 /* LinkClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 512F3B762C3F50F3005C33F7 /* Build configuration list for PBXNativeTarget "LinkClip" */;
+			buildPhases = (
+				512F3B612C3F50F2005C33F7 /* Sources */,
+				512F3B622C3F50F2005C33F7 /* Frameworks */,
+				512F3B632C3F50F2005C33F7 /* Resources */,
+				512F3B7E2C3F56AE005C33F7 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				512F3B7A2C3F552A005C33F7 /* PBXTargetDependency */,
+			);
+			name = LinkClip;
+			productName = LinkClip;
+			productReference = 512F3B652C3F50F2005C33F7 /* LinkClip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
 		D25FA3672C2621D100ED0F2F /* connect-ios-swiftui */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D25FA3772C2621D200ED0F2F /* Build configuration list for PBXNativeTarget "connect-ios-swiftui" */;
@@ -107,17 +240,17 @@
 				D25FA3652C2621D100ED0F2F /* Frameworks */,
 				D25FA3662C2621D100ED0F2F /* Resources */,
 				512F3B462C3EBFE4005C33F7 /* Embed Frameworks */,
+				512F3B742C3F50F3005C33F7 /* Embed App Clips */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				512F3B4B2C3ED61A005C33F7 /* PBXTargetDependency */,
+				512F3B602C3EF0A8005C33F7 /* PBXTargetDependency */,
+				512F3B732C3F50F3005C33F7 /* PBXTargetDependency */,
 			);
 			name = "connect-ios-swiftui";
 			packageProductDependencies = (
-				512F3B482C3ED597005C33F7 /* AnonKit */,
 				512F3B4D2C3ED739005C33F7 /* JWTDecode */,
-				512F3B502C3ED770005C33F7 /* AnonKit */,
 			);
 			productName = "connect-ios-swiftui";
 			productReference = D25FA3682C2621D100ED0F2F /* connect-ios-swiftui.app */;
@@ -133,6 +266,9 @@
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					512F3B642C3F50F2005C33F7 = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					D25FA3672C2621D100ED0F2F = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -149,18 +285,50 @@
 			mainGroup = D25FA35F2C2621D100ED0F2F;
 			packageReferences = (
 				512F3B4C2C3ED739005C33F7 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
-				512F3B4F2C3ED770005C33F7 /* XCRemoteSwiftPackageReference "sdk-ios-pkg" */,
 			);
 			productRefGroup = D25FA3692C2621D100ED0F2F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 512F3B562C3EF086005C33F7 /* Products */;
+					ProjectRef = 512F3B552C3EF086005C33F7 /* AnonKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D25FA3672C2621D100ED0F2F /* connect-ios-swiftui */,
+				512F3B642C3F50F2005C33F7 /* LinkClip */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		512F3B5B2C3EF086005C33F7 /* AnonKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AnonKit.framework;
+			remoteRef = 512F3B5A2C3EF086005C33F7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		512F3B5D2C3EF086005C33F7 /* AnonKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AnonKitTests.xctest;
+			remoteRef = 512F3B5C2C3EF086005C33F7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
+		512F3B632C3F50F2005C33F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				512F3B6F2C3F50F3005C33F7 /* Preview Assets.xcassets in Resources */,
+				512F3B6C2C3F50F3005C33F7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D25FA3662C2621D100ED0F2F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -173,6 +341,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		512F3B612C3F50F2005C33F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				512F3B812C3F8D09005C33F7 /* ContentView.swift in Sources */,
+				512F3B682C3F50F2005C33F7 /* LinkClipApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D25FA3642C2621D100ED0F2F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -185,13 +362,95 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		512F3B4B2C3ED61A005C33F7 /* PBXTargetDependency */ = {
+		512F3B602C3EF0A8005C33F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 512F3B4A2C3ED61A005C33F7 /* AnonKit */;
+			name = AnonKit;
+			targetProxy = 512F3B5F2C3EF0A8005C33F7 /* PBXContainerItemProxy */;
+		};
+		512F3B732C3F50F3005C33F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 512F3B642C3F50F2005C33F7 /* LinkClip */;
+			targetProxy = 512F3B722C3F50F3005C33F7 /* PBXContainerItemProxy */;
+		};
+		512F3B7A2C3F552A005C33F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AnonKit;
+			targetProxy = 512F3B792C3F552A005C33F7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		512F3B772C3F50F3005C33F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LinkClip/LinkClip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"LinkClip/Preview Content\"";
+				DEVELOPMENT_TEAM = 9AEE6NMN4R;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LinkClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "connect-ios-swiftui";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anon.dev.connect.FastLink;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) APPCLIP";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		512F3B782C3F50F3005C33F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LinkClip/LinkClip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"LinkClip/Preview Content\"";
+				DEVELOPMENT_TEAM = 9AEE6NMN4R;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LinkClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "connect-ios-swiftui";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anon.dev.connect.FastLink;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APPCLIP;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		D25FA3752C2621D200ED0F2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -309,6 +568,7 @@
 		D25FA3782C2621D200ED0F2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "connect-ios-swiftui/connect_ios_swiftui.entitlements";
@@ -333,7 +593,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.anon.connect-ios-swiftui";
+				PRODUCT_BUNDLE_IDENTIFIER = com.anon.dev.connect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -346,6 +606,7 @@
 		D25FA3792C2621D200ED0F2F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "connect-ios-swiftui/connect_ios_swiftui.entitlements";
@@ -370,7 +631,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.anon.connect-ios-swiftui";
+				PRODUCT_BUNDLE_IDENTIFIER = com.anon.dev.connect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -383,6 +644,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		512F3B762C3F50F3005C33F7 /* Build configuration list for PBXNativeTarget "LinkClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				512F3B772C3F50F3005C33F7 /* Debug */,
+				512F3B782C3F50F3005C33F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D25FA3632C2621D100ED0F2F /* Build configuration list for PBXProject "connect-ios-swiftui" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -403,13 +673,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		512F3B472C3ED597005C33F7 /* XCLocalSwiftPackageReference "../../das/lib/sdk-ios/AnonKitPkg" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../das/lib/sdk-ios/AnonKitPkg";
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
 		512F3B4C2C3ED739005C33F7 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -419,35 +682,13 @@
 				minimumVersion = 3.1.0;
 			};
 		};
-		512F3B4F2C3ED770005C33F7 /* XCRemoteSwiftPackageReference "sdk-ios-pkg" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/anon-dot-com/sdk-ios-pkg";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		512F3B482C3ED597005C33F7 /* AnonKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AnonKit;
-		};
-		512F3B4A2C3ED61A005C33F7 /* AnonKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 512F3B472C3ED597005C33F7 /* XCLocalSwiftPackageReference "../../das/lib/sdk-ios/AnonKitPkg" */;
-			productName = AnonKit;
-		};
 		512F3B4D2C3ED739005C33F7 /* JWTDecode */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 512F3B4C2C3ED739005C33F7 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */;
 			productName = JWTDecode;
-		};
-		512F3B502C3ED770005C33F7 /* AnonKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 512F3B4F2C3ED770005C33F7 /* XCRemoteSwiftPackageReference "sdk-ios-pkg" */;
-			productName = AnonKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
