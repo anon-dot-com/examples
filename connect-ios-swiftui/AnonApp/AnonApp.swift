@@ -12,6 +12,7 @@ struct connect_ios_swiftuiApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                
         }
     }
 }

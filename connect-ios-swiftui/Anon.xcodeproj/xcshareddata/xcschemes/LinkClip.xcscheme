@@ -62,7 +62,7 @@
          <EnvironmentVariable
             key = "_XCAppClipURL"
             value = "https://clip.anon.com/integrate?delta"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "ANON_DEBUG"
