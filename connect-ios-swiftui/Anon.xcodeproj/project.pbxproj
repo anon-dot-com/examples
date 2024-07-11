@@ -108,7 +108,7 @@
 		D25FA36B2C2621D100ED0F2F /* AnonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonApp.swift; sourceTree = "<group>"; };
 		D25FA36D2C2621D100ED0F2F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D25FA36F2C2621D200ED0F2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D25FA3712C2621D200ED0F2F /* connect_ios_swiftui.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = connect_ios_swiftui.entitlements; sourceTree = "<group>"; };
+		D25FA3712C2621D200ED0F2F /* AnonApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnonApp.entitlements; sourceTree = "<group>"; };
 		D25FA3732C2621D200ED0F2F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,7 +194,7 @@
 				D25FA36B2C2621D100ED0F2F /* AnonApp.swift */,
 				D25FA36D2C2621D100ED0F2F /* ContentView.swift */,
 				D25FA36F2C2621D200ED0F2F /* Assets.xcassets */,
-				D25FA3712C2621D200ED0F2F /* connect_ios_swiftui.entitlements */,
+				D25FA3712C2621D200ED0F2F /* AnonApp.entitlements */,
 				D25FA3722C2621D200ED0F2F /* Preview Content */,
 			);
 			path = AnonApp;
@@ -271,7 +271,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D25FA3632C2621D100ED0F2F /* Build configuration list for PBXProject "connect-ios-swiftui" */;
+			buildConfigurationList = D25FA3632C2621D100ED0F2F /* Build configuration list for PBXProject "Anon" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -281,7 +281,7 @@
 			);
 			mainGroup = D25FA35F2C2621D100ED0F2F;
 			packageReferences = (
-				51A72B742C3FE4E300439AA8 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
+				517C86492C3FF72E00A29ABB /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
 			);
 			productRefGroup = D25FA3692C2621D100ED0F2F /* Products */;
 			projectDirPath = "";
@@ -384,7 +384,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LinkClip/LinkClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.3.4;
 				DEVELOPMENT_ASSET_PATHS = "\"LinkClip/Preview Content\"";
 				DEVELOPMENT_TEAM = 9AEE6NMN4R;
 				ENABLE_PREVIEWS = YES;
@@ -401,7 +401,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = v0.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anon.dev.connect.FastLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -423,7 +423,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LinkClip/LinkClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.3.4;
 				DEVELOPMENT_ASSET_PATHS = "\"LinkClip/Preview Content\"";
 				DEVELOPMENT_TEAM = 9AEE6NMN4R;
 				ENABLE_PREVIEWS = YES;
@@ -440,7 +440,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = v0.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anon.dev.connect.FastLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -576,10 +576,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "connect-ios-swiftui/connect_ios_swiftui.entitlements";
+				CODE_SIGN_ENTITLEMENTS = AnonApp/AnonApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"connect-ios-swiftui/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 0.3.4;
+				DEVELOPMENT_ASSET_PATHS = "\"AnonApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 9AEE6NMN4R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -598,7 +598,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = v0.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anon.dev.connect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -616,10 +616,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "connect-ios-swiftui/connect_ios_swiftui.entitlements";
+				CODE_SIGN_ENTITLEMENTS = AnonApp/AnonApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"connect-ios-swiftui/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 0.3.4;
+				DEVELOPMENT_ASSET_PATHS = "\"AnonApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 9AEE6NMN4R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -638,7 +638,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = v0.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anon.dev.connect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -662,7 +662,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D25FA3632C2621D100ED0F2F /* Build configuration list for PBXProject "connect-ios-swiftui" */ = {
+		D25FA3632C2621D100ED0F2F /* Build configuration list for PBXProject "Anon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D25FA3752C2621D200ED0F2F /* Debug */,
@@ -683,7 +683,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		51A72B742C3FE4E300439AA8 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */ = {
+		517C86492C3FF72E00A29ABB /* XCRemoteSwiftPackageReference "JWTDecode.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/auth0/JWTDecode.swift.git";
 			requirement = {

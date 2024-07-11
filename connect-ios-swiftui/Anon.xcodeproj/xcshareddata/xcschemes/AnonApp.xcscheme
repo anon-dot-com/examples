@@ -18,7 +18,7 @@
                BlueprintIdentifier = "D25FA3672C2621D100ED0F2F"
                BuildableName = "Anon.app"
                BlueprintName = "Anon"
-               ReferencedContainer = "container:connect-ios-swiftui.xcodeproj">
+               ReferencedContainer = "container:Anon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "D25FA3672C2621D100ED0F2F"
             BuildableName = "Anon.app"
             BlueprintName = "Anon"
-            ReferencedContainer = "container:connect-ios-swiftui.xcodeproj">
+            ReferencedContainer = "container:Anon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -71,7 +71,7 @@
             BlueprintIdentifier = "D25FA3672C2621D100ED0F2F"
             BuildableName = "Anon.app"
             BlueprintName = "Anon"
-            ReferencedContainer = "container:connect-ios-swiftui.xcodeproj">
+            ReferencedContainer = "container:Anon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

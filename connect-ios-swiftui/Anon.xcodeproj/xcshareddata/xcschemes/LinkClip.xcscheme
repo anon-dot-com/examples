@@ -18,7 +18,7 @@
                BlueprintIdentifier = "512F3B642C3F50F2005C33F7"
                BuildableName = "LinkClip.app"
                BlueprintName = "LinkClip"
-               ReferencedContainer = "container:connect-ios-swiftui.xcodeproj">
+               ReferencedContainer = "container:Anon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -49,7 +49,7 @@
             BlueprintIdentifier = "512F3B642C3F50F2005C33F7"
             BuildableName = "LinkClip.app"
             BlueprintName = "LinkClip"
-            ReferencedContainer = "container:connect-ios-swiftui.xcodeproj">
+            ReferencedContainer = "container:Anon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -85,7 +85,7 @@
             BlueprintIdentifier = "512F3B642C3F50F2005C33F7"
             BuildableName = "LinkClip.app"
             BlueprintName = "LinkClip"
-            ReferencedContainer = "container:connect-ios-swiftui.xcodeproj">
+            ReferencedContainer = "container:Anon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
