@@ -33,6 +33,7 @@ export const retryWithBackoff = async (
         } catch (error) {
             if (attempt === maxRetries) throw error;
             const delay = baseDelay * Math.pow(2, attempt - 1);
+            console.log(error)
             console.log(`Attempt ${attempt} failed, retrying in ${delay}ms...`);
             await new Promise(resolve => setTimeout(resolve, delay));
         }
