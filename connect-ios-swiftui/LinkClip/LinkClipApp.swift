@@ -14,7 +14,7 @@ struct LinkClipApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .onContinueUserActivity("com.anon.dev.connect.FastLink", perform: { userActivity in
+                .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: { userActivity in
                     if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
                         print("Launched via userActivity: \(userActivity.debugDescription)")
                     }

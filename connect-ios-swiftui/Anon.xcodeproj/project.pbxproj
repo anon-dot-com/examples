@@ -386,7 +386,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0.3.4;
 				DEVELOPMENT_ASSET_PATHS = "\"LinkClip/Preview Content\"";
-				DEVELOPMENT_TEAM = 9AEE6NMN4R;
+				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LinkClip/Info.plist;
@@ -401,8 +401,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = v0.3.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.anon.dev.connect.FastLink;
+				MARKETING_VERSION = 0.3.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anon.link.test.FastLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -425,7 +425,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0.3.4;
 				DEVELOPMENT_ASSET_PATHS = "\"LinkClip/Preview Content\"";
-				DEVELOPMENT_TEAM = 9AEE6NMN4R;
+				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LinkClip/Info.plist;
@@ -440,8 +440,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = v0.3.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.anon.dev.connect.FastLink;
+				MARKETING_VERSION = 0.3.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anon.link.test.FastLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -580,7 +580,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0.3.4;
 				DEVELOPMENT_ASSET_PATHS = "\"AnonApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 9AEE6NMN4R;
+				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Anon;
@@ -598,8 +598,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
-				MARKETING_VERSION = v0.3.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.anon.dev.connect;
+				MARKETING_VERSION = 0.3.4;
+				MARKETPLACES = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.anon.link.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -620,7 +621,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0.3.4;
 				DEVELOPMENT_ASSET_PATHS = "\"AnonApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 9AEE6NMN4R;
+				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Anon;
@@ -638,8 +639,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
-				MARKETING_VERSION = v0.3.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.anon.dev.connect;
+				MARKETING_VERSION = 0.3.4;
+				MARKETPLACES = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.anon.link.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -5,6 +5,7 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>appclips:clip.anon.com</string>
+		<string>webcredentials:anon.com</string>
 	</array>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>

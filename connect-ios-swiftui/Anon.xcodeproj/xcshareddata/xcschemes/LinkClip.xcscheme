@@ -54,7 +54,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = ""
+            argument = "IDEPreferLogStreaming=YES"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
@@ -67,6 +67,11 @@
          <EnvironmentVariable
             key = "ANON_DEBUG"
             value = "true"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "IDEPreferLogStreaming"
+            value = "YES"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

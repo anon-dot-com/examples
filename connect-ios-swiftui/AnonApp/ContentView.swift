@@ -8,6 +8,7 @@
 import SwiftUI
 import AnonKit
 
+@MainActor
 struct AppButton: View {
     let appRow: AppRow
     let onTap: (String) -> Void
@@ -21,6 +22,7 @@ struct AppButton: View {
     }
 }
 
+@MainActor
 struct AppRow: View {
     let imageName: String
     let imageTint: Color
@@ -44,6 +46,7 @@ struct AppRow: View {
     }
 }
 
+@MainActor
 struct ContentView: View {
     // We move to immediately present in AppClip builds
 #if APPCLIP
@@ -51,7 +54,7 @@ struct ContentView: View {
 #else
     @State private var isPresenting = false // State to manage SDK presentation
 #endif
-    @State private var selectedApp = "delta"
+    @State private var selectedApp: String? = "delta"
 
     // Configuration for Anon SDK
     let anonConfig = Config(
@@ -69,7 +72,7 @@ struct ContentView: View {
 #if APPCLIP
             Text("App Clip!")
                 .font(.largeTitle)
-#else
+#endif
             VStack(alignment: .leading, spacing: 32) {
                 
                 AppButton(appRow: AppRow(
@@ -113,16 +116,16 @@ struct ContentView: View {
                 }
             }
             .padding()
-#endif
         }
         .onChange(of: selectedApp, { oldValue, newValue in
-            isPresenting.toggle()
+            if let app = selectedApp, !app.isEmpty {
+                isPresenting.toggle()
+            }
         })
         .fullScreenCover(isPresented: $isPresenting, onDismiss: didDismiss) {
-            print("Selected App \(selectedApp.debugDescription)")
-            // Present Anon SDK UI
-            return AnonUIView(
-                    app: selectedApp,
+            if let app = selectedApp {
+                AnonUIView(
+                    app: app,
                     config: anonConfig,
                     ui: UIConfig(
                         organizationName: "My Company",
@@ -130,12 +133,14 @@ struct ContentView: View {
                         organizationIconUrl: URL(string: "https://example.com/org-logo.png"),
                         // Theme selection
                         theme: .dark
+                    )
                 )
-            )
+            }
         }
     }
 
     func didDismiss() {
+        selectedApp = nil
         // Handle the dismissing action here.
         print("SDK was dismissed")
     }
