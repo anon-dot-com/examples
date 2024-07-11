@@ -27,19 +27,19 @@ struct AppRow: View {
     let appName: String
     
     var body: some View {
-        HStack {
-            Spacer()
-            Image(systemName: imageName)
-                .resizable()
-                .frame(width: 64, height: 64, alignment: .trailing)
-                .foregroundColor(imageTint)
-            Text(appName.capitalized)
-                .padding()
-                .font(.title2)
-                .foregroundColor(imageTint)
-                .frame(width: 150, alignment: .leading)
-            Spacer()
-        }
+        Image(systemName: imageName)
+            .resizable()
+            .frame(
+                minWidth: 16, idealWidth: 32, maxWidth: 48,
+                minHeight: 16, idealHeight: 32, maxHeight: 48,
+                alignment: .trailing
+            )
+            .foregroundColor(imageTint)
+        
+        Text(appName.capitalized)
+            .padding()
+            .font(.title2)
+            .foregroundColor(imageTint)
     }
 }
 
@@ -49,7 +49,7 @@ struct ContentView: View {
 #else
     @State private var isPresenting = false // State to manage SDK presentation
 #endif
-    @State private var selectedApp = "linkedin"
+    @State private var selectedApp = "delta"
 
     // Configuration for Anon SDK
     let anonConfig = AnonKit.Config(
@@ -72,7 +72,7 @@ struct ContentView: View {
             Text("App Clip!")
                 .font(.largeTitle)
 #else
-            VStack(spacing: 32) {
+            VStack(alignment: .leading, spacing: 32) {
                 AppButton(appRow: AppRow(
                     imageName: "fork.knife.circle.fill",
                     imageTint: .orange,
@@ -121,6 +121,7 @@ struct ContentView: View {
                     selectedApp = newApp
                 }
             }
+            .padding()
 #endif
         }
         .onChange(of: selectedApp, { oldValue, newValue in
