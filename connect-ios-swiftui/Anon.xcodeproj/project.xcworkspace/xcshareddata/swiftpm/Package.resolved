@@ -1,15 +1,6 @@
 {
-  "originHash" : "18b4bf6e7db19d6c8ec054a9d6478cee5975054ecfc260506152a6b070b652bd",
+  "originHash" : "42f8cbc54f200d39627141498fce4646dc72d5bd711e2d1f019ea19fed15de5d",
   "pins" : [
-    {
-      "identity" : "alerttoast",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/elai950/AlertToast.git",
-      "state" : {
-        "revision" : "b39252eacd159904afd7d718bba0afabb87f2f2f",
-        "version" : "1.3.9"
-      }
-    },
     {
       "identity" : "dd-sdk-ios",
       "kind" : "remoteSourceControl",
