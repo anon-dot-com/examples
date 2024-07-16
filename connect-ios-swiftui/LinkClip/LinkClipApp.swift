@@ -15,8 +15,10 @@ struct LinkClipApp: App {
         WindowGroup {
             ContentView()
                 .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: { userActivity in
-                    if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
-                        print("Launched via userActivity BrowsingWeb - URL: \(userActivity.webpageURL?.absoluteString ?? "missing")")
+                    if userActivity.activityType == NSUserActivityTypeBrowsingWeb, let url = userActivity.webpageURL {
+                        let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+                        let appName = components?.queryItems?.first(where: { $0.name == "id"})?.value ?? "missing"
+                        print("Launched via userActivity BrowsingWeb - URL: \(userActivity.webpageURL?.absoluteString ?? "missing") - App Name: \(appName)")
                     }
                 })
         }
@@ -27,7 +29,7 @@ struct LinkClipApp: App {
     }
     
     private func loadRocketSimConnect() {
-        #if DEBUG
+        #if DEBUG && targetEnvironment(simulator)
         guard (Bundle(path: "/Applications/RocketSim.app/Contents/Frameworks/RocketSimConnectLinker.nocache.framework")?.load() == true) else {
             print("Failed to load linker framework")
             return

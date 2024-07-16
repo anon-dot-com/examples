@@ -8,14 +8,53 @@
 import SwiftUI
 import AnonKit
 
+// Configuration for Anon SDK
+let anonConfig = Config(
+    // Change to the appropriate environment as needed.
+    environment: .staging,
+    // The uuid of your SdkClient /associated with your UserPool/
+    // ie the one which returned   "auth": { "type": "userPool", "userPoolId": "..." }
+    clientId: "d3d694c2-dedd-4696-880c-c605a89afe64",
+                // todo: grab from env.ANON_APP_USER_ID_TOKEN
+    appUserIdToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6ImFYQXotRy1xeFIxbmdnSzlHZ2wzNktGckpTQzB3TzUzVVdCbEd3NjVaYWcifQ.eyJlbWFpbCI6Iml0ZXN0LWFwcC11c2VyLTg3NDZAdGVhbS5hbm9uLmNvbSIsImlhdCI6MTcwODYzNzYyMSwiaXNzIjoidXJuOmV4YW1wbGU6aXNzdWVyIiwiYXVkIjoidXJuOmV4YW1wbGU6YXVkaWVuY2UiLCJleHAiOjE3MTEyMjk2MjEsInN1YiI6ImV4dGVybmFsLWlkLTczNDgifQ.Ptc0416ZzWSFrqiYvIbojrFjBDAV7d_ny4wQT-NjQINxEQ4tpxK3N26v85cHbMZ6gnsgSQF5k8WtjU__XkFc2VRWzbNi2XLHq51SZFDmsX0vkbFN5Y7PYQK5R51-nph9q_56kMdGwIfTbGhRg6LAb6ZCWYOHMwUolNrGcPvdLV6BxluoQY3iLMswsAaXLdcbvDvoy5yRXSwJIeEZRPXtmnCaoIAF-sKVH-1zk70oyWaUkf2c4jZaXiYKJ9qAwJwcbvrh7i4Zx6gzskmcYZX1OE6W32X3mfdoafjdI4K6JKweEDzZ0xhXyAHyS6Wd0lCqrRcb66I0sNFI4P5tdvvUvA"
+)
+
+let integrationToIcon: [String: Image] = [
+    "github": Image(systemName: "server.rack"),
+    "uber": Image(systemName: "car.circle.fill"),
+    "delta": Image(systemName: "airplane.circle.fill"),
+    "united_airlines": Image(systemName: "airplane.circle.fill"),
+    "opentable": Image(systemName: "fork.knife.circle.fill"),
+    "resy": Image(systemName: "fork.knife.circle.fill"),
+    "amazon": Image(systemName: "books.vertical.circle.fill"),
+    "instacart": Image(systemName: "carrot.fill"),
+    "linkedin": Image(systemName: "briefcase.circle.fill"),
+    "facebook": Image(systemName: "person.line.dotted.person.fill"),
+    "instagram": Image(systemName: "camera.aperture")
+]
+
+let integrationToColor: [String: Color] = [
+    "github": .gray,
+    "uber": .gray,
+    "delta": .red,
+    "united_airlines": .blue,
+    "opentable": .red,
+    "resy": .orange,
+    "amazon": .brown,
+    "instacart": .green,
+    "linkedin": .blue,
+    "facebook": .purple,
+    "instagram": .yellow
+]
+
 @MainActor
 struct AppButton: View {
     let appRow: AppRow
-    let onTap: (String) -> Void
+    let onTap: (AppRow) -> Void
     
     var body: some View {
         Button {
-            onTap(appRow.appName)
+            onTap(appRow)
         } label: {
             appRow
         }
@@ -24,125 +63,108 @@ struct AppButton: View {
 
 @MainActor
 struct AppRow: View {
-    let imageName: String
-    let imageTint: Color
-    let appName: String
+    let integration: SupportedIntegration
+    
+    var image: Image {
+        integrationToIcon[integration.name] ?? Image(systemName: "questionmark.circle.fill")
+    }
+    
+    var imageTint: Color {
+        integrationToColor[integration.name] ?? .red
+    }
+    
+    var appName: String {
+        integration.name
+    }
+    
+    init(integration: SupportedIntegration) {
+        self.integration = integration
+    }
     
     var body: some View {
-        Image(systemName: imageName)
-            .resizable()
-            .frame(
-                minWidth: 16, idealWidth: 32, maxWidth: 48,
-                minHeight: 16, idealHeight: 32, maxHeight: 48,
-                alignment: .trailing
-            )
-            .padding([.leading, .trailing], 8)
-            .foregroundColor(imageTint)
-        
-        Text(appName.capitalized)
-            .padding()
-            .font(.title2)
-            .foregroundColor(imageTint)
+        HStack {
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 16, height: 16, alignment: .center)
+                .foregroundColor(imageTint)
+            
+            Text(appName.capitalized.replacingOccurrences(of: "_", with: " "))
+                .padding([.leading], 4)
+                .font(.title2)
+                .foregroundColor(imageTint)
+        }
     }
 }
 
 @MainActor
-struct ContentView: View {
-    // We move to immediately present in AppClip builds
+struct AppList: View {
+    let supportedIntegrations: [SupportedIntegration]
+    
 #if APPCLIP
-    @State private var isPresenting = true // State to manage SDK presentation
+    @State private var currentIntegration: SupportedIntegration? = SupportedIntegration(name: "delta")
 #else
-    @State private var isPresenting = false // State to manage SDK presentation
+    @State private var currentIntegration: SupportedIntegration?
 #endif
-    @State private var selectedApp: String? = "delta"
+    
+    var body: some View {
 
-    // Configuration for Anon SDK
-    let anonConfig = Config(
-        // Change to the appropriate environment as needed.
-        environment: .staging,
-        // The uuid of your SdkClient /associated with your UserPool/
-        // ie the one which returned   "auth": { "type": "userPool", "userPoolId": "..." }
-        clientId: "d3d694c2-dedd-4696-880c-c605a89afe64",
-                    // todo: grab from env.ANON_APP_USER_ID_TOKEN
-        appUserIdToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6ImFYQXotRy1xeFIxbmdnSzlHZ2wzNktGckpTQzB3TzUzVVdCbEd3NjVaYWcifQ.eyJlbWFpbCI6Iml0ZXN0LWFwcC11c2VyLTg3NDZAdGVhbS5hbm9uLmNvbSIsImlhdCI6MTcwODYzNzYyMSwiaXNzIjoidXJuOmV4YW1wbGU6aXNzdWVyIiwiYXVkIjoidXJuOmV4YW1wbGU6YXVkaWVuY2UiLCJleHAiOjE3MTEyMjk2MjEsInN1YiI6ImV4dGVybmFsLWlkLTczNDgifQ.Ptc0416ZzWSFrqiYvIbojrFjBDAV7d_ny4wQT-NjQINxEQ4tpxK3N26v85cHbMZ6gnsgSQF5k8WtjU__XkFc2VRWzbNi2XLHq51SZFDmsX0vkbFN5Y7PYQK5R51-nph9q_56kMdGwIfTbGhRg6LAb6ZCWYOHMwUolNrGcPvdLV6BxluoQY3iLMswsAaXLdcbvDvoy5yRXSwJIeEZRPXtmnCaoIAF-sKVH-1zk70oyWaUkf2c4jZaXiYKJ9qAwJwcbvrh7i4Zx6gzskmcYZX1OE6W32X3mfdoafjdI4K6JKweEDzZ0xhXyAHyS6Wd0lCqrRcb66I0sNFI4P5tdvvUvA"
-    )
+        List(supportedIntegrations, id: \.id) { integration in
+            AppButton(appRow: AppRow(integration: integration)) { newSelectedIntegration in
+                currentIntegration = newSelectedIntegration.integration
+            }
+        }.fullScreenCover(item: $currentIntegration) { integration in
+            AnonUIView(
+                app: integration.name,
+                config: anonConfig,
+                ui: UIConfig(
+                    organizationName: "My Company",
+                    // Your organization's icon URL
+                    organizationIconUrl: URL(string: "https://example.com/org-logo.png"),
+                    // Theme selection
+                    theme: .dark
+                )
+            )
+        }
+    }
+}
+
+struct SupportedIntegration: Identifiable {
+    var id: Int {
+        name.hashValue
+    }
+    let isEnabled: Bool = true
+    let name: String
+}
+
+@MainActor
+struct ContentView: View {
+    let integrations: [String] = [
+        "github",
+        "delta",
+        "united_airlines",
+        "opentable",
+        "resy",
+        "amazon",
+        "instacart",
+        "linkedin",
+        "facebook",
+        "instagram"
+    ]
 
     var body: some View {
         NavigationView {
-#if APPCLIP
-            Text("App Clip!")
-                .font(.largeTitle)
-#endif
-            VStack(alignment: .leading, spacing: 32) {
-                
-                AppButton(appRow: AppRow(
-                    imageName: "table.furniture.fill",
-                    imageTint: .red,
-                    appName: "opentable"
-                ), onTap: { newApp in
-                    selectedApp = newApp
-                })
-                
-                AppButton(appRow: AppRow(
-                    imageName: "briefcase.circle.fill",
-                    imageTint: .blue,
-                    appName: "linkedin"
-                ), onTap: { newApp in
-                    selectedApp = newApp
-                })
-                
-                AppButton(appRow: AppRow(
-                    imageName: "carrot.fill",
-                    imageTint: .green,
-                    appName: "instacart"
-                ), onTap: { newApp in
-                    selectedApp = newApp
-                })
-                
-                AppButton(appRow: AppRow(
-                    imageName: "airplane.circle.fill",
-                    imageTint: .red,
-                    appName: "delta"
-                )) { newApp in
-                    selectedApp = newApp
-                }
-
-                AppButton(appRow: AppRow(
-                    imageName: "books.vertical.circle.fill",
-                    imageTint: .yellow,
-                    appName: "amazon"
-                )) { newApp in
-                    selectedApp = newApp
-                }
-            }
-            .padding()
-        }
-        .onChange(of: selectedApp, { oldValue, newValue in
-            if let app = selectedApp, !app.isEmpty {
-                isPresenting.toggle()
-            }
-        })
-        .fullScreenCover(isPresented: $isPresenting, onDismiss: didDismiss) {
-            if let app = selectedApp {
-                AnonUIView(
-                    app: app,
-                    config: anonConfig,
-                    ui: UIConfig(
-                        organizationName: "My Company",
-                        // Your organization's icon URL
-                        organizationIconUrl: URL(string: "https://example.com/org-logo.png"),
-                        // Theme selection
-                        theme: .dark
-                    )
+            NavigationStack {
+                AppList(
+                    supportedIntegrations: integrations.compactMap { SupportedIntegration(name: $0) }
                 )
+#if APPCLIP
+                .navigationTitle("App Clip Integrations")
+#else
+                .navigationTitle("Integrations")
+#endif
             }
         }
-    }
-
-    func didDismiss() {
-        selectedApp = nil
-        // Handle the dismissing action here.
-        print("SDK was dismissed")
     }
 }
 
