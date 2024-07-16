@@ -1,5 +1,5 @@
 {
-  "originHash" : "42f8cbc54f200d39627141498fce4646dc72d5bd711e2d1f019ea19fed15de5d",
+  "originHash" : "656fb136099a863ba0d553189c950752fb121451d4603d52a9cc9c12ea7495cc",
   "pins" : [
     {
       "identity" : "dd-sdk-ios",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "58af7278797871e460d79496621b3e5366b865b2",
         "version" : "3.1.0"
+      }
+    },
+    {
+      "identity" : "mixpanel-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mixpanel/mixpanel-swift",
+      "state" : {
+        "revision" : "7f73084879cf6f8c50ab93e34ab0aae2569b04a8",
+        "version" : "4.2.7"
       }
     },
     {
