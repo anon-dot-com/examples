@@ -8,8 +8,44 @@
 import SwiftUI
 import AnonKit
 
+struct AppButton: View {
+    let appRow: AppRow
+    let onTap: (String) -> Void
+    
+    var body: some View {
+        Button {
+            onTap(appRow.appName)
+        } label: {
+            appRow
+        }
+    }
+}
+
+struct AppRow: View {
+    let imageName: String
+    let imageTint: Color
+    let appName: String
+    
+    var body: some View {
+        HStack {
+            Spacer()
+            Image(systemName: imageName)
+                .resizable()
+                .frame(width: 64, height: 64, alignment: .trailing)
+                .foregroundColor(imageTint)
+            Text(appName.capitalized)
+                .padding()
+                .font(.title2)
+                .foregroundColor(imageTint)
+                .frame(width: 150, alignment: .leading)
+            Spacer()
+        }
+    }
+}
+
 struct ContentView: View {
     @State private var isPresenting = false // State to manage SDK presentation
+    @State private var selectedApp = ""
 
     // Configuration for Anon SDK
     let anonConfig = AnonKit.Config(
@@ -25,24 +61,59 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                Image(systemName: "message") // Placeholder for app content
-                    .imageScale(.large)
-                    .foregroundColor(.blue)
-                Text("Welcome to my app, tap to proceed!")
-            }
-            .padding()
-            .onTapGesture {
-                isPresenting.toggle() // Toggle presentation state
+            VStack(spacing: 32) {
+                AppButton(appRow: AppRow(
+                    imageName: "fork.knife.circle.fill",
+                    imageTint: .orange,
+                    appName: "resy"
+                ), onTap: { newApp in
+                    selectedApp = newApp
+                })
+                
+                AppButton(appRow: AppRow(
+                    imageName: "briefcase.circle.fill",
+                    imageTint: .blue,
+                    appName: "linkedin"
+                ), onTap: { newApp in
+                    selectedApp = newApp
+                })
+                
+                AppButton(appRow: AppRow(
+                    imageName: "carrot.fill",
+                    imageTint: .green,
+                    appName: "instacart"
+                ), onTap: { newApp in
+                    selectedApp = newApp
+                })
+                
+                AppButton(appRow: AppRow(
+                    imageName: "airplane.circle.fill",
+                    imageTint: .red,
+                    appName: "delta"
+                )) { newApp in
+                    selectedApp = newApp
+                }
+
+                AppButton(appRow: AppRow(
+                    imageName: "books.vertical.circle.fill",
+                    imageTint: .yellow,
+                    appName: "amazon"
+                )) { newApp in
+                    selectedApp = newApp
+                }
             }
         }
+        .onChange(of: selectedApp, { oldValue, newValue in
+            isPresenting.toggle()
+        })
         .fullScreenCover(isPresented: $isPresenting, onDismiss: didDismiss) {
+            print("Selected App \(selectedApp.debugDescription)")
             // Present Anon SDK UI
-            AnonUIView(
+            return AnonUIView(
                 // Example app identifier
-                app: "instagram",
+                app: selectedApp,
                 config: anonConfig,
-                ui: AnonKit.UIConfig(
+                ui: UIConfig(
                     organizationName: "My Company",
                     // Your organization's icon URL
                     organizationIconUrl: URL(string: "https://example.com/org-logo.png"),
