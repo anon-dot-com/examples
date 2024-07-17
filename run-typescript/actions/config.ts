@@ -1,6 +1,6 @@
 import { Page } from "playwright";
-import { instagramNavigateToMessages } from "./instagram/instagramMessage";
-import { amazonAddAirpodsToCart } from './amazon/amazonAddHeadphonesToCart'
+import { instagramNavigateToMessages } from "./instagramMessage";
+import { amazonAddAirpodsToCart } from './amazonAddHeadphonesToCart'
 // Check out other out-of-the-box actions at https://github.com/anon-dot-com/actions
 import { NetworkHelper, runCreateLinkedinPost } from "@anon/actions";
 
