@@ -1,6 +1,6 @@
 import { Page } from "playwright";
-import { retryWithBackoff, takeScreenshot } from "../browserHelpers";
-import { NETWORK_TIMEOUT } from "../config";
+import { retryWithBackoff, takeScreenshot } from "./browserHelpers";
+import { NETWORK_TIMEOUT } from "./config";
 
 const AMAZON_URL = "https://amazon.com";
 

@@ -1,7 +1,8 @@
 import { Page } from "playwright";
-import { linkedInCreatePost } from "./linkedin/linkedInCreatePost";
-import { instagramNavigateToMessages } from "./instagram/instagramMessage";
-import { amazonAddAirpodsToCart } from './amazon/amazonAddHeadphonesToCart'
+import { instagramNavigateToMessages } from "./instagramMessage";
+import { amazonAddAirpodsToCart } from './amazonAddHeadphonesToCart'
+// Check out other out-of-the-box actions at https://github.com/anon-dot-com/actions
+import { NetworkHelper, runCreateLinkedinPost } from "@anon/actions";
 
 export const DEFAULT_APP: AppName = "linkedin";
 export const NETWORK_TIMEOUT = 10000; // 10 seconds
@@ -24,7 +25,11 @@ export const APP_CONFIG: { [key: string]: AppConfig } = {
   },
   linkedin: {
     url: "https://www.linkedin.com",
-    action: linkedInCreatePost,
+    action: runCreateLinkedinPost(
+      new NetworkHelper(NETWORK_TIMEOUT), 
+      `I'm testing Anon.com and automatically generated this post in < 5 minutes.
+      Find out more about using Anon to automate your agent automations at Anon.com.`
+    ),
   },
   // Add other apps here, for example:
   // twitter: {
