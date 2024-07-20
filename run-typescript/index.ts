@@ -1,15 +1,15 @@
+import { LinkedIn, NetworkHelper } from "@anon/actions";
 import {
   Client,
-  setupAnonBrowserWithContext,
-  executeRuntimeScript,
   Environment,
+  executeRuntimeScript,
+  setupAnonBrowserWithContext,
 } from "@anon/sdk-typescript";
 import dotenv from "dotenv";
-import { fileURLToPath } from "url";
 import path from "path";
-import { APP_URLS, AppName, DO_DELETE_SESSION, NETWORK_TIMEOUT } from "./actions/config.js";
-import { LinkedIn, NetworkHelper } from "@anon/actions";
 import { Page } from "playwright-core";
+import { fileURLToPath } from "url";
+import { APP_URLS, AppName, DO_DELETE_SESSION, NETWORK_TIMEOUT_MS } from "./actions/config.js";
 
 console.log("Starting script execution...");
 
@@ -27,7 +27,7 @@ const APP: AppName = "linkedin";
 
 // Choose your the action you want to run based on the app selected
 // Check out other out-of-the-box actions at https://github.com/anon-dot-com/actions
-const networkHelper = new NetworkHelper(NETWORK_TIMEOUT)
+const networkHelper = new NetworkHelper(NETWORK_TIMEOUT_MS)
 let runAction = LinkedIn.createPost(networkHelper,
   `I'm testing Anon.com and automatically generated this post in < 5 minutes.
    Find out more about using Anon to automate your agent automations at Anon.com.`
@@ -60,7 +60,9 @@ const sendMessageToConnections = (messageText: string, n: number) => async (page
   }
 }
 
-// Uncomment the code to try out your custom action
+/**
+ * Uncomment the code to try out your custom action
+ */
 // runAction = sendMessageToConnections(
 //   `Hi Friend, I used the Anon SDK to send you this message. 
 //   Try it out at https://docs.anon.com/docs/general/quickstart`,
@@ -111,7 +113,7 @@ const main = async () => {
     const { browser, browserContext } = await setupAnonBrowserWithContext(
       client,
       account,
-      { type: "local", input: {headless: false} },
+      { type: "local", input: { headless: false } },
     );
     console.log("Anon browser setup complete.");
 
