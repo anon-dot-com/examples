@@ -7,7 +7,9 @@ import {
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import path from "path";
-import { APP_CONFIG, AppName, DEFAULT_APP, DO_DELETE_SESSION } from "./actions/config";
+import { APP_URLS, AppName, DO_DELETE_SESSION, NETWORK_TIMEOUT } from "./actions/config.js";
+import { LinkedIn, NetworkHelper } from "@anon/actions";
+import { Page } from "playwright-core";
 
 console.log("Starting script execution...");
 
@@ -21,13 +23,53 @@ console.log("Environment variables loaded.");
 const APP_USER_ID = process.env.ANON_APP_USER_ID!;
 const API_KEY = process.env.ANON_API_KEY!;
 const ANON_ENV = process.env.ANON_ENV! as Environment;
-const APP: AppName = (process.env.APP as AppName) || DEFAULT_APP;
+const APP: AppName = "linkedin";
 
-console.log("Configuration set:");
-console.log(`APP_USER_ID: ${APP_USER_ID ? "Set" : "Not set"}`);
-console.log(`API_KEY: ${API_KEY ? "Set" : "Not set"}`);
-console.log(`ANON_ENV: ${ANON_ENV}`);
-console.log(`APP: ${APP}`);
+// Choose your the action you want to run based on the app selected
+// Check out other out-of-the-box actions at https://github.com/anon-dot-com/actions
+const networkHelper = new NetworkHelper(NETWORK_TIMEOUT)
+let runAction = LinkedIn.createPost(networkHelper,
+  `I'm testing Anon.com and automatically generated this post in < 5 minutes.
+   Find out more about using Anon to automate your agent automations at Anon.com.`
+);
+
+// You can even write your own custom action and use the Anon actions to help you write it
+const sendMessageToConnections = (messageText: string, n: number) => async (page: Page) => {
+  await networkHelper.waitForPageLoad(page);
+  await networkHelper.waitForNetworkIdle(page)
+  // Get all connections
+  const connections = await LinkedIn.getConnections(networkHelper)(page);
+
+  for (const engineer of connections.slice(0, n)) {
+    try {
+
+      // Navigate to the engineer's profile
+      await page.goto(engineer.profileUrl)
+      await networkHelper.waitForPageLoad(page);
+
+      // Send the message
+      await LinkedIn.sendMessageOnProfilePage(networkHelper, messageText, page);
+
+      console.log(`Message sent to ${engineer.name}`);
+    } catch (error) {
+      console.error(`Failed to send message to ${engineer.name}:`, error);
+    }
+
+    // Add a delay between messages to avoid rate limiting
+    await page.waitForTimeout(5000); // 5 second delay
+  }
+}
+
+// Uncomment the code to try out your custom action
+// runAction = sendMessageToConnections(
+//   `Hi Friend, I used the Anon SDK to send you this message. 
+//   Try it out at https://docs.anon.com/docs/general/quickstart`,
+//   5);
+
+
+
+
+
 
 // Validate environment variables
 [
@@ -41,6 +83,12 @@ console.log(`APP: ${APP}`);
   }
 });
 
+console.log("Configuration set:");
+console.log(`APP_USER_ID: ${APP_USER_ID ? "Set" : "Not set"}`);
+console.log(`API_KEY: ${API_KEY ? "Set" : "Not set"}`);
+console.log(`ANON_ENV: ${ANON_ENV}`);
+console.log(`APP: ${APP}`);
+
 const account = {
   app: APP,
   userId: APP_USER_ID,
@@ -53,55 +101,53 @@ const client = new Client({
 });
 console.log("Anon client created.");
 
+type AccountInfo = { ownerId: string, domain: string }
+const accountInfo: AccountInfo = { ownerId: APP_USER_ID, domain: account.app };
+
 const main = async () => {
   console.log(`Requesting ${account.app} session for app user id "${APP_USER_ID}"...`);
   try {
     console.log("Setting up Anon browser with context...");
-    const { browser } = await setupAnonBrowserWithContext(
+    const { browser, browserContext } = await setupAnonBrowserWithContext(
       client,
       account,
-      { type: "managed", input: {} },
+      { type: "local", input: {headless: false} },
     );
     console.log("Anon browser setup complete.");
-
-    console.log("Getting first page from browser context...");
-    const page = browser.contexts()[0].pages()[0];
-    console.log("Page acquired.");
 
     console.log("Executing runtime script...");
     await executeRuntimeScript({
       client,
       account,
-      target: { page: page },
-      initialUrl: APP_CONFIG[APP].url,
+      target: { browserContext },
+      initialUrl: APP_URLS[APP],
       cleanupOptions: { closePage: true, closeBrowserContext: true },
-      run: async (page) => await APP_CONFIG[APP].action(page),
+      run: runAction,
     });
     console.log("Runtime script execution completed.");
 
-    const accountInfo = { ownerId: APP_USER_ID, domain: account.app };
 
     // Demo `getSessionStatus`
     let sessionStatus = await client.getSessionStatus({ account: accountInfo });
     console.log(`Client session status: ${JSON.stringify(sessionStatus)}`);
 
     if (DO_DELETE_SESSION) {
-      const demoDeleteSession = async () => {
-        // Demo `deleteSession`
-        await client.deleteSession({ account: accountInfo });
-        console.log(`Session deleted for ${JSON.stringify(accountInfo)}`);
-
-        sessionStatus = await client.getSessionStatus({ account: accountInfo });
-        console.log(`After deleting session, client session status: ${JSON.stringify(sessionStatus)}`);
-      }
-
-      await demoDeleteSession();
+      await demoDeleteSession(accountInfo);
     }
     console.log("Script execution finished successfully.");
   } catch (error) {
     console.error("Error in main function:", error);
   }
 };
+
+const demoDeleteSession = async (accountInfo: AccountInfo) => {
+  // Demo `deleteSession`
+  await client.deleteSession({ account: accountInfo });
+  console.log(`Session deleted for ${JSON.stringify(accountInfo)}`);
+
+  const sessionStatus = await client.getSessionStatus({ account: accountInfo });
+  console.log(`After deleting session, client session status: ${JSON.stringify(sessionStatus)}`);
+}
 
 console.log("Starting main function...");
 main()

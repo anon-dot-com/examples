@@ -9,10 +9,10 @@
   dependencies:
     zod "^3.22.4"
 
-"@anon/actions@^0.1.0":
-  version "0.1.0"
-  resolved "https://npm.cloudsmith.io/anon/anon-sdk/@anon/actions/-/0.1.0/actions-0.1.0.tgz#5b1616b95c358dd586b56806f62f4e5972f1d760"
-  integrity sha512-O0NOGJHqPD2vFmkPyt0cQwBOPUaaLF99L+oJH/R/C7wm3NeqP3W9ke8k1i4Bl2uElkTUJM7wi9LQa2xRDAVcwA==
+"@anon/actions@^0.1.1":
+  version "0.1.1"
+  resolved "https://npm.cloudsmith.io/anon/anon-sdk/@anon/actions/-/0.1.1/actions-0.1.1.tgz#e58a9ec73d862b89ad4196cd3448c1f2b50754c2"
+  integrity sha512-TOWXxgHWNarH1aFwHmj6LQU+eRm/RkWGR0voi1a4C5OSXmXHvycBstIzj/KWr0JoXe4Gz9nnx7myuE7VPdCtbg==
   dependencies:
     playwright "^1.43.1"
     playwright-extra "^4.3.6"
