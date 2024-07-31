@@ -16,9 +16,6 @@ cp .env.template .env
 > [!TIP]
 > You can find these credentials in the 1Password file that was shared during onboarding.
 
-The value for `PLASMO_PUBLIC_CHROME_EXTENSION_ID` must be filled in after loading the chrome extension
-into your browser. It can be found 
-
 ### Fill out a `.npmrc` file
 
 Start with the template:
@@ -31,15 +28,25 @@ If you followed the instructions in the higher level [README.md](../README.md),
 the $NPM_TOKEN variable should already be set for you.
 If not, you can just paste in the raw value from the 1Password file.
 
+### Install dependencies
+
+```bash
+yarn
+```
+
 ### Run the development server
+
+Start the development web server with:
 
 ```bash
 yarn dev
 ```
 
-Open your browser and load the appropriate development build. For example, if
-you are developing for the chrome browser, using manifest v3, use:
-`build/chrome-mv3-dev`.
+Open your browser and load the appropriate development build.
+
+1. Go to chrome://extensions/
+2. Enable "Developer Mode" (top right)
+3. Press "Load unpacked", select directory `runtime-extension/build/chrome-mv3-dev` from this repo for the extension build.
 
 You can start editing the popup by modifying `popup.tsx`. It should auto-update
 as you make changes. To add an options page, simply add a `options.tsx` file to
