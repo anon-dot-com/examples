@@ -10,10 +10,10 @@
     "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.24"
 
-"@anon/sdk-browser-extension@^0.5.0":
-  version "0.5.0"
-  resolved "https://npm.cloudsmith.io/anon/anon-sdk/@anon/sdk-browser-extension/-/0.5.0/sdk-browser-extension-0.5.0.tgz#fc38feaedc0ff5f967e0d2cf6a038b2817d0afdf"
-  integrity sha512-iu0mJOneIhreib0z3PLudnLQBVCKnxeZkiwo5bF2RcbB7LTj/CzS7usnQJkEINbcP50ck7JCpQ13ehiOTD4hpw==
+"@anon/sdk-browser-extension@^0.6.0":
+  version "0.6.0"
+  resolved "https://npm.cloudsmith.io/anon/anon-sdk/@anon/sdk-browser-extension/-/0.6.0/sdk-browser-extension-0.6.0.tgz#32f9d9f939e56faeaf82e1bea841737fad103a0e"
+  integrity sha512-r91WqfOqhDqTYmbkOBRHzV3HKTA1tRV/QYyHaldPEyAkDDd5WQxC5Q1va/+crE6BXDnI3Z8evkEr5gCT1NPs2A==
   dependencies:
     jose "^5.2.1"
 
