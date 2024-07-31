@@ -14,7 +14,7 @@ function App() {
     clientId: process.env.REACT_APP_ANON_SDKCLIENT_ID!,
     appUserIdToken: process.env.REACT_APP_ANON_APP_USER_ID_TOKEN!,
     // Update per the app you're testing with.
-    app: "linkedin",
+    app: "instagram",
     company: process.env.REACT_APP_ANON_COMPANY_NAME!,
     companyLogo: process.env.REACT_APP_ANON_COMPANY_LOGO!,
     chromeExtensionId: process.env.REACT_APP_ANON_CHROME_EXTENSION_ID!,
