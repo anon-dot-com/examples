@@ -54,3 +54,5 @@ keys.json
 
 # env
 .env
+.env.staging
+.env.sandbox
