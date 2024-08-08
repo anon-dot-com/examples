@@ -154,11 +154,11 @@ struct ContentView: View {
                     loadedIntegrations: []
                 )
 #if APPCLIP
-                        .navigationTitle("App Clip Integrations")
+                .navigationTitle("App Clip Integrations")
 #else
-                        .navigationTitle("Integrations")
+                .navigationTitle("Integrations")
 #endif
-                        .environment(\.appName, appName ?? "")
+                .environment(\.appName, appName ?? "")
             }
         }
     }
@@ -166,5 +166,19 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView(appName: .constant(""))
+    ContentView(appName: .constant("resy"))
+}
+
+#Preview("App List") {
+    AppList(loadedIntegrations: [
+        .init(
+            id: "resy",
+            iconUrl: URL(string: "https://logo.clearbit.com/resy.com")
+        ),
+        .init(
+            id: "delta",
+            iconUrl: URL(string: "https://logo.clearbit.com/delta.com")
+        )
+        ]
+    )
 }
