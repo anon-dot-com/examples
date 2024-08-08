@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		512F3B682C3F50F2005C33F7 /* LinkClipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F3B672C3F50F2005C33F7 /* LinkClipApp.swift */; };
-		512F3B6C2C3F50F3005C33F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512F3B6B2C3F50F3005C33F7 /* Assets.xcassets */; };
-		512F3B6F2C3F50F3005C33F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512F3B6E2C3F50F3005C33F7 /* Preview Assets.xcassets */; };
 		512F3B752C3F50F3005C33F7 /* LinkClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 512F3B652C3F50F2005C33F7 /* LinkClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		512F3B812C3F8D09005C33F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36D2C2621D100ED0F2F /* ContentView.swift */; };
 		51EDDC912C65271E0074F74D /* AnonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51EDDC902C65271E0074F74D /* AnonKit */; };
+		51EDDC932C6527FB0074F74D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA36F2C2621D200ED0F2F /* Assets.xcassets */; };
+		51EDDC942C6527FE0074F74D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA3732C2621D200ED0F2F /* Preview Assets.xcassets */; };
 		D25FA36C2C2621D100ED0F2F /* AnonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36B2C2621D100ED0F2F /* AnonApp.swift */; };
 		D25FA36E2C2621D100ED0F2F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36D2C2621D100ED0F2F /* ContentView.swift */; };
 		D25FA3702C2621D200ED0F2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA36F2C2621D200ED0F2F /* Assets.xcassets */; };
@@ -66,8 +66,6 @@
 /* Begin PBXFileReference section */
 		512F3B652C3F50F2005C33F7 /* LinkClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		512F3B672C3F50F2005C33F7 /* LinkClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkClipApp.swift; sourceTree = "<group>"; };
-		512F3B6B2C3F50F3005C33F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		512F3B6E2C3F50F3005C33F7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		512F3B702C3F50F3005C33F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		512F3B712C3F50F3005C33F7 /* LinkClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LinkClip.entitlements; sourceTree = "<group>"; };
 		D25FA3682C2621D100ED0F2F /* Anon Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anon Link.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,20 +99,10 @@
 			isa = PBXGroup;
 			children = (
 				512F3B672C3F50F2005C33F7 /* LinkClipApp.swift */,
-				512F3B6B2C3F50F3005C33F7 /* Assets.xcassets */,
 				512F3B702C3F50F3005C33F7 /* Info.plist */,
 				512F3B712C3F50F3005C33F7 /* LinkClip.entitlements */,
-				512F3B6D2C3F50F3005C33F7 /* Preview Content */,
 			);
 			path = LinkClip;
-			sourceTree = "<group>";
-		};
-		512F3B6D2C3F50F3005C33F7 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				512F3B6E2C3F50F3005C33F7 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		51EC0A8E2C3947FE00A7E1B5 /* Frameworks */ = {
@@ -124,9 +112,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		51EDDC922C6527E00074F74D /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D25FA36D2C2621D100ED0F2F /* ContentView.swift */,
+				D25FA36F2C2621D200ED0F2F /* Assets.xcassets */,
+				D25FA3722C2621D200ED0F2F /* Preview Content */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		D25FA35F2C2621D100ED0F2F = {
 			isa = PBXGroup;
 			children = (
+				51EDDC922C6527E00074F74D /* Shared */,
 				D25FA36A2C2621D100ED0F2F /* AnonApp */,
 				512F3B662C3F50F2005C33F7 /* LinkClip */,
 				D25FA3692C2621D100ED0F2F /* Products */,
@@ -147,10 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				D25FA36B2C2621D100ED0F2F /* AnonApp.swift */,
-				D25FA36D2C2621D100ED0F2F /* ContentView.swift */,
-				D25FA36F2C2621D200ED0F2F /* Assets.xcassets */,
 				D25FA3712C2621D200ED0F2F /* AnonApp.entitlements */,
-				D25FA3722C2621D200ED0F2F /* Preview Content */,
 			);
 			path = AnonApp;
 			sourceTree = "<group>";
@@ -256,8 +252,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512F3B6F2C3F50F3005C33F7 /* Preview Assets.xcassets in Resources */,
-				512F3B6C2C3F50F3005C33F7 /* Assets.xcassets in Resources */,
+				51EDDC942C6527FE0074F74D /* Preview Assets.xcassets in Resources */,
+				51EDDC932C6527FB0074F74D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +314,7 @@
 				ASSETCATALOG_COMPILER_STANDALONE_ICON_BEHAVIOR = all;
 				CODE_SIGN_ENTITLEMENTS = LinkClip/LinkClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "LinkClip/Preview\\ Content AnonApp/Preview\\ Content/Preview\\ Assets.xcassets";
+				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -356,7 +352,7 @@
 				ASSETCATALOG_COMPILER_STANDALONE_ICON_BEHAVIOR = all;
 				CODE_SIGN_ENTITLEMENTS = LinkClip/LinkClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "LinkClip/Preview\\ Content AnonApp/Preview\\ Content/Preview\\ Assets.xcassets";
+				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -530,7 +526,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AnonApp/AnonApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"AnonApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -571,7 +567,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AnonApp/AnonApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"AnonApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -648,7 +644,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/anon-dot-com/sdk-ios-pkg";
 			requirement = {
-				branch = main;
+				branch = v0.3.6;
 				kind = branch;
 			};
 		};

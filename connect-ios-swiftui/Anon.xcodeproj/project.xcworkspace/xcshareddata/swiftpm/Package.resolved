@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/anon-dot-com/sdk-ios-pkg",
       "state" : {
-        "branch" : "main",
-        "revision" : "ff43f5d5a6178e5656323d96c32b737d09bf40f2"
+        "branch" : "v0.3.6",
+        "revision" : "a3f22b94fe5c62745a269568b81fef44c315c4ff"
       }
     }
   ],
