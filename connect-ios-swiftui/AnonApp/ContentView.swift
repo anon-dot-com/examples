@@ -8,6 +8,19 @@
 import SwiftUI
 import AnonKit
 
+struct AppNameEnvironmentKey: EnvironmentKey {
+    static var defaultValue: String = ""
+}
+
+/// We'll add the provider to our environment to make it accessible in any view that might need it
+extension EnvironmentValues {
+    /// The current app metadata
+    var appName: String {
+        get { self[AppNameEnvironmentKey.self] }
+        set { self[AppNameEnvironmentKey.self] = newValue }
+    }
+}
+
 // Configuration for Anon SDK
 let anonConfig = Config(
     // Change to the appropriate environment as needed.
@@ -63,21 +76,21 @@ struct AppButton: View {
 
 @MainActor
 struct AppRow: View {
-    let integration: SupportedIntegration
+    let integration: AnonClient.Response.IntegrationList.ActiveIntegration
     
     var image: Image {
-        integrationToIcon[integration.name] ?? Image(systemName: "questionmark.circle.fill")
+        integrationToIcon[integration.id] ?? Image(systemName: "questionmark.circle.fill")
     }
     
     var imageTint: Color {
-        integrationToColor[integration.name] ?? .red
+        integrationToColor[integration.id] ?? .red
     }
     
     var appName: String {
-        integration.name
+        integration.displayName
     }
     
-    init(integration: SupportedIntegration) {
+    init(integration: AnonClient.Response.IntegrationList.ActiveIntegration) {
         self.integration = integration
     }
     
@@ -97,72 +110,78 @@ struct AppRow: View {
     }
 }
 
+extension AnonClient.Response.IntegrationList.ActiveIntegration: Identifiable {}
+
 @MainActor
 struct AppList: View {
-    let supportedIntegrations: [SupportedIntegration]
+    @Environment(\.appName) private var appName: String
     
-#if APPCLIP
-    @State private var currentIntegration: SupportedIntegration? = SupportedIntegration(name: "delta")
-#else
-    @State private var currentIntegration: SupportedIntegration?
-#endif
+    @State var loadedIntegrations: [AnonClient.Response.IntegrationList.ActiveIntegration]
+    
+    @State var selectedIntegration: AnonClient.Response.IntegrationList.ActiveIntegration?
     
     var body: some View {
+//        let integration = Binding.constant(loadedIntegrations.first(where: { $0.id == appName}))
+        
 
-        List(supportedIntegrations, id: \.id) { integration in
-            AppButton(appRow: AppRow(integration: integration)) { newSelectedIntegration in
-                currentIntegration = newSelectedIntegration.integration
-            }
-        }.fullScreenCover(item: $currentIntegration) { integration in
-            AnonUIView(
-                app: integration.name,
+            let anonView = AnonUIView(
+                app: selectedIntegration?.id ?? "linkedin",
                 config: anonConfig,
                 ui: UIConfig(
-                    organizationName: "My Company",
+                    organizationName: "Example App",
                     // Your organization's icon URL
-                    organizationIconUrl: URL(string: "https://example.com/org-logo.png"),
+                    organizationIconUrl: URL(string: "https://example.com/favicon.ico"),
                     // Theme selection
                     theme: .dark
                 )
             )
-        }
+            let client = anonView.client
+            
+            List(loadedIntegrations, id: \.id) { integration in
+                AppButton(appRow: AppRow(integration: integration)) { newSelectedIntegration in
+                    selectedIntegration = loadedIntegrations.first() {
+                        $0.id == newSelectedIntegration.integration.id
+                    }
+                }
+            }
+            .fullScreenCover(item: $selectedIntegration) { integration in
+                anonView
+            }
+            .onReceive(
+                client
+                    .integrationListPublisher()
+                    .receive(on: DispatchQueue.main)
+                    .replaceError(with: [])
+                    .share()
+                , perform: { integrationList in
+                    if integrationList.count > 0,
+                       self.loadedIntegrations.count != integrationList.count {
+                        self.loadedIntegrations = integrationList
+                        if !appName.isEmpty {
+                            self.selectedIntegration = loadedIntegrations.first() {
+                                $0.id == appName
+                            }
+                        }
+                    }
+                })
     }
-}
-
-struct SupportedIntegration: Identifiable {
-    var id: Int {
-        name.hashValue
-    }
-    let isEnabled: Bool = true
-    let name: String
 }
 
 @MainActor
 struct ContentView: View {
-    let integrations: [String] = [
-        "github",
-        "delta",
-        "united_airlines",
-        "opentable",
-        "resy",
-        "amazon",
-        "instacart",
-        "linkedin",
-        "facebook",
-        "instagram"
-    ]
-
+    @Binding var appName: String?
     var body: some View {
         NavigationView {
             NavigationStack {
                 AppList(
-                    supportedIntegrations: integrations.compactMap { SupportedIntegration(name: $0) }
+                    loadedIntegrations: []
                 )
 #if APPCLIP
-                .navigationTitle("App Clip Integrations")
+                        .navigationTitle("App Clip Integrations")
 #else
-                .navigationTitle("Integrations")
+                        .navigationTitle("Integrations")
 #endif
+                        .environment(\.appName, appName ?? "")
             }
         }
     }
@@ -170,5 +189,5 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+    ContentView(appName: .constant(""))
 }

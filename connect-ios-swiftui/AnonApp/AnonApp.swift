@@ -6,19 +6,26 @@
 //
 
 import SwiftUI
+import AnonKit
 
 @main
 struct AnonApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(appName: .constant(""))
                 .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: { userActivity in
                     if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
                         print("Launched via userActivity BrowsingWeb - URL: \(userActivity.webpageURL?.absoluteString ?? "missing")")
                     }
                 })
                 .onAppear(perform: {
-                    print("Launched!")
+                    /// Disable animations under test
+                    if ProcessInfo.isUITestEnvironment {
+                        CATransaction.setDisableActions(true)
+                        CATransaction.setAnimationDuration(CFTimeInterval(0))
+                        UIApplication.shared.keyWindow?.layer.speed = 1000.0
+                        UserDefaults.standard.set(-1, forKey: "com.apple.xctest.iOSMaximumTypingFrequency")
+                    }
                 })
         }
     }
