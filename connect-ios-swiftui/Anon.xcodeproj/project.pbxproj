@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,8 +12,7 @@
 		512F3B6F2C3F50F3005C33F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512F3B6E2C3F50F3005C33F7 /* Preview Assets.xcassets */; };
 		512F3B752C3F50F3005C33F7 /* LinkClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 512F3B652C3F50F2005C33F7 /* LinkClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		512F3B812C3F8D09005C33F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36D2C2621D100ED0F2F /* ContentView.swift */; };
-		51EDDC892C650C510074F74D /* AnonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51EDDC882C650C510074F74D /* AnonKit */; };
-		51EDDC8D2C650C890074F74D /* AnonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51EDDC8C2C650C890074F74D /* AnonKit */; };
+		51EDDC912C65271E0074F74D /* AnonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51EDDC902C65271E0074F74D /* AnonKit */; };
 		D25FA36C2C2621D100ED0F2F /* AnonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36B2C2621D100ED0F2F /* AnonApp.swift */; };
 		D25FA36E2C2621D100ED0F2F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36D2C2621D100ED0F2F /* ContentView.swift */; };
 		D25FA3702C2621D200ED0F2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA36F2C2621D200ED0F2F /* Assets.xcassets */; };
@@ -71,7 +70,6 @@
 		512F3B6E2C3F50F3005C33F7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		512F3B702C3F50F3005C33F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		512F3B712C3F50F3005C33F7 /* LinkClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LinkClip.entitlements; sourceTree = "<group>"; };
-		518519EE2C4BBB7C00B43101 /* AnonApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = AnonApp.xctestplan; sourceTree = "<group>"; };
 		D25FA3682C2621D100ED0F2F /* Anon Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anon Link.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25FA36B2C2621D100ED0F2F /* AnonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonApp.swift; sourceTree = "<group>"; };
 		D25FA36D2C2621D100ED0F2F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,7 +83,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51EDDC8D2C650C890074F74D /* AnonKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51EDDC892C650C510074F74D /* AnonKit in Frameworks */,
+				51EDDC912C65271E0074F74D /* AnonKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +127,6 @@
 		D25FA35F2C2621D100ED0F2F = {
 			isa = PBXGroup;
 			children = (
-				518519EE2C4BBB7C00B43101 /* AnonApp.xctestplan */,
 				D25FA36A2C2621D100ED0F2F /* AnonApp */,
 				512F3B662C3F50F2005C33F7 /* LinkClip */,
 				D25FA3692C2621D100ED0F2F /* Products */,
@@ -186,7 +182,6 @@
 			);
 			name = LinkClip;
 			packageProductDependencies = (
-				51EDDC8C2C650C890074F74D /* AnonKit */,
 			);
 			productName = LinkClip;
 			productReference = 512F3B652C3F50F2005C33F7 /* LinkClip.app */;
@@ -210,7 +205,7 @@
 			);
 			name = Anon;
 			packageProductDependencies = (
-				51EDDC882C650C510074F74D /* AnonKit */,
+				51EDDC902C65271E0074F74D /* AnonKit */,
 			);
 			productName = "connect-ios-swiftui";
 			productReference = D25FA3682C2621D100ED0F2F /* Anon Link.app */;
@@ -244,7 +239,7 @@
 			);
 			mainGroup = D25FA35F2C2621D100ED0F2F;
 			packageReferences = (
-				51EDDC7C2C6509940074F74D /* XCLocalSwiftPackageReference "../../das/lib/sdk-ios/AnonKitPkg" */,
+				51EDDC8F2C65271E0074F74D /* XCRemoteSwiftPackageReference "sdk-ios-pkg" */,
 			);
 			productRefGroup = D25FA3692C2621D100ED0F2F /* Products */;
 			projectDirPath = "";
@@ -648,13 +643,19 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		51EDDC8F2C65271E0074F74D /* XCRemoteSwiftPackageReference "sdk-ios-pkg" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/anon-dot-com/sdk-ios-pkg";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		51EDDC862C650C4E0074F74D /* AnonKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 51EDDC7C2C6509940074F74D /* XCLocalSwiftPackageReference "../../das/lib/sdk-ios/AnonKitPkg" */;
-			productName = AnonKit;
-		};
-		51EDDC882C650C510074F74D /* AnonKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 51EDDC7C2C6509940074F74D /* XCLocalSwiftPackageReference "../../das/lib/sdk-ios/AnonKitPkg" */;
 			productName = AnonKit;
@@ -664,9 +665,9 @@
 			package = 51EDDC7C2C6509940074F74D /* XCLocalSwiftPackageReference "../../das/lib/sdk-ios/AnonKitPkg" */;
 			productName = AnonKit;
 		};
-		51EDDC8C2C650C890074F74D /* AnonKit */ = {
+		51EDDC902C65271E0074F74D /* AnonKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 51EDDC7C2C6509940074F74D /* XCLocalSwiftPackageReference "../../das/lib/sdk-ios/AnonKitPkg" */;
+			package = 51EDDC8F2C65271E0074F74D /* XCRemoteSwiftPackageReference "sdk-ios-pkg" */;
 			productName = AnonKit;
 		};
 /* End XCSwiftPackageProductDependency section */
