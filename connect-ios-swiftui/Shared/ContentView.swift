@@ -21,30 +21,11 @@ extension EnvironmentValues {
     }
 }
 
-// Configuration for Anon SDK
 let anonConfig = Config(
-    // Change to the appropriate environment as needed.
     environment: .staging,
-    // The uuid of your SdkClient /associated with your UserPool/
-    // ie the one which returned   "auth": { "type": "userPool", "userPoolId": "..." }
-    clientId: "d3d694c2-dedd-4696-880c-c605a89afe64",
-                // todo: grab from env.ANON_APP_USER_ID_TOKEN
-    appUserIdToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6ImFYQXotRy1xeFIxbmdnSzlHZ2wzNktGckpTQzB3TzUzVVdCbEd3NjVaYWcifQ.eyJlbWFpbCI6Iml0ZXN0LWFwcC11c2VyLTg3NDZAdGVhbS5hbm9uLmNvbSIsImlhdCI6MTcwODYzNzYyMSwiaXNzIjoidXJuOmV4YW1wbGU6aXNzdWVyIiwiYXVkIjoidXJuOmV4YW1wbGU6YXVkaWVuY2UiLCJleHAiOjE3MTEyMjk2MjEsInN1YiI6ImV4dGVybmFsLWlkLTczNDgifQ.Ptc0416ZzWSFrqiYvIbojrFjBDAV7d_ny4wQT-NjQINxEQ4tpxK3N26v85cHbMZ6gnsgSQF5k8WtjU__XkFc2VRWzbNi2XLHq51SZFDmsX0vkbFN5Y7PYQK5R51-nph9q_56kMdGwIfTbGhRg6LAb6ZCWYOHMwUolNrGcPvdLV6BxluoQY3iLMswsAaXLdcbvDvoy5yRXSwJIeEZRPXtmnCaoIAF-sKVH-1zk70oyWaUkf2c4jZaXiYKJ9qAwJwcbvrh7i4Zx6gzskmcYZX1OE6W32X3mfdoafjdI4K6JKweEDzZ0xhXyAHyS6Wd0lCqrRcb66I0sNFI4P5tdvvUvA"
+    clientId: ProcessInfo.clientIdentifier,
+    appUserIdToken: ProcessInfo.applicationUserIdentifiterToken
 )
-
-let integrationToIcon: [String: Image] = [
-    "github": Image(systemName: "server.rack"),
-    "uber": Image(systemName: "car.circle.fill"),
-    "delta": Image(systemName: "airplane.circle.fill"),
-    "united_airlines": Image(systemName: "airplane.circle.fill"),
-    "opentable": Image(systemName: "fork.knife.circle.fill"),
-    "resy": Image(systemName: "fork.knife.circle.fill"),
-    "amazon": Image(systemName: "books.vertical.circle.fill"),
-    "instacart": Image(systemName: "carrot.fill"),
-    "linkedin": Image(systemName: "briefcase.circle.fill"),
-    "facebook": Image(systemName: "person.line.dotted.person.fill"),
-    "instagram": Image(systemName: "camera.aperture")
-]
 
 let integrationToColor: [String: Color] = [
     "github": .gray,
@@ -77,11 +58,7 @@ struct AppButton: View {
 @MainActor
 struct AppRow: View {
     let integration: AnonClient.Response.IntegrationList.ActiveIntegration
-    
-    var image: Image {
-        integrationToIcon[integration.id] ?? Image(systemName: "questionmark.circle.fill")
-    }
-    
+        
     var imageTint: Color {
         integrationToColor[integration.id] ?? .red
     }
@@ -96,11 +73,11 @@ struct AppRow: View {
     
     var body: some View {
         HStack {
-            image
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 16, height: 16, alignment: .center)
-                .foregroundColor(imageTint)
+            AsyncImage(url: integration.iconUrl) { image in
+                image.image?.resizable()
+            }
+            .frame(width: 40, height: 40, alignment: .center)
+            .aspectRatio(contentMode: .fit)
             
             Text(appName.capitalized.replacingOccurrences(of: "_", with: " "))
                 .padding([.leading], 4)
@@ -121,9 +98,6 @@ struct AppList: View {
     @State var selectedIntegration: AnonClient.Response.IntegrationList.ActiveIntegration?
     
     var body: some View {
-//        let integration = Binding.constant(loadedIntegrations.first(where: { $0.id == appName}))
-        
-
             let anonView = AnonUIView(
                 app: selectedIntegration?.id ?? "linkedin",
                 config: anonConfig,
@@ -140,7 +114,7 @@ struct AppList: View {
             List(loadedIntegrations, id: \.id) { integration in
                 AppButton(appRow: AppRow(integration: integration)) { newSelectedIntegration in
                     selectedIntegration = loadedIntegrations.first() {
-                        $0.id == newSelectedIntegration.integration.id
+                        $0.id.lowercased() == newSelectedIntegration.integration.id.lowercased()
                     }
                 }
             }
@@ -149,21 +123,24 @@ struct AppList: View {
             }
             .onReceive(
                 client
-                    .integrationListPublisher()
-                    .receive(on: DispatchQueue.main)
-                    .replaceError(with: [])
-                    .share()
+                .integrationListPublisher()
+                .receive(on: DispatchQueue.main)
+                .replaceError(with: [])
+                .share()
+                .eraseToAnyPublisher()
+                .removeDuplicates(by: { integrations, newIntegrations in
+                    integrations.count == newIntegrations.count
+                })
                 , perform: { integrationList in
                     if integrationList.count > 0,
                        self.loadedIntegrations.count != integrationList.count {
                         self.loadedIntegrations = integrationList
-                        if !appName.isEmpty {
-                            self.selectedIntegration = loadedIntegrations.first() {
-                                $0.id == appName
-                            }
+                        self.selectedIntegration = loadedIntegrations.first() {
+                            $0.id.lowercased() == appName.lowercased()
                         }
                     }
-                })
+                }
+            )
     }
 }
 
