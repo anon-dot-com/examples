@@ -32,7 +32,7 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
-      appClipInvocationURLString = "https://clip.anon.com/integrate?id=delta"
+      appClipInvocationURLString = "https://clip.anon.com/?id=resy"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       enableUBSanitizer = "YES"
@@ -60,11 +60,6 @@
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = "_XCAppClipURL"
-            value = "https://clip.anon.com/integrate?delta"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-         <EnvironmentVariable
             key = "ANON_DEBUG"
             value = "true"
             isEnabled = "YES">
@@ -78,7 +73,7 @@
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
-      appClipInvocationURLString = "https://clip.anon.com/integrate?id=delta"
+      appClipInvocationURLString = "https://clip.anon.com/?id=resy"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
