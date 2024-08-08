@@ -1,49 +1,13 @@
 {
-  "originHash" : "656fb136099a863ba0d553189c950752fb121451d4603d52a9cc9c12ea7495cc",
+  "originHash" : "682c8a9982029ee23a89a17885d3aea81e1538ff0aef6d29128f4d2a5f09cfd4",
   "pins" : [
     {
-      "identity" : "dd-sdk-ios",
+      "identity" : "sdk-ios-pkg",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/DataDog/dd-sdk-ios.git",
+      "location" : "https://github.com/anon-dot-com/sdk-ios-pkg",
       "state" : {
-        "revision" : "65854b3fe0a2aff3dec470e3f74835d1abffe2c7",
-        "version" : "2.14.1"
-      }
-    },
-    {
-      "identity" : "jwtdecode.swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/auth0/JWTDecode.swift.git",
-      "state" : {
-        "revision" : "58af7278797871e460d79496621b3e5366b865b2",
-        "version" : "3.1.0"
-      }
-    },
-    {
-      "identity" : "mixpanel-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/mixpanel/mixpanel-swift",
-      "state" : {
-        "revision" : "7f73084879cf6f8c50ab93e34ab0aae2569b04a8",
-        "version" : "4.2.7"
-      }
-    },
-    {
-      "identity" : "opentelemetry-swift-packages",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/DataDog/opentelemetry-swift-packages.git",
-      "state" : {
-        "revision" : "adcfc3d7fc6ad411bb576cfa4512c2d3f8b2dbc7",
-        "version" : "1.6.0"
-      }
-    },
-    {
-      "identity" : "plcrashreporter",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/microsoft/plcrashreporter.git",
-      "state" : {
-        "revision" : "6752f71de206f6a53fa6a758c3660fd9a7fe7527",
-        "version" : "1.11.2"
+        "branch" : "main",
+        "revision" : "ff43f5d5a6178e5656323d96c32b737d09bf40f2"
       }
     }
   ],
