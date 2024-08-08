@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,11 +11,9 @@
 		512F3B6C2C3F50F3005C33F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512F3B6B2C3F50F3005C33F7 /* Assets.xcassets */; };
 		512F3B6F2C3F50F3005C33F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512F3B6E2C3F50F3005C33F7 /* Preview Assets.xcassets */; };
 		512F3B752C3F50F3005C33F7 /* LinkClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 512F3B652C3F50F2005C33F7 /* LinkClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		512F3B7C2C3F56AE005C33F7 /* AnonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512F3B5B2C3EF086005C33F7 /* AnonKit.framework */; };
-		512F3B7D2C3F56AE005C33F7 /* AnonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512F3B5B2C3EF086005C33F7 /* AnonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		512F3B7F2C3F5E53005C33F7 /* AnonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512F3B5B2C3EF086005C33F7 /* AnonKit.framework */; platformFilter = ios; };
-		512F3B802C3F5E53005C33F7 /* AnonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 512F3B5B2C3EF086005C33F7 /* AnonKit.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		512F3B812C3F8D09005C33F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36D2C2621D100ED0F2F /* ContentView.swift */; };
+		51EDDC892C650C510074F74D /* AnonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51EDDC882C650C510074F74D /* AnonKit */; };
+		51EDDC8D2C650C890074F74D /* AnonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51EDDC8C2C650C890074F74D /* AnonKit */; };
 		D25FA36C2C2621D100ED0F2F /* AnonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36B2C2621D100ED0F2F /* AnonApp.swift */; };
 		D25FA36E2C2621D100ED0F2F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36D2C2621D100ED0F2F /* ContentView.swift */; };
 		D25FA3702C2621D200ED0F2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA36F2C2621D200ED0F2F /* Assets.xcassets */; };
@@ -23,40 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		512F3B5A2C3EF086005C33F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 512F3B552C3EF086005C33F7 /* AnonKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = AAC976862B23C36F00C991B2;
-			remoteInfo = AnonKit;
-		};
-		512F3B5C2C3EF086005C33F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 512F3B552C3EF086005C33F7 /* AnonKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = AAC976902B23C36F00C991B2;
-			remoteInfo = AnonKitTests;
-		};
-		512F3B5F2C3EF0A8005C33F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 512F3B552C3EF086005C33F7 /* AnonKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = AAC976852B23C36F00C991B2;
-			remoteInfo = AnonKit;
-		};
 		512F3B722C3F50F3005C33F7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D25FA3602C2621D100ED0F2F /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 512F3B642C3F50F2005C33F7;
 			remoteInfo = LinkClip;
-		};
-		512F3B792C3F552A005C33F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 512F3B552C3EF086005C33F7 /* AnonKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = AAC976852B23C36F00C991B2;
-			remoteInfo = AnonKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -67,7 +37,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				512F3B802C3F5E53005C33F7 /* AnonKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,7 +58,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				512F3B7D2C3F56AE005C33F7 /* AnonKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,14 +65,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		512F3B552C3EF086005C33F7 /* AnonKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AnonKit.xcodeproj; path = "../../das/lib/sdk-ios/AnonKit/AnonKit.xcodeproj"; sourceTree = "<group>"; };
 		512F3B652C3F50F2005C33F7 /* LinkClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		512F3B672C3F50F2005C33F7 /* LinkClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkClipApp.swift; sourceTree = "<group>"; };
 		512F3B6B2C3F50F3005C33F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		512F3B6E2C3F50F3005C33F7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		512F3B702C3F50F3005C33F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		512F3B712C3F50F3005C33F7 /* LinkClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LinkClip.entitlements; sourceTree = "<group>"; };
-		D25FA3682C2621D100ED0F2F /* Anon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Anon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		518519EE2C4BBB7C00B43101 /* AnonApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = AnonApp.xctestplan; sourceTree = "<group>"; };
+		D25FA3682C2621D100ED0F2F /* Anon Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anon Link.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25FA36B2C2621D100ED0F2F /* AnonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonApp.swift; sourceTree = "<group>"; };
 		D25FA36D2C2621D100ED0F2F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D25FA36F2C2621D200ED0F2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512F3B7C2C3F56AE005C33F7 /* AnonKit.framework in Frameworks */,
+				51EDDC8D2C650C890074F74D /* AnonKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,22 +93,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				512F3B7F2C3F5E53005C33F7 /* AnonKit.framework in Frameworks */,
+				51EDDC892C650C510074F74D /* AnonKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		512F3B562C3EF086005C33F7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				512F3B5B2C3EF086005C33F7 /* AnonKit.framework */,
-				512F3B5D2C3EF086005C33F7 /* AnonKitTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		512F3B662C3F50F2005C33F7 /* LinkClip */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,7 +130,7 @@
 		D25FA35F2C2621D100ED0F2F = {
 			isa = PBXGroup;
 			children = (
-				512F3B552C3EF086005C33F7 /* AnonKit.xcodeproj */,
+				518519EE2C4BBB7C00B43101 /* AnonApp.xctestplan */,
 				D25FA36A2C2621D100ED0F2F /* AnonApp */,
 				512F3B662C3F50F2005C33F7 /* LinkClip */,
 				D25FA3692C2621D100ED0F2F /* Products */,
@@ -182,7 +141,7 @@
 		D25FA3692C2621D100ED0F2F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D25FA3682C2621D100ED0F2F /* Anon.app */,
+				D25FA3682C2621D100ED0F2F /* Anon Link.app */,
 				512F3B652C3F50F2005C33F7 /* LinkClip.app */,
 			);
 			name = Products;
@@ -223,9 +182,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				512F3B7A2C3F552A005C33F7 /* PBXTargetDependency */,
+				51EDDC8B2C650C860074F74D /* PBXTargetDependency */,
 			);
 			name = LinkClip;
+			packageProductDependencies = (
+				51EDDC8C2C650C890074F74D /* AnonKit */,
+			);
 			productName = LinkClip;
 			productReference = 512F3B652C3F50F2005C33F7 /* LinkClip.app */;
 			productType = "com.apple.product-type.application.on-demand-install-capable";
@@ -243,14 +205,15 @@
 			buildRules = (
 			);
 			dependencies = (
-				512F3B602C3EF0A8005C33F7 /* PBXTargetDependency */,
+				51EDDC872C650C4E0074F74D /* PBXTargetDependency */,
 				512F3B732C3F50F3005C33F7 /* PBXTargetDependency */,
 			);
 			name = Anon;
 			packageProductDependencies = (
+				51EDDC882C650C510074F74D /* AnonKit */,
 			);
 			productName = "connect-ios-swiftui";
-			productReference = D25FA3682C2621D100ED0F2F /* Anon.app */;
+			productReference = D25FA3682C2621D100ED0F2F /* Anon Link.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -281,16 +244,10 @@
 			);
 			mainGroup = D25FA35F2C2621D100ED0F2F;
 			packageReferences = (
-				517C86492C3FF72E00A29ABB /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
+				51EDDC7C2C6509940074F74D /* XCLocalSwiftPackageReference "../../das/lib/sdk-ios/AnonKitPkg" */,
 			);
 			productRefGroup = D25FA3692C2621D100ED0F2F /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 512F3B562C3EF086005C33F7 /* Products */;
-					ProjectRef = 512F3B552C3EF086005C33F7 /* AnonKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D25FA3672C2621D100ED0F2F /* Anon */,
@@ -298,23 +255,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		512F3B5B2C3EF086005C33F7 /* AnonKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AnonKit.framework;
-			remoteRef = 512F3B5A2C3EF086005C33F7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		512F3B5D2C3EF086005C33F7 /* AnonKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = AnonKitTests.xctest;
-			remoteRef = 512F3B5C2C3EF086005C33F7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		512F3B632C3F50F2005C33F7 /* Resources */ = {
@@ -359,20 +299,18 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		512F3B602C3EF0A8005C33F7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AnonKit;
-			targetProxy = 512F3B5F2C3EF0A8005C33F7 /* PBXContainerItemProxy */;
-		};
 		512F3B732C3F50F3005C33F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 512F3B642C3F50F2005C33F7 /* LinkClip */;
 			targetProxy = 512F3B722C3F50F3005C33F7 /* PBXContainerItemProxy */;
 		};
-		512F3B7A2C3F552A005C33F7 /* PBXTargetDependency */ = {
+		51EDDC872C650C4E0074F74D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = AnonKit;
-			targetProxy = 512F3B792C3F552A005C33F7 /* PBXContainerItemProxy */;
+			productRef = 51EDDC862C650C4E0074F74D /* AnonKit */;
+		};
+		51EDDC8B2C650C860074F74D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 51EDDC8A2C650C860074F74D /* AnonKit */;
 		};
 /* End PBXTargetDependency section */
 
@@ -380,22 +318,23 @@
 		512F3B772C3F50F3005C33F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_STANDALONE_ICON_BEHAVIOR = all;
 				CODE_SIGN_ENTITLEMENTS = LinkClip/LinkClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"LinkClip/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "LinkClip/Preview\\ Content AnonApp/Preview\\ Content/Preview\\ Assets.xcassets";
 				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LinkClip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Anon App Clip";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -417,22 +356,23 @@
 		512F3B782C3F50F3005C33F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_STANDALONE_ICON_BEHAVIOR = all;
 				CODE_SIGN_ENTITLEMENTS = LinkClip/LinkClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"LinkClip/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "LinkClip/Preview\\ Content AnonApp/Preview\\ Content/Preview\\ Assets.xcassets";
 				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LinkClip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Anon App Clip";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -456,7 +396,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -507,11 +449,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 0.3.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-no-verify-emitted-module-interface";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -522,7 +467,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -567,10 +514,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 0.3.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-no-verify-emitted-module-interface";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -589,7 +539,8 @@
 				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Anon;
+				INFOPLIST_KEY_CFBundleDisplayName = "Anon Link";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -600,14 +551,15 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
-				MARKETPLACES = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anon.link.test;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME) Link";
 				SDKROOT = auto;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -628,7 +580,8 @@
 				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Anon;
+				INFOPLIST_KEY_CFBundleDisplayName = "Anon Link";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -639,14 +592,15 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
-				MARKETPLACES = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anon.link.test;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME) Link";
 				SDKROOT = auto;
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -687,16 +641,35 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		517C86492C3FF72E00A29ABB /* XCRemoteSwiftPackageReference "JWTDecode.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/auth0/JWTDecode.swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.0;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		51EDDC7C2C6509940074F74D /* XCLocalSwiftPackageReference "../../das/lib/sdk-ios/AnonKitPkg" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../das/lib/sdk-ios/AnonKitPkg";
 		};
-/* End XCRemoteSwiftPackageReference section */
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		51EDDC862C650C4E0074F74D /* AnonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51EDDC7C2C6509940074F74D /* XCLocalSwiftPackageReference "../../das/lib/sdk-ios/AnonKitPkg" */;
+			productName = AnonKit;
+		};
+		51EDDC882C650C510074F74D /* AnonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51EDDC7C2C6509940074F74D /* XCLocalSwiftPackageReference "../../das/lib/sdk-ios/AnonKitPkg" */;
+			productName = AnonKit;
+		};
+		51EDDC8A2C650C860074F74D /* AnonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51EDDC7C2C6509940074F74D /* XCLocalSwiftPackageReference "../../das/lib/sdk-ios/AnonKitPkg" */;
+			productName = AnonKit;
+		};
+		51EDDC8C2C650C890074F74D /* AnonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51EDDC7C2C6509940074F74D /* XCLocalSwiftPackageReference "../../das/lib/sdk-ios/AnonKitPkg" */;
+			productName = AnonKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D25FA3602C2621D100ED0F2F /* Project object */;
 }
