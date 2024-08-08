@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1540"
-   version = "1.7">
+   version = "2.1">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES"
@@ -16,10 +16,20 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D25FA3672C2621D100ED0F2F"
-               BuildableName = "Anon.app"
+               BuildableName = "Anon Link.app"
                BlueprintName = "Anon"
                ReferencedContainer = "container:Anon.xcodeproj">
             </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <TestPlanReference
+               reference = "container:AnonApp.xctestplan">
+            </TestPlanReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
@@ -27,8 +37,13 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      shouldAutocreateTestPlan = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <TestPlans>
+         <TestPlanReference
+            reference = "container:AnonApp.xctestplan"
+            default = "YES">
+         </TestPlanReference>
+      </TestPlans>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -45,7 +60,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D25FA3672C2621D100ED0F2F"
-            BuildableName = "Anon.app"
+            BuildableName = "Anon Link.app"
             BlueprintName = "Anon"
             ReferencedContainer = "container:Anon.xcodeproj">
          </BuildableReference>
@@ -74,7 +89,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D25FA3672C2621D100ED0F2F"
-            BuildableName = "Anon.app"
+            BuildableName = "Anon Link.app"
             BlueprintName = "Anon"
             ReferencedContainer = "container:Anon.xcodeproj">
          </BuildableReference>
