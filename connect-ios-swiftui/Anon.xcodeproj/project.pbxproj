@@ -13,6 +13,7 @@
 		51EDDC912C65271E0074F74D /* AnonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51EDDC902C65271E0074F74D /* AnonKit */; };
 		51EDDC932C6527FB0074F74D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA36F2C2621D200ED0F2F /* Assets.xcassets */; };
 		51EDDC942C6527FE0074F74D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA3732C2621D200ED0F2F /* Preview Assets.xcassets */; };
+		51EDDC962C6529000074F74D /* AnonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51EDDC952C6529000074F74D /* AnonKit */; };
 		D25FA36C2C2621D100ED0F2F /* AnonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36B2C2621D100ED0F2F /* AnonApp.swift */; };
 		D25FA36E2C2621D100ED0F2F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36D2C2621D100ED0F2F /* ContentView.swift */; };
 		D25FA3702C2621D200ED0F2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA36F2C2621D200ED0F2F /* Assets.xcassets */; };
@@ -81,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51EDDC962C6529000074F74D /* AnonKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +180,7 @@
 			);
 			name = LinkClip;
 			packageProductDependencies = (
+				51EDDC952C6529000074F74D /* AnonKit */,
 			);
 			productName = LinkClip;
 			productReference = 512F3B652C3F50F2005C33F7 /* LinkClip.app */;
@@ -662,6 +665,11 @@
 			productName = AnonKit;
 		};
 		51EDDC902C65271E0074F74D /* AnonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51EDDC8F2C65271E0074F74D /* XCRemoteSwiftPackageReference "sdk-ios-pkg" */;
+			productName = AnonKit;
+		};
+		51EDDC952C6529000074F74D /* AnonKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 51EDDC8F2C65271E0074F74D /* XCRemoteSwiftPackageReference "sdk-ios-pkg" */;
 			productName = AnonKit;
