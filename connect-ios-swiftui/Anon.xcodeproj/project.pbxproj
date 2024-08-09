@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		512F3B682C3F50F2005C33F7 /* LinkClipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F3B672C3F50F2005C33F7 /* LinkClipApp.swift */; };
-		512F3B752C3F50F3005C33F7 /* LinkClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 512F3B652C3F50F2005C33F7 /* LinkClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		512F3B812C3F8D09005C33F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36D2C2621D100ED0F2F /* ContentView.swift */; };
 		51EDDC912C65271E0074F74D /* AnonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51EDDC902C65271E0074F74D /* AnonKit */; };
 		51EDDC932C6527FB0074F74D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA36F2C2621D200ED0F2F /* Assets.xcassets */; };
@@ -39,17 +38,6 @@
 			files = (
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		512F3B742C3F50F3005C33F7 /* Embed App Clips */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
-			dstSubfolderSpec = 16;
-			files = (
-				512F3B752C3F50F3005C33F7 /* LinkClip.app in Embed App Clips */,
-			);
-			name = "Embed App Clips";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		512F3B7E2C3F56AE005C33F7 /* Embed Frameworks */ = {
@@ -194,7 +182,6 @@
 				D25FA3652C2621D100ED0F2F /* Frameworks */,
 				D25FA3662C2621D100ED0F2F /* Resources */,
 				512F3B462C3EBFE4005C33F7 /* Embed Frameworks */,
-				512F3B742C3F50F3005C33F7 /* Embed App Clips */,
 			);
 			buildRules = (
 			);
@@ -529,6 +516,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AnonApp/AnonApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
@@ -549,6 +537,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 0.3.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anon.link.test;
 				PRODUCT_NAME = "$(TARGET_NAME) Link";
 				SDKROOT = auto;
@@ -570,6 +559,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AnonApp/AnonApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
@@ -590,6 +580,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 0.3.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anon.link.test;
 				PRODUCT_NAME = "$(TARGET_NAME) Link";
 				SDKROOT = auto;
