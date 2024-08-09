@@ -1,0 +1,15 @@
+{
+  "originHash" : "682c8a9982029ee23a89a17885d3aea81e1538ff0aef6d29128f4d2a5f09cfd4",
+  "pins" : [
+    {
+      "identity" : "sdk-ios-pkg",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/anon-dot-com/sdk-ios-pkg",
+      "state" : {
+        "branch" : "v0.3.6",
+        "revision" : "a3f22b94fe5c62745a269568b81fef44c315c4ff"
+      }
+    }
+  ],
+  "version" : 3
+}
