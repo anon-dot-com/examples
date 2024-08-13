@@ -9,45 +9,25 @@
 /* Begin PBXBuildFile section */
 		512F3B682C3F50F2005C33F7 /* LinkClipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F3B672C3F50F2005C33F7 /* LinkClipApp.swift */; };
 		512F3B812C3F8D09005C33F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36D2C2621D100ED0F2F /* ContentView.swift */; };
+		516B06C72C65CFA700A9FA83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA36F2C2621D200ED0F2F /* Assets.xcassets */; };
+		516B06C92C65CFB200A9FA83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA36F2C2621D200ED0F2F /* Assets.xcassets */; };
+		516B06CB2C65D6D100A9FA83 /* LinkClip.app in clip */ = {isa = PBXBuildFile; fileRef = 512F3B652C3F50F2005C33F7 /* LinkClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		51E9D6D32C6AB47E00B04DA8 /* LinkClipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F3B672C3F50F2005C33F7 /* LinkClipApp.swift */; };
 		51EDDC912C65271E0074F74D /* AnonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51EDDC902C65271E0074F74D /* AnonKit */; };
-		51EDDC932C6527FB0074F74D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA36F2C2621D200ED0F2F /* Assets.xcassets */; };
-		51EDDC942C6527FE0074F74D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA3732C2621D200ED0F2F /* Preview Assets.xcassets */; };
 		51EDDC962C6529000074F74D /* AnonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51EDDC952C6529000074F74D /* AnonKit */; };
-		D25FA36C2C2621D100ED0F2F /* AnonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36B2C2621D100ED0F2F /* AnonApp.swift */; };
 		D25FA36E2C2621D100ED0F2F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25FA36D2C2621D100ED0F2F /* ContentView.swift */; };
-		D25FA3702C2621D200ED0F2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA36F2C2621D200ED0F2F /* Assets.xcassets */; };
-		D25FA3742C2621D200ED0F2F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D25FA3732C2621D200ED0F2F /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		512F3B722C3F50F3005C33F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D25FA3602C2621D100ED0F2F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 512F3B642C3F50F2005C33F7;
-			remoteInfo = LinkClip;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
-		512F3B462C3EBFE4005C33F7 /* Embed Frameworks */ = {
+		516B06CA2C65D6C500A9FA83 /* clip */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
 			files = (
+				516B06CB2C65D6D100A9FA83 /* LinkClip.app in clip */,
 			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		512F3B7E2C3F56AE005C33F7 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
+			name = clip;
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -55,8 +35,8 @@
 /* Begin PBXFileReference section */
 		512F3B652C3F50F2005C33F7 /* LinkClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		512F3B672C3F50F2005C33F7 /* LinkClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkClipApp.swift; sourceTree = "<group>"; };
-		512F3B702C3F50F3005C33F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		512F3B712C3F50F3005C33F7 /* LinkClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LinkClip.entitlements; sourceTree = "<group>"; };
+		516B06C22C65CD2D00A9FA83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D25FA3682C2621D100ED0F2F /* Anon Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anon Link.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25FA36B2C2621D100ED0F2F /* AnonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonApp.swift; sourceTree = "<group>"; };
 		D25FA36D2C2621D100ED0F2F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,8 +68,8 @@
 		512F3B662C3F50F2005C33F7 /* LinkClip */ = {
 			isa = PBXGroup;
 			children = (
+				516B06C22C65CD2D00A9FA83 /* Info.plist */,
 				512F3B672C3F50F2005C33F7 /* LinkClipApp.swift */,
-				512F3B702C3F50F3005C33F7 /* Info.plist */,
 				512F3B712C3F50F3005C33F7 /* LinkClip.entitlements */,
 			);
 			path = LinkClip;
@@ -158,8 +138,7 @@
 			buildPhases = (
 				512F3B612C3F50F2005C33F7 /* Sources */,
 				512F3B622C3F50F2005C33F7 /* Frameworks */,
-				512F3B632C3F50F2005C33F7 /* Resources */,
-				512F3B7E2C3F56AE005C33F7 /* Embed Frameworks */,
+				516B06C82C65CFAD00A9FA83 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -180,14 +159,13 @@
 			buildPhases = (
 				D25FA3642C2621D100ED0F2F /* Sources */,
 				D25FA3652C2621D100ED0F2F /* Frameworks */,
-				D25FA3662C2621D100ED0F2F /* Resources */,
-				512F3B462C3EBFE4005C33F7 /* Embed Frameworks */,
+				516B06C62C65CFA100A9FA83 /* Resources */,
+				516B06CA2C65D6C500A9FA83 /* clip */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				51EDDC872C650C4E0074F74D /* PBXTargetDependency */,
-				512F3B732C3F50F3005C33F7 /* PBXTargetDependency */,
 			);
 			name = Anon;
 			packageProductDependencies = (
@@ -238,21 +216,19 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		512F3B632C3F50F2005C33F7 /* Resources */ = {
+		516B06C62C65CFA100A9FA83 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51EDDC942C6527FE0074F74D /* Preview Assets.xcassets in Resources */,
-				51EDDC932C6527FB0074F74D /* Assets.xcassets in Resources */,
+				516B06C72C65CFA700A9FA83 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D25FA3662C2621D100ED0F2F /* Resources */ = {
+		516B06C82C65CFAD00A9FA83 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D25FA3742C2621D200ED0F2F /* Preview Assets.xcassets in Resources */,
-				D25FA3702C2621D200ED0F2F /* Assets.xcassets in Resources */,
+				516B06C92C65CFB200A9FA83 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,18 +249,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D25FA36E2C2621D100ED0F2F /* ContentView.swift in Sources */,
-				D25FA36C2C2621D100ED0F2F /* AnonApp.swift in Sources */,
+				51E9D6D32C6AB47E00B04DA8 /* LinkClipApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		512F3B732C3F50F3005C33F7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 512F3B642C3F50F2005C33F7 /* LinkClip */;
-			targetProxy = 512F3B722C3F50F3005C33F7 /* PBXContainerItemProxy */;
-		};
 		51EDDC872C650C4E0074F74D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 51EDDC862C650C4E0074F74D /* AnonKit */;
@@ -299,15 +270,17 @@
 		512F3B772C3F50F3005C33F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Debug";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				ASSETCATALOG_COMPILER_STANDALONE_ICON_BEHAVIOR = all;
 				CODE_SIGN_ENTITLEMENTS = LinkClip/LinkClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LinkClip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Anon App Clip";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -320,6 +293,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.3.6;
+				OTHER_SWIFT_FLAGS = "-no-verify-emitted-module-interface -DAppClip";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anon.link.test.FastLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -327,7 +302,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) APPCLIP";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) AppClip";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -337,15 +312,17 @@
 		512F3B782C3F50F3005C33F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				ASSETCATALOG_COMPILER_STANDALONE_ICON_BEHAVIOR = all;
 				CODE_SIGN_ENTITLEMENTS = LinkClip/LinkClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = GQD5D9J83M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LinkClip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Anon App Clip";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -358,6 +335,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.3.6;
+				OTHER_SWIFT_FLAGS = "-no-verify-emitted-module-interface -DAppClip";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anon.link.test.FastLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -365,7 +344,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APPCLIP;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = AppClip;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -409,8 +388,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content/Preview Assets.xcassets\"";
 				EAGER_LINKING = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -433,11 +413,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 0.3.5;
+				MARKETING_VERSION = 0.3.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_SWIFT_FLAGS = "-no-verify-emitted-module-interface";
+				OTHER_SWIFT_FLAGS = "-no-verify-emitted-module-interface -DAppClip";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -480,8 +460,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content/Preview Assets.xcassets\"";
 				EAGER_LINKING = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -498,10 +479,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 0.3.5;
+				MARKETING_VERSION = 0.3.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				OTHER_SWIFT_FLAGS = "-no-verify-emitted-module-interface";
+				OTHER_SWIFT_FLAGS = "-no-verify-emitted-module-interface -DAppClip";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -511,15 +492,15 @@
 		D25FA3782C2621D200ED0F2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Debug";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = AnonApp/AnonApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = GQD5D9J83M;
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Anon Link";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -538,13 +519,15 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 0.3.6;
+				OTHER_SWIFT_FLAGS = "-no-verify-emitted-module-interface";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anon.link.test;
 				PRODUCT_NAME = "$(TARGET_NAME) Link";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_SWIFT_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -554,15 +537,15 @@
 		D25FA3792C2621D200ED0F2F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = AnonApp/AnonApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"Shared/Preview Content\"";
 				DEVELOPMENT_TEAM = GQD5D9J83M;
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Anon Link";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -581,9 +564,10 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 0.3.6;
+				OTHER_SWIFT_FLAGS = "-no-verify-emitted-module-interface";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anon.link.test;
 				PRODUCT_NAME = "$(TARGET_NAME) Link";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_SWIFT_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
