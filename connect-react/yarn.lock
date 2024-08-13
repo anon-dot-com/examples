@@ -28,7 +28,7 @@
 "@anon/sdk-web-link-typescript@^0.5.1":
   version "0.5.1"
   resolved "https://npm.cloudsmith.io/anon/anon-sdk/@anon/sdk-web-link-typescript/-/0.5.1/sdk-web-link-typescript-0.5.1.tgz#9b2ea9b9ae94767de1e57af55a63459d3d5741f3"
-  integrity sha512-sdkUZAPND9QQDQdMZckwxszxM3H2NIjzSrb8AC7N9ezuESFeet9h1CbyusFlZXyp6yUKT1aC0Rq/O1B/7j6www==
+  integrity "sha1-my6pua6Udn3h5Xr1WmNFnT1XQfM= sha512-sdkUZAPND9QQDQdMZckwxszxM3H2NIjzSrb8AC7N9ezuESFeet9h1CbyusFlZXyp6yUKT1aC0Rq/O1B/7j6www=="
   dependencies:
     "@anon/link-types" "^0.5.1"
 

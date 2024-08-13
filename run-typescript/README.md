@@ -18,16 +18,6 @@ source .env
 echo $ANON_APP_USER_ID
 ```
 
-### NPM Token
-
-Set your `NPM_TOKEN` environment variable in the file `.npmrc` using this command:
-
-```sh
-sed "s/\${NPM_TOKEN}/${NPM_TOKEN}/g" .npmrc.template >.npmrc
-```
-
-Alternatively, copy the `.npmrc` file you received from Anon.
-
 ## Install Dependencies
 
 Install your dependencies with npm or yarn, which uses the above mentioned `NPM_TOKEN`:
