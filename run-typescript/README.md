@@ -20,7 +20,7 @@ echo $ANON_APP_USER_ID
 
 ## Install Dependencies
 
-Install your dependencies with npm or yarn, which uses the above mentioned `NPM_TOKEN`:
+Install your dependencies with npm or yarn:
 
 ```sh
 npm install
