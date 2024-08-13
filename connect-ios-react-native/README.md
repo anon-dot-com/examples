@@ -6,11 +6,10 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 0. Using your credentials provided by Anon, go to `app/(tabs)/index.tsx` and fill in the values `clientId` and `appUserIdToken`.
 
-1. Set your `NPM_TOKEN` environment variable, or copy the `.npmrc` file you may have received from Anon.
+1. Load environment variables.
 
 ```sh
 source .env
-sed "s/\${NPM_TOKEN}/${NPM_TOKEN}/g" .npmrc.template >.npmrc
 ```
 
 2. Install dependencies

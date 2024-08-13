@@ -16,18 +16,6 @@ cp .env.template .env
 > [!TIP]
 > You can find these credentials in the 1Password file that was shared during onboarding.
 
-### Fill out a `.npmrc` file
-
-Start with the template:
-
-```bash
-cp .npmrc.template .npmrc
-```
-
-If you followed the instructions in the higher level [README.md](../README.md),
-the $NPM_TOKEN variable should already be set for you.
-If not, you can just paste in the raw value from the 1Password file.
-
 ### Install dependencies
 
 ```bash
