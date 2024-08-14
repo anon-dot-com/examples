@@ -35,7 +35,7 @@ const checkEnv = () => {
     console.log("Required Anon environment variables are not set!\n")
     console.log(unsetAnonVars.join("\n") + "\n")
     console.log("Resolve this by doing any of the following:\n")
-    console.log("- create in a .env file at the root of this repo with the missing variables listed above")
+    console.log("- create a .env file at the root of this repo with the missing variables listed above")
     console.log("- fill in the empty variables in the .env.example at the root of this repo")
     console.log("- download a pre-filled .env fom https://console.anon.com/credentials and place it at the root of this repo\n")
     process.exit(1)
