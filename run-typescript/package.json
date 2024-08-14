@@ -5,7 +5,7 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "npx tsx index.ts",
+    "dev": "NODE_PATH='./run-typescript' ../load_env.js npx tsx index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -5,12 +5,13 @@
   "description": "Your new magic swiss army knife for login.",
   "author": "Anonymity Labs",
   "scripts": {
-    "dev": "plasmo dev",
-    "build": "plasmo build",
-    "package": "plasmo package --source-maps"
+    "dev": "NODE_PATH='./runtime-extension' ../load_env.js plasmo dev",
+    "build": "NODE_PATH='./runtime-extension' ../load_env.js plasmo build",
+    "package": "NODE_PATH='./runtime-extension' ../load_env.js plasmo package --source-maps"
   },
   "dependencies": {
     "@anon/sdk-browser-extension": "^0.6.0",
+    "dotenv": "16.4.5",
     "jose": "^5.2.4",
     "plasmo": "0.85.2",
     "react": "18.2.0",

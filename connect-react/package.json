@@ -19,10 +19,10 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "NODE_PATH='./connect-react' ../load_env.js react-scripts start",
+    "build": "NODE_PATH='./connect-react' ../load_env.js react-scripts build",
+    "test": "NODE_PATH='./connect-react' ../load_env.js react-scripts test",
+    "eject": "NODE_PATH='./connect-react' ../load_env.js react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

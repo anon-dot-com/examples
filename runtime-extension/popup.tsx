@@ -5,8 +5,8 @@ import type { Environment } from "@anon/sdk-typescript";
 
 const API_KEY = process.env.PLASMO_PUBLIC_ANON_API_KEY;
 const LINK_CONFIG: Omit<AnonLinkConfig, "app"> = {
-  environment: process.env.PLASMO_PUBLIC_ANON_ENVIRONMENT as Environment,
-  clientId: process.env.PLASMO_PUBLIC_ANON_CLIENT_ID,
+  environment: process.env.PLASMO_PUBLIC_ANON_ENV as Environment,
+  clientId: process.env.PLASMO_PUBLIC_ANON_SDKCLIENT_ID,
   appUserIdToken: process.env.PLASMO_PUBLIC_ANON_USER_ID_TOKEN,
   company: "Anonymity Labs",
   companyLogo: "https://avatars.githubusercontent.com/u/132958123?s=200&v=4",

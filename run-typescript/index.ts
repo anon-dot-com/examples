@@ -5,19 +5,10 @@ import {
   executeRuntimeScript,
   setupAnonBrowserWithContext,
 } from "@anon/sdk-typescript";
-import dotenv from "dotenv";
-import path from "path";
 import { Page } from "playwright-core";
-import { fileURLToPath } from "url";
 import { APP_URLS, AppName, DO_DELETE_SESSION, NETWORK_TIMEOUT_MS } from "./actions/config.js";
 
 console.log("Starting script execution...");
-
-// Load environment variables from parent .env file
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-dotenv.config({ path: path.resolve(__dirname, ".env") });
-console.log("Environment variables loaded.");
 
 // Configuration
 const APP_USER_ID = process.env.ANON_APP_USER_ID!;
