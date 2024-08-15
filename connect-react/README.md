@@ -28,14 +28,6 @@ npm install
 yarn install --update-checksums
 ```
 
-## Setup Environment Variables
-
-Ensure you have the following environment variables set in your `.env` file. Then run the setup script:
-
-```sh
-yarn run setup
-```
-
 ## Running the Example
 
 Start your app with:
