@@ -257,7 +257,7 @@ function IndexPopup() {
     <div
       style={{
         padding: 16,
-        width: 400,
+        minWidth: 400
       }}
     >
       <div>User ID: {userId}</div>
