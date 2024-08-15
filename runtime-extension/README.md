@@ -14,7 +14,7 @@ cp .env.template .env
 ```
 
 > [!TIP]
-> You can find these credentials in the 1Password file that was shared during onboarding.
+> You can find these credentials in the [Anon Console](https://console.anon.com/).
 
 ### Install dependencies
 
@@ -33,8 +33,8 @@ yarn dev
 Open your browser and load the appropriate development build.
 
 1. Go to chrome://extensions/
-2. Enable "Developer Mode" (top right)
-3. Press "Load unpacked", select directory `runtime-extension/build/chrome-mv3-dev` from this repo for the extension build.
+1. Enable "Developer Mode" (top right)
+1. Press "Load unpacked", select directory `runtime-extension/build/chrome-mv3-dev` from this repo for the extension build.
 
 You can start editing the popup by modifying `popup.tsx`. It should auto-update
 as you make changes. To add an options page, simply add a `options.tsx` file to

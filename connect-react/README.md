@@ -10,12 +10,12 @@ To run this example, you'll need to verify environment variables and install dep
 
 ### Environment Variables
 
-This folder should have an `.env` symbolic link that points to the `.env` file in this repo, which you had filled in using the credentials from Anon.
+This sample has a `.env.template` file that you should copy to a new file called `.env` in the same directory. Fill in the environment variables with the credentials Anon provided you.
 
-You could sanity check for the environment variables with eg
-```
+Then source the `.env` file.
+
+```sh
 source .env
-echo $REACT_APP_ANON_APP_USER_ID_TOKEN
 ```
 
 ## Install Dependencies

@@ -14,7 +14,7 @@ git clone https://github.com/anon-dot-com/examples.git && cd ./examples
 
 ### Environment Variables
 
-Copy `.env.example` to a new file in this directory called `.env` and fill in each of the environment variables, using the credentials Anon provided you.
+Each sample has a `.env.template` file that you should copy to a new file called `.env` in the same directory. Fill in the environment variables with the credentials Anon provided you.
 
 At minimum, the `.env` file should have the following variables:
 
@@ -26,11 +26,10 @@ ANON_API_KEY=...
 ANON_SDKCLIENT_ID=...
 ANON_APP_USER_ID_TOKEN=...
 ANON_APP_USER_ID=...
-
-ANON_CHROME_EXTENSION_ID=lbgbplnejdpahnfmnphghjlbedpjjbgd
 ```
 
 Then, source the `.env` file.
+
 ```
 source .env
 ```
@@ -39,7 +38,7 @@ source .env
 
 ## Testing
 
-You could quickly test out Anon by connecting a user session (examples prefixed `connect-*`), then running a user session (examples prefixed `run-*`).
+You can quickly test out Anon by connecting a user session (examples prefixed `connect-*`), then running a user session (examples prefixed `run-*`).
 
 For example, run our [Web Link - React example](https://github.com/anon-dot-com/examples/tree/main/connect-react), followed by our [Backend SDK - Typescript example](https://github.com/anon-dot-com/examples/tree/main/run-typescript). You could tweak the Typescript example with your own Playwright sessions to test Anon for your use case.
 
