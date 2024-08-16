@@ -25,9 +25,9 @@ const APP_USER_ID = "quickstart-user";
 const ANON_ENV: Environment = "sandbox";
 const APP: AppName = "linkedin";
 
-const API_KEY = readFileSync("../API_KEY", 'utf8').trim();
+const API_KEY = "YOUR_API_KEY_HERE"
 if (API_KEY == "YOUR API KEY HERE") {
-  throw new Error("Paste your API key into the config.json file");
+  throw new Error("Paste your API key into index.ts");
 }
 
 // Choose your the action you want to run based on the app selected
@@ -69,7 +69,7 @@ const sendMessageToConnections = (messageText: string, n: number) => async (page
  * Uncomment the code to try out your custom action
  */
 // runAction = sendMessageToConnections(
-//   `Hi Friend, I used the Anon SDK to send you this message. 
+//   `Hi Friend, I used the Anon SDK to send you this message.
 //   Try it out at https://docs.anon.com/docs/general/quickstart`,
 //   5);
 

@@ -5,11 +5,11 @@ import { readFileSync } from "node:fs";
 function App() {
   // TODO loading spinner
   const open = async () => {
-    const API_KEY = readFileSync("../../API_KEY", 'utf8').trim();
+    const API_KEY = "YOUR API KEY HERE";
     const APP_USER_ID = "quickstart-user";
 
     if (API_KEY == "YOUR API KEY HERE") {
-      throw new Error("Paste your API key into the API_KEY file");
+      throw new Error("Paste your API key into App.tsx");
     }
 
     const environment = "sandbox" as const;

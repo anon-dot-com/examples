@@ -20,7 +20,10 @@ const getSdkClientIdFromIdToken = (token?: string): string => {
   }
 
   const { sdkClientId } = parseJwt(token);
-  return sdkClientId ?? throw new Error("could not parse sdkClientId from AppUserIdToken");
+  if (!sdkClientId) {
+    throw new Error("could not parse sdkClientId from AppUserIdToken");
+  }
+  return sdkClientId;
 };
 
 export { getSdkClientIdFromIdToken };
