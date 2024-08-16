@@ -1,6 +1,5 @@
 import AnonLink from "@anon/sdk-web-link-typescript";
 import { getSdkClientIdFromIdToken } from "./decode-jwt";
-import { readFileSync } from "node:fs";
 
 function App() {
   // TODO loading spinner
@@ -8,7 +7,7 @@ function App() {
     const API_KEY = "YOUR API KEY HERE";
     const APP_USER_ID = "quickstart-user";
 
-    if (API_KEY == "YOUR API KEY HERE") {
+    if (API_KEY === "YOUR API KEY HERE") {
       throw new Error("Paste your API key into App.tsx");
     }
 
@@ -19,7 +18,8 @@ function App() {
     const appUserIdToken = (await (await fetch(`https://svc.${environment}.anon.com/org/appUserIdToken`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${API_KEY}`
+        Authorization: `Bearer ${API_KEY}`,
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         appUserId: APP_USER_ID
