@@ -4,29 +4,20 @@ This sample demonstrates how to use the Anon's linking library to connect to int
 
 ## Setup
 
-First, follow this repo's `README`.
-
-To run this example, you'll need to verify environment variables and install dependencies.
-
-### Environment Variables
-
-This folder should have an `.env` symbolic link that points to the `.env` file in this repo, which you had filled in using the credentials from Anon.
-
-You could sanity check for the environment variables with eg
-```
-source .env
-echo $REACT_APP_ANON_APP_USER_ID_TOKEN
-```
-
-## Install Dependencies
+### Install Dependencies
 
 Install your dependencies with npm or yarn:
 
 ```sh
 npm install
 # or
-yarn install --update-checksums
+yarn install
 ```
+
+### Set your API Key
+
+Paste your API Key in at the top of `App.tsx`.
+You can get your API Key at [https://console.anon.com]
 
 ## Running the Example
 

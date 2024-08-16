@@ -1,10 +1,12 @@
 import AnonLink from "@anon/sdk-web-link-typescript";
 import { getSdkClientIdFromIdToken } from "./decode-jwt";
 
+// Get your API Key at https://console.anon.com
+const API_KEY: string = "YOUR API KEY HERE";
+
 function App() {
   // TODO loading spinner
   const open = async () => {
-    const API_KEY: string = "YOUR API KEY HERE";
     const APP_USER_ID = "quickstart-user";
 
     if (API_KEY === "YOUR API KEY HERE") {

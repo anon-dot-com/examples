@@ -9,8 +9,10 @@ import dotenv from "dotenv";
 import path from "path";
 import { Page } from "playwright-core";
 import { fileURLToPath } from "url";
-import { readFileSync } from "node:fs";
 import { APP_URLS, AppName, DO_DELETE_SESSION, NETWORK_TIMEOUT_MS } from "./actions/config.js";
+
+// Get your API Key at https://console.anon.com
+const API_KEY: string = "YOUR_API_KEY_HERE";
 
 console.log("Starting script execution...");
 
@@ -25,7 +27,6 @@ const APP_USER_ID = "quickstart-user";
 const ANON_ENV: Environment = "sandbox";
 const APP: AppName = "linkedin";
 
-const API_KEY: string = "YOUR_API_KEY_HERE";
 if (API_KEY === "YOUR API KEY HERE") {
   throw new Error("Paste your API key into index.ts");
 }

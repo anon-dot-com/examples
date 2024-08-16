@@ -4,20 +4,6 @@ This sample demonstrates how to use the Anon's TypeScript SDK to connect to inte
 
 ## Setup
 
-First, follow this repo's `README`.
-
-To run this example, you'll need to verify environment variables and install dependencies.
-
-### Environment Variables
-
-This folder should have an `.env` symbolic link that points to the `.env` file in this repo, which you had filled in using the credentials from Anon.
-
-You could sanity check for the environment variables with eg
-```
-source .env
-echo $ANON_APP_USER_ID
-```
-
 ## Install Dependencies
 
 Install your dependencies with npm or yarn:
@@ -25,8 +11,13 @@ Install your dependencies with npm or yarn:
 ```sh
 npm install
 # or
-yarn
+yarn install
 ```
+
+### Set your API Key
+
+Paste your API Key in at the top of `index.tsx`.
+You can get your API Key at [https://console.anon.com]
 
 ## Running the Example
 
