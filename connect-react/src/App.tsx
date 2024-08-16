@@ -4,7 +4,7 @@ import { getSdkClientIdFromIdToken } from "./decode-jwt";
 function App() {
   // TODO loading spinner
   const open = async () => {
-    const API_KEY = "YOUR API KEY HERE";
+    const API_KEY: string = "YOUR API KEY HERE";
     const APP_USER_ID = "quickstart-user";
 
     if (API_KEY === "YOUR API KEY HERE") {
@@ -35,7 +35,7 @@ function App() {
       app: "linkedin",
       company: "Anon Quickstart App",
       companyLogo: "", // TODO
-      chromeExtensionId: "", // TODO
+      chromeExtensionId: "lbgbplnejdpahnfmnphghjlbedpjjbgd",
     };
 
     // Initialize AnonLink with configuration settings.

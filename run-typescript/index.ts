@@ -25,8 +25,8 @@ const APP_USER_ID = "quickstart-user";
 const ANON_ENV: Environment = "sandbox";
 const APP: AppName = "linkedin";
 
-const API_KEY = "YOUR_API_KEY_HERE"
-if (API_KEY == "YOUR API KEY HERE") {
+const API_KEY: string = "YOUR_API_KEY_HERE";
+if (API_KEY === "YOUR API KEY HERE") {
   throw new Error("Paste your API key into index.ts");
 }
 

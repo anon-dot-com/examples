@@ -5,6 +5,7 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
+    "start": "npx tsx index.ts",
     "dev": "npx tsx index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
