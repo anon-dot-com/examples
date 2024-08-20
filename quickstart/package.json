@@ -1,0 +1,27 @@
+{
+  "name": "quickstart",
+  "version": "1.0.0",
+  "description": "Quickstart for using Anon Link and Runtime SDKs!",
+  "main": "index.ts",
+  "type": "module",
+  "repository": "https://github.com/anon-dot-com/examples",
+  "author": "Anonymity Labs",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn tsx index.ts",
+    "dev": "yarn tsx index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "yarn playwright install"
+  },
+  "devDependencies": {
+    "@types/node": "^22.4.0",
+    "ts-node": "^10.9.1",
+    "tsx": "^4.10.3",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@anon/actions": "^0.1.1",
+    "@anon/sdk-typescript": "^0.6.0",
+    "playwright": "^1.46.1"
+  }
+}
