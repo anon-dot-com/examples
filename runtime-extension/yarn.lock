@@ -43,10 +43,10 @@
     node-fetch "^3.3.2"
     proxy-agent "^6.4.0"
 
-"@anon/sdk-browser-extension@^0.6.0":
-  version "0.6.0"
-  resolved "https://npm.cloudsmith.io/anon/anon-sdk/@anon/sdk-browser-extension/-/0.6.0/sdk-browser-extension-0.6.0.tgz#32f9d9f939e56faeaf82e1bea841737fad103a0e"
-  integrity sha512-r91WqfOqhDqTYmbkOBRHzV3HKTA1tRV/QYyHaldPEyAkDDd5WQxC5Q1va/+crE6BXDnI3Z8evkEr5gCT1NPs2A==
+"@anon/sdk-browser-extension@^0.7.0":
+  version "0.7.0"
+  resolved "https://npm.cloudsmith.io/anon/anon-sdk/@anon/sdk-browser-extension/-/0.7.0/sdk-browser-extension-0.7.0.tgz#8b44a02732c8c11b2127a356cbe140330d70e882"
+  integrity sha512-KODL8WaLFKyl0UcxrzIFUCPkT0K+OYB+4GNCzVUHTEzb2Fo70jUibRHE263N2hxAINaXxGFnA8lr/HxlIYcHng==
   dependencies:
     jose "^5.2.1"
 

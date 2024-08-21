@@ -16,8 +16,8 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@anon/actions": "^0.1.1",
-    "@anon/sdk-typescript": "^0.6.0",
+    "@anon/actions": "^0.2.0",
+    "@anon/sdk-typescript": "^0.7.0",
     "@playwright/test": "^1.44.1",
     "dotenv": "^16.4.5",
     "node-fetch": "^3.3.2"
