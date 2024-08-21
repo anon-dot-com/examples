@@ -20,17 +20,17 @@
     "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.24"
 
-"@anon/link-types@^0.5.1":
-  version "0.5.1"
-  resolved "https://npm.cloudsmith.io/anon/anon-sdk/@anon/link-types/-/0.5.1/link-types-0.5.1.tgz#79c6017114df2d31ade37af2cf33d768bc017a8c"
-  integrity sha512-YrGBiDYwX6qBiJoN64iJrW57hd3R8YgzEQw5OSWCyiGaKZHWTWXgNIEdY/6+MGACiz6FY/o3fiJgbV1UmmCqlA==
+"@anon/link-types@^0.6.0":
+  version "0.6.0"
+  resolved "https://npm.cloudsmith.io/anon/anon-sdk/@anon/link-types/-/0.6.0/link-types-0.6.0.tgz#0f3e7de55a8882edc13da708b912b5d072b95961"
+  integrity sha512-Nn3GlPnSAWdXkQdORmcagL803hk4madWoDF1nljk/zT0CCcinDt4Oih7YHLMysfJ6qORuPRwftBLiDXSguA9FA==
 
-"@anon/sdk-web-link-typescript@^0.5.1":
-  version "0.5.1"
-  resolved "https://npm.cloudsmith.io/anon/anon-sdk/@anon/sdk-web-link-typescript/-/0.5.1/sdk-web-link-typescript-0.5.1.tgz#9b2ea9b9ae94767de1e57af55a63459d3d5741f3"
-  integrity "sha1-my6pua6Udn3h5Xr1WmNFnT1XQfM= sha512-sdkUZAPND9QQDQdMZckwxszxM3H2NIjzSrb8AC7N9ezuESFeet9h1CbyusFlZXyp6yUKT1aC0Rq/O1B/7j6www=="
+"@anon/sdk-web-link-typescript@^0.6.0":
+  version "0.6.0"
+  resolved "https://npm.cloudsmith.io/anon/anon-sdk/@anon/sdk-web-link-typescript/-/0.6.0/sdk-web-link-typescript-0.6.0.tgz#bae8dc53c3176a4088fac79bc12ad429c94742ab"
+  integrity sha512-RATID6KPOqQkk09f3wbXzI1hfx4qWNcTciFU7GyyqcnkVqtejKU7Q+b7yh0BXe/EXYstmZ/eZFdaF7Fh97wIrw==
   dependencies:
-    "@anon/link-types" "^0.5.1"
+    "@anon/link-types" "^0.6.0"
 
 "@apideck/better-ajv-errors@^0.3.1":
   version "0.3.6"
