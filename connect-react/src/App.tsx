@@ -5,7 +5,6 @@ import { getSdkClientIdFromIdToken } from "./decode-jwt";
 const API_KEY: string = "YOUR API KEY HERE";
 
 function App() {
-  // TODO loading spinner
   const open = async () => {
     const APP_USER_ID = "quickstart-user";
 
@@ -15,8 +14,7 @@ function App() {
 
     const environment = "sandbox" as const;
 
-    // Get appUserIdToken + clientId // TODO remove clientId
-    // TODO use SDK
+    // Get appUserIdToken + clientId
     const appUserIdToken = (await (await fetch(`https://svc.${environment}.anon.com/org/appUserIdToken`, {
       method: "POST",
       headers: {
@@ -36,7 +34,7 @@ function App() {
       // Update per the app you're testing with.
       app: "linkedin",
       company: "Anon Quickstart App",
-      companyLogo: "", // TODO
+      companyLogo: "", // Your logo here
       chromeExtensionId: "lbgbplnejdpahnfmnphghjlbedpjjbgd",
     };
 
