@@ -22,7 +22,7 @@ extension EnvironmentValues {
 }
 
 let anonConfig = Config(
-    environment: .staging,
+    environment: .sandbox,
     clientId: ProcessInfo.clientIdentifier,
     appUserIdToken: ProcessInfo.applicationUserIdentifiterToken
 )
@@ -104,7 +104,7 @@ struct AppList: View {
                 ui: UIConfig(
                     organizationName: "Example App",
                     // Your organization's icon URL
-                    organizationIconUrl: URL(string: "https://example.com/favicon.ico"),
+                    organizationIconUrl: URL(string: "https://cdn.prod.website-files.com/65aa784d1e7b42a7f2f428bb/65c30d047199273eb47d3b35_favicon.ico"),
                     // Theme selection
                     theme: .dark
                 )
