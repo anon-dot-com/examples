@@ -22,7 +22,7 @@ extension EnvironmentValues {
 }
 
 let anonConfig = Config(
-    environment: .sandbox,
+    environment: .staging,
     clientId: ProcessInfo.clientIdentifier,
     appUserIdToken: ProcessInfo.applicationUserIdentifiterToken
 )

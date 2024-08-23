@@ -36,6 +36,7 @@
 		512F3B652C3F50F2005C33F7 /* LinkClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		512F3B672C3F50F2005C33F7 /* LinkClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkClipApp.swift; sourceTree = "<group>"; };
 		512F3B712C3F50F3005C33F7 /* LinkClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LinkClip.entitlements; sourceTree = "<group>"; };
+		513AE26C2C7942810013401B /* Tokens.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Tokens.xcconfig; sourceTree = "<group>"; };
 		516B06C22C65CD2D00A9FA83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D25FA3682C2621D100ED0F2F /* Anon Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anon Link.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25FA36B2C2621D100ED0F2F /* AnonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonApp.swift; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 		D25FA35F2C2621D100ED0F2F = {
 			isa = PBXGroup;
 			children = (
+				513AE26C2C7942810013401B /* Tokens.xcconfig */,
 				51EDDC922C6527E00074F74D /* Shared */,
 				D25FA36A2C2621D100ED0F2F /* AnonApp */,
 				512F3B662C3F50F2005C33F7 /* LinkClip */,
@@ -354,6 +356,7 @@
 		};
 		D25FA3752C2621D200ED0F2F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 513AE26C2C7942810013401B /* Tokens.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -426,6 +429,7 @@
 		};
 		D25FA3762C2621D200ED0F2F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 513AE26C2C7942810013401B /* Tokens.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
