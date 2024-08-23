@@ -69,6 +69,16 @@
             value = "YES"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "ANON_CLIENT_ID"
+            value = "$(ANON_CLIENT_ID)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "ANON_USER_ID_TOKEN"
+            value = "$(ANON_USER_ID_TOKEN)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
