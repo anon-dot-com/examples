@@ -1,0 +1,11 @@
+//
+//  Tokens.xcconfig
+//  Anon
+//
+//  Created by Sam Green on 8/23/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+ANON_CLIENT_ID=
+ANON_USER_ID_TOKEN=

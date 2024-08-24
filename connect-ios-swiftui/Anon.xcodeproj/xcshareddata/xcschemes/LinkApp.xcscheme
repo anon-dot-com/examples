@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1540"
-   version = "1.7">
+   version = "2.1">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES"
@@ -16,10 +16,20 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D25FA3672C2621D100ED0F2F"
-               BuildableName = "connect-ios-swiftui.app"
-               BlueprintName = "connect-ios-swiftui"
-               ReferencedContainer = "container:connect-ios-swiftui.xcodeproj">
+               BuildableName = "Anon Link.app"
+               BlueprintName = "Anon"
+               ReferencedContainer = "container:Anon.xcodeproj">
             </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <TestPlanReference
+               reference = "container:AnonApp.xctestplan">
+            </TestPlanReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
@@ -27,8 +37,13 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      shouldAutocreateTestPlan = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <TestPlans>
+         <TestPlanReference
+            reference = "container:AnonApp.xctestplan"
+            default = "YES">
+         </TestPlanReference>
+      </TestPlans>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -45,15 +60,35 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D25FA3672C2621D100ED0F2F"
-            BuildableName = "connect-ios-swiftui.app"
-            BlueprintName = "connect-ios-swiftui"
-            ReferencedContainer = "container:connect-ios-swiftui.xcodeproj">
+            BuildableName = "Anon Link.app"
+            BlueprintName = "Anon"
+            ReferencedContainer = "container:Anon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "ANON_DEBUG"
             value = "true"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "IDEPreferLogStreaming=YES"
+            value = "YES"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "CA_LAYER_SURFACE"
+            value = "1"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "ANON_CLIENT_ID"
+            value = "$(ANON_CLIENT_ID)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "ANON_USER_ID_TOKEN"
+            value = "$(ANON_USER_ID_TOKEN)"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
@@ -69,9 +104,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D25FA3672C2621D100ED0F2F"
-            BuildableName = "connect-ios-swiftui.app"
-            BlueprintName = "connect-ios-swiftui"
-            ReferencedContainer = "container:connect-ios-swiftui.xcodeproj">
+            BuildableName = "Anon Link.app"
+            BlueprintName = "Anon"
+            ReferencedContainer = "container:Anon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
