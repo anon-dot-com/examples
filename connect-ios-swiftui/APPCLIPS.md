@@ -39,7 +39,7 @@ The following example fetches the metadata and then passes it to a link view.
 
 ```
 let provider = LPMetadataProvider()
-let url = URL(string: "https://clips.anon.com/l/facebook")!
+let url = URL(string: "https://clip.anon.com?id=facebook")!
 var linkView = ... // A reference to the link view. This could 
 // also be a custom view that contains the LPLinkView.
 
