@@ -38,6 +38,8 @@
 		512F3B712C3F50F3005C33F7 /* LinkClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LinkClip.entitlements; sourceTree = "<group>"; };
 		513AE26C2C7942810013401B /* Tokens.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Tokens.xcconfig; sourceTree = "<group>"; };
 		516B06C22C65CD2D00A9FA83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		518C09532C7D47CB00FADEF7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		518C09542C7D47DD00FADEF7 /* APPCLIPS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = APPCLIPS.md; sourceTree = "<group>"; };
 		D25FA3682C2621D100ED0F2F /* Anon Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anon Link.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25FA36B2C2621D100ED0F2F /* AnonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonApp.swift; sourceTree = "<group>"; };
 		D25FA36D2C2621D100ED0F2F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,8 @@
 		D25FA35F2C2621D100ED0F2F = {
 			isa = PBXGroup;
 			children = (
+				518C09532C7D47CB00FADEF7 /* README.md */,
+				518C09542C7D47DD00FADEF7 /* APPCLIPS.md */,
 				513AE26C2C7942810013401B /* Tokens.xcconfig */,
 				51EDDC922C6527E00074F74D /* Shared */,
 				D25FA36A2C2621D100ED0F2F /* AnonApp */,
