@@ -4,7 +4,7 @@
 
 > Make use of our publicly deployed App Clip instead! 
 > 
-> You can even [launch our App Clip from within your iOS Application](https://developer.apple.com/documentation/appclip/launching-another-app-s-app-clip-from-your-app) this integration is quick and painless, and arguably one of the easiest integrations of any SDK these days.
+> You can even [launch our App Clip from within your iOS Application](https://developer.apple.com/documentation/appclip/launching-another-app-s-app-clip-from-your-app) this integration is quick and painless!
 > 
 > If you'd like to link to the Anon App Clip simply make a link of the form https://clip.anon.com?id=#{integration} where #{integration} is one of our supported integrations in all lower case (e.g.):
 > 
