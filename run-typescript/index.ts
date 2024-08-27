@@ -1,15 +1,32 @@
+/**
+ * @file index.ts
+ * 
+ * Welcome to the Anon run-typescript example! This script demonstrates how to use the Anon Typescript SDK and its actions to interact with various services.
+ * 
+ * ## Why Use the Anon Typescript SDK?
+ * 
+ * One of the standout features of the Anon SDK is its ability to run automated delegated actions for your users by utilizing their sessions. 
+ * This means you can perform actions on behalf of your users in a secure and efficient manner, enhancing the user experience and streamlining workflows.
+ * The Anon SDK provides a powerful and flexible way to automate interactions with different web services. It comes 
+ * with a variety of pre-built actions, but the true power lies in its extensibility. By writing your own actions, you 
+ * can tailor the SDK to meet your specific needs and workflows.
+ * 
+ */
+
 import { LinkedIn, NetworkHelper } from "@anon/actions";
 import {
   Client,
   Environment,
+  SessionNotFoundError,
   executeRuntimeScript,
-  setupAnonBrowserWithContext,
+  setupAnonBrowserWithContext
 } from "@anon/sdk-typescript";
 import dotenv from "dotenv";
 import path from "path";
-import { Page } from "playwright-core";
+import { Page } from "playwright";
 import { fileURLToPath } from "url";
-import { APP_URLS, AppName, DO_DELETE_SESSION, NETWORK_TIMEOUT_MS } from "./actions/config.js";
+import { APP_URLS, AppName, DO_DELETE_SESSION, NETWORK_TIMEOUT_MS, } from "./actions/config.js";
+import * as YourCustomAction from "./actions/yourCustomAction.js";
 
 console.log("Starting script execution...");
 
@@ -23,55 +40,27 @@ console.log("Environment variables loaded.");
 const APP_USER_ID = process.env.ANON_APP_USER_ID!;
 const API_KEY = process.env.ANON_API_KEY!;
 const ANON_ENV = process.env.ANON_ENV! as Environment;
-const APP: AppName = "linkedin";
 
-// Choose your the action you want to run based on the app selected
-// Check out other out-of-the-box actions at https://github.com/anon-dot-com/actions
 const networkHelper = new NetworkHelper(NETWORK_TIMEOUT_MS)
-let runAction = LinkedIn.createPost(networkHelper,
-  `I'm testing Anon.com and automatically generated this post in < 5 minutes.
-   Find out more about using Anon to automate your agent automations at Anon.com.`
-);
 
-// You can even write your own custom action and use the Anon actions to help you write it
-const sendMessageToConnections = (messageText: string, n: number) => async (page: Page) => {
-  await networkHelper.waitForPageLoad(page);
-  await networkHelper.waitForNetworkIdle(page)
-  // Get all connections
-  const connections = await LinkedIn.getConnections(networkHelper)(page);
-
-  for (const engineer of connections.slice(0, n)) {
-    try {
-
-      // Navigate to the engineer's profile
-      await page.goto(engineer.profileUrl)
-      await networkHelper.waitForPageLoad(page);
-
-      // Send the message
-      await LinkedIn.sendMessageOnProfilePage(networkHelper, messageText, page);
-
-      console.log(`Message sent to ${engineer.name}`);
-    } catch (error) {
-      console.error(`Failed to send message to ${engineer.name}:`, error);
-    }
-
-    // Add a delay between messages to avoid rate limiting
-    await page.waitForTimeout(5000); // 5 second delay
-  }
-}
-
-/**
- * Uncomment the code to try out your custom action
- */
-// runAction = sendMessageToConnections(
-//   `Hi Friend, I used the Anon SDK to send you this message. 
-//   Try it out at https://docs.anon.com/docs/general/quickstart`,
-//   5);
-
-
-
-
-
+const SHOULD_RUN_BUILTIN_ACTION = true;
+const APP : { name: AppName, action: (page: Page) => Promise<any> } = {
+  name: "linkedin" as AppName,
+  
+  // Choose your the action you want to run based on the app selected.
+  // Check out other out-of-the-box actions at https://github.com/anon-dot-com/actions
+  // Make sure that the action that you want to execute matches with the name of the app
+  action: (SHOULD_RUN_BUILTIN_ACTION 
+    // You can run Anon's out-of-the-box actions
+    ? LinkedIn.getConnections(networkHelper)
+    // Or you can write your own custom action and run it. Checkout actions/yourCustomAction.ts for more details
+    : (page: Page) => 
+      YourCustomAction.sendMessageToConnections( 
+        networkHelper,
+        `Hi Friend, I used the Anon SDK to send you this message. 
+            Try it out at https://docs.anon.com/docs/general/quickstart`,
+          5)(page))
+};
 
 // Validate environment variables
 [
@@ -89,10 +78,10 @@ console.log("Configuration set:");
 console.log(`APP_USER_ID: ${APP_USER_ID ? "Set" : "Not set"}`);
 console.log(`API_KEY: ${API_KEY ? "Set" : "Not set"}`);
 console.log(`ANON_ENV: ${ANON_ENV}`);
-console.log(`APP: ${APP}`);
+console.log(`APP Name: ${APP.name}`);
 
 const account = {
-  app: APP,
+  app: APP.name,
   userId: APP_USER_ID,
 };
 
@@ -103,35 +92,56 @@ const client = new Client({
 });
 console.log("Anon client created.");
 
+// verify if the user has their session active
+const getSessionError = `You are unable to run a ${APP} action since your session cannot be found. Please run the 'connect-react' or 'connect-vue' example to run the example`
+try {
+  await client.getSession({
+    account: {
+      ownerId: APP_USER_ID,
+      domain: APP.name,
+    },
+  });
+} catch (error) {
+  if (error instanceof SessionNotFoundError) {
+    throw new Error(getSessionError);
+  } else {
+    throw error;
+  }
+}
+
 type AccountInfo = { ownerId: string, domain: string }
-const accountInfo: AccountInfo = { ownerId: APP_USER_ID, domain: account.app };
+const accountInfo: AccountInfo = { ownerId: APP_USER_ID, domain: APP.name };
 
 const main = async () => {
   console.log(`Requesting ${account.app} session for app user id "${APP_USER_ID}"...`);
   try {
     console.log("Setting up Anon browser with context...");
-    const { browser, browserContext } = await setupAnonBrowserWithContext(
+    const { browserContext } = await setupAnonBrowserWithContext(
       client,
       account,
-      { type: "local", input: { headless: false } },
+      { type: "local", input: {headless: false} },
     );
     console.log("Anon browser setup complete.");
 
+    console.log("Getting first page from browser context...");
+    console.log("Page acquired.");
+
     console.log("Executing runtime script...");
-    await executeRuntimeScript({
+    const result = await executeRuntimeScript({
       client,
       account,
       target: { browserContext },
-      initialUrl: APP_URLS[APP],
+      initialUrl: APP_URLS[APP.name],
       cleanupOptions: { closePage: true, closeBrowserContext: true },
-      run: runAction,
+      run: APP.action,
     });
     console.log("Runtime script execution completed.");
 
+    console.log(`Script execution result:\n${JSON.stringify(result)}`);
 
     // Demo `getSessionStatus`
     let sessionStatus = await client.getSessionStatus({ account: accountInfo });
-    console.log(`Client session status: ${JSON.stringify(sessionStatus)}`);
+    console.log(`Client session status:\n${JSON.stringify(sessionStatus, null, 2)}`);
 
     if (DO_DELETE_SESSION) {
       await demoDeleteSession(accountInfo);
@@ -150,6 +160,7 @@ const demoDeleteSession = async (accountInfo: AccountInfo) => {
   const sessionStatus = await client.getSessionStatus({ account: accountInfo });
   console.log(`After deleting session, client session status: ${JSON.stringify(sessionStatus)}`);
 }
+
 
 console.log("Starting main function...");
 main()

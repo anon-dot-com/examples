@@ -13,7 +13,7 @@
   "devDependencies": {
     "ts-node": "^10.9.1",
     "tsx": "^4.10.3",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "@anon/actions": "^0.2.0",
