@@ -12,6 +12,11 @@
 > - https://clip.anon.com?id=resy
 > - https://clip.anon.com?id=google
 
+
+> **Note**
+>
+> The lack of a trailing backslash at the end of the link is intentional. Including a backslash before the `?id` is a mistake and will cause the QR code to not be recognized.
+
 # Running the Example App Clip
 
 Run the Anon App Clip directly in your local Xcode. You'll see how you can present integrations to your users and link their sessions to your organization.
@@ -35,10 +40,6 @@ The following steps can be accomplished in less than two hours, but you'll need 
 The actual configuration of your App Clip experiences typically happens when you upload the first build that contains an App Clip to App Store Connect. However, it’s important you understand how App Clip experiences work before you start developing your App Clip. You need to identify invocations, invocation URLs, and plan changes to your code before or in parallel to implementing functionality provided by your App Clip. 
 
 Additionally, to support advanced App Clip experiences or iOS versions older than iOS 16.4, you need to make changes to your server to associate your App Clip with your website.
-
-> **Note**
->
-> The lack of a trailing backslash at the end of the link is intentional. Including a backslash before the `?id` is a mistake and will cause the QR code to not be recognized.
 
 ## Preview the Anon App Clip from within your App
 
