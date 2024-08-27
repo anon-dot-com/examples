@@ -44,8 +44,8 @@ Additionally, to support advanced App Clip experiences or iOS versions older tha
 
 Use the [Link Presentation](https://developer.apple.com/documentation/LinkPresentation) framework to include a rich preview of the App Clip in your app that people tap to launch the App Clip directly:
 
-1. To fetch metadata using the invocation URL of the App Clip, use [`LPMetadataProvider`](https://developer.apple.com/documentation/LinkPresentation/LPMetadataProvider).
-2. To display the App Clip preview, use the metadata you receive in an [`LPLinkView`](https://developer.apple.com/documentation/LinkPresentation/LPLinkView).
+1. Fetch metadata using the invocation URL of the App Clip with [`LPMetadataProvider`](https://developer.apple.com/documentation/LinkPresentation/LPMetadataProvider).
+2. Display the App Clip preview with the metadata you receive in an [`LPLinkView`](https://developer.apple.com/documentation/LinkPresentation/LPLinkView).
 
 The following example fetches the metadata and then passes it to a link view.
 
