@@ -1,3 +1,17 @@
+# Want instant results?
+
+**COMING SOON** 
+
+> Make use of our publicly deployed App Clip instead! 
+> 
+> You can even [launch our App Clip from within your iOS Application](https://developer.apple.com/documentation/appclip/launching-another-app-s-app-clip-from-your-app) this integration is quick and painless, and arguably one of the easiest integrations of any SDK these days.
+> 
+> If you'd like to link to the Anon App Clip simply make a link of the form https://clip.anon.com?id=#{integration} where #{integration} is one of our supported integrations in all lower case (e.g.):
+> 
+> - https://clip.anon.com?id=paypal
+> - https://clip.anon.com?id=resy
+> - https://clip.anon.com?id=google
+
 # Running the Example App Clip
 
 Run the Anon App Clip directly in your local Xcode. You'll see how you can present integrations to your users and link their sessions to your organization.
@@ -21,18 +35,6 @@ The following steps can be accomplished in less than two hours, but you'll need 
 The actual configuration of your App Clip experiences typically happens when you upload the first build that contains an App Clip to App Store Connect. However, it’s important you understand how App Clip experiences work before you start developing your App Clip. You need to identify invocations, invocation URLs, and plan changes to your code before or in parallel to implementing functionality provided by your App Clip. 
 
 Additionally, to support advanced App Clip experiences or iOS versions older than iOS 16.4, you need to make changes to your server to associate your App Clip with your website.
-
-# Need immediate results?
-
-If this all sounds like too much work, or you just want to get a feel for App Clips with Anon, please make use of our publicly deployed App Clip instead! 
-
-You can even [launch our App Clip from within your iOS Application](https://developer.apple.com/documentation/appclip/launching-another-app-s-app-clip-from-your-app) this integration is quick and painless, and arguably one of the easiest integrations of any SDK these days.
-
-If you'd like to link to the Anon App Clip simply make a link of the form https://clip.anon.com?id=#{integration} where #{integration} is one of our supported integrations in all lower case (e.g.):
-
-- https://clip.anon.com?id=paypal
-- https://clip.anon.com?id=resy
-- https://clip.anon.com?id=google
 
 > **Note**
 >
