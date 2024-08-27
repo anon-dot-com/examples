@@ -8,13 +8,12 @@
 > 
 > If you'd like to link to the Anon App Clip simply make a link of the form https://clip.anon.com?id=#{integration} where #{integration} is one of our supported integrations in all lower case (e.g.):
 > 
-> - https://clip.anon.com?id=paypal
-> - https://clip.anon.com?id=resy
-> - https://clip.anon.com?id=google
+>- https://clip.anon.com?id=paypal
+>- https://clip.anon.com?id=resy
+>- https://clip.anon.com?id=google
 
 
-> **Note**
->
+> ### Note
 > The lack of a trailing backslash at the end of the link is intentional. Including a backslash before the `?id` is a mistake and will cause the QR code to not be recognized.
 
 # Running the Example App Clip
@@ -111,8 +110,7 @@ You may also have to associate your App Clip with your website by adding the [`A
 
 When it’s time to test your App Clip, use Xcode to test the launch experience locally or test it with [TestFlight](https://developer.apple.com/testflight/). For more information, see [Testing the launch experience of your App Clip](https://developer.apple.com/documentation/appclip/testing-the-launch-experience-of-your-app-clip).
 
-> **Important**
->
+>### Important
 > When people install the corresponding app for an App Clip, the full app replaces the App Clip. Every invocation from that moment on launches the full app instead of the App Clip. As a result, the full app must handle all invocations and offer the same functionality that the App Clip provides.
 
 No matter which invocation you want to support for your App Clip, you need to create a default App Clip experience in [App Store Connect](https://appstoreconnect.apple.com/login). With a default App Clip experience, you can enable default App Clip links to support a subset of invocations without having to make changes to your server. For some App Clips, this minimal configuration may be enough to provide their functionality on their supported platforms. However, your app could benefit from suppporting invocations that require associating your App Clip with your website.
