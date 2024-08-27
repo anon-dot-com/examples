@@ -1,7 +1,6 @@
 # Anon iOS SDK SwiftUI Example
 
-0. Using your credentials provided by Anon, go to `connect-ios-swiftui/ContentView.swift` and fill in the values `clientId` and `appUserIdToken`.
-
-1. Open the `connect-ios-swiftui` project in VS Code.
-
-2. Press "Run Build" on "iPhone".
+1. Paste your (SDK Client ID) `ANON_CLIENT_ID` and (User Token) `ANON_USER_ID_TOKEN` environment variables from https://console.anon.com into `Tokens.xcconfig`.
+1. Open Xcode and select `LinkApp` as the build target. 
+1. Build and Run to see a basic Anon Integration in your iOS simulator, or 
+    1. adjust the **Bundle ID** to one that your organization controls and test locally on your device

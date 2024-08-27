@@ -1,3 +1,13 @@
+# Running the Example App Clip
+
+Run the Anon App Clip directly in your local Xcode. You'll see how you can present integrations to your users and link their sessions to your organization.
+
+## Setup
+
+1. Paste your (SDK Client ID) `ANON_CLIENT_ID` and (User Token) `ANON_USER_ID_TOKEN` environment variables from https://console.anon.com into `Tokens.xcconfig`.
+1. Open Xcode and select either `LinkApp` or `LinkClip` as the build target. `LinkClip` is the **App Clip** experience and `LinkApp` is the complete installed application. Please be aware that the two are mutually exclusive. You can't have an app and it's child **App Clip** installed concurrently. This is due to a limitation in how App Clips are packaged within the App itself.
+1. Click run to see the **App Clip** in your iOS simulator, or adjust the **Bundle ID** to one that your organization controls and test locally on your device. Please note that you can adjust the tested **App Clip** URL in the **Xcode Scheme Settings** to speed up your testing.
+
 # Working with Anon App Clips
 
 Deploying an App Clip all the way to production requires a number of steps and has a deep blocker based on Apple's actions. We'll summarize the steps below, but you're expected to complete them in your own App Store Connect console.
