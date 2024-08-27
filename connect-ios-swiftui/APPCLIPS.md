@@ -80,7 +80,7 @@ To associate your app and App Clip with your website:
 * Specify your invocation URL’s domain within an [`Associated Domains Entitlement`](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_associated-domains) on both your app and App Clip targets in Xcode.
 * Add or modify an AASA file on the domain’s server.
 
-The system verifies that both the entitlement and the configuration in the AASA file match before it permits the invocation of the App Clip. App Store Connect also verifies the match when you create an App Clip experience; for more information, see [Set up an App Clip experience](https://help.apple.com/app-store-connect/#/dev43c15c696).
+iOS verifies that both the entitlement and the configuration in the AASA file match before it permits the invocation of the App Clip. App Store Connect also verifies the match when you create an App Clip experience; for more information, see [Set up an App Clip experience](https://help.apple.com/app-store-connect/#/dev43c15c696).
 
 ## A Temporary Workaround
 
