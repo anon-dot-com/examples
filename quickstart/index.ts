@@ -15,8 +15,8 @@ const API_KEY: string = "YOUR API KEY HERE";
 // Pick which app you'd like to link
 const APP: string = "linkedin";
 const INITIAL_URL: string = "https://linkedin.com"
-const APP_USER_ID: string = "default-app-user";
-const ENVIRONMENT: Environment = "local";
+const APP_USER_ID: string = "quickstart-user";
+const ENVIRONMENT: Environment = "sandbox";
 
 // Choose your the action you want to run based on the app selected
 // Check out other out-of-the-box actions at https://github.com/anon-dot-com/actions
