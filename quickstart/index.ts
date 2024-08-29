@@ -1,5 +1,4 @@
 import { exec } from "child_process";
-import http from 'http';
 import type { Page } from "playwright";
 import {
   Client,
@@ -8,6 +7,7 @@ import {
   setupAnonBrowserWithContext,
 } from "@anon/sdk-typescript";
 import { getSdkClientIdFromIdToken } from "./decode-jwt.js";
+import Fastify from 'fastify'
 
 // Get your API Key at https://console.anon.com
 const API_KEY: string = "YOUR API KEY HERE";
@@ -15,92 +15,140 @@ const API_KEY: string = "YOUR API KEY HERE";
 // Pick which app you'd like to link
 const APP: string = "linkedin";
 const INITIAL_URL: string = "https://linkedin.com"
-const APP_USER_ID: string = "quickstart-user";
-const ENVIRONMENT: Environment = "sandbox"
-// const RUN_ACTION = async (page: Page) => {
-//   // perform any actions you'd like!
-//   await page.waitForTimeout(100000);
-// };
+const APP_USER_ID: string = "default-app-user";
+const ENVIRONMENT: Environment = "local";
 
 // Choose your the action you want to run based on the app selected
 // Check out other out-of-the-box actions at https://github.com/anon-dot-com/actions
 import { LinkedIn, NetworkHelper } from "@anon/actions";
-// const RUN_ACTION = LinkedIn.createPost(
-//   new NetworkHelper(5000 /* 5 seconds */),
-//   `I'm testing Anon.com and automatically generated this post in < 5 minutes.
-//   Find out more about using Anon to automate your agent automations at Anon.com.`
-// );
-const RUN_ACTION = LinkedIn.sendMessage(
+const RUN_ACTION = LinkedIn.createPost(
   new NetworkHelper(5000 /* 5 seconds */),
-  "Joshua Tomazin",
   `I'm testing Anon.com and automatically generated this post in < 5 minutes.
-  Find out more about using Anon to automate your agent automations at Anon.com.`
+  Find out more about using Anon to automate your agent actions at Anon.com.`
 );
+// const RUN_ACTION = LinkedIn.sendMessage(
+//   new NetworkHelper(5000 /* 5 seconds */),
+//   "YOUR CONNECTION'S NAME",
+//   `I'm testing Anon.com and automatically send this message in < 5 minutes.
+//   Find out more about using Anon to automate your agent actions at Anon.com.`
+// );
+// const RUN_ACTION = async (page: Page) => {
+//   // perform any actions you'd like!
+//   await page.waitForTimeout(5000);
+//   // await page.goto("https://myactivity.google.com");
+//   await page.waitForTimeout(5000);
+// };
+    
+const BACKEND_PORT: number = 4001
 
 // Start your backend server that uses the Anon Runtime SDK
 const backend = async () => {
-
-  // const hostname = '127.0.0.1';
-  // const port = 3000;
-
-  // const server = http.createServer((req, res) => {
-  //   // a session was linked, run it!
-  //   res.statusCode = 200;
-  //   res.setHeader('Content-Type', 'text/plain');
-  //   res.end('Hello, World!\n');
-  // });
-
-  // server.listen(port, hostname, () => {
-  //   console.log(`Server running at http://${hostname}:${port}/`);
-  // }); 
-
-  const account = {
-    app: APP,
-    userId: APP_USER_ID,
-  };
-
-  console.log("Creating Anon client...");
-  const client = new Client({
-    environment: ENVIRONMENT,
-    apiKey: API_KEY,
+  const fastify = Fastify({
+    logger: true
   });
 
-  console.log(`Requesting ${account.app} session for app user id "${APP_USER_ID}"...`);
-  try {
-    console.log("Setting up Anon browser with context...");
-    const { browserContext } = await setupAnonBrowserWithContext(
-      client,
-      account,
-      { type: "local", input: { headless: false } },
+  // Declare a route to get a link url
+  fastify.get('/linkUrl', async (req, reply) => {
+    // Issue an app user id token
+    const res = await fetch(
+      `http://svc.${ENVIRONMENT}.anon.com/org/appUserIdToken`, 
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          appUserId: APP_USER_ID
+        })
+      }
     );
-    console.log("Anon browser setup complete.");
+    const { appUserIdToken } = await res.json() as { appUserIdToken: string };
+    console.log(`Generated appUserIdToken: ${appUserIdToken}\n`);
 
-    console.log("Executing runtime script...");
-    await executeRuntimeScript({
-      client,
-      account,
-      target: { browserContext },
-      initialUrl: INITIAL_URL,
-      cleanupOptions: { closePage: true, closeBrowserContext: true },
-      run: RUN_ACTION,
-    });
-    console.log("Runtime script execution completed.");
+    // get the sdk client id
+    const clientId = getSdkClientIdFromIdToken(appUserIdToken);
 
-    // Demo `getSessionStatus`
-    const sessionStatus = await client.getSessionStatus({ 
-      account: { 
-        ownerId: APP_USER_ID, 
-        domain: account.app 
-      } 
+    // generate a random state for secure verification
+    const state = JSON.stringify({
+      verification: "randomString"
     });
-    console.log(`Client session status: ${JSON.stringify(sessionStatus)}`);
-    console.log("Script execution finished successfully.");
-  } catch (error) {
-    console.error("Error:", error);
+
+    // generate a link url
+    const params: URLSearchParams = new URLSearchParams({
+      clientId,
+      app: APP,
+      appUserIdToken,
+      redirectUrl: `http://localhost:${BACKEND_PORT}/redirect`,
+      state
+    });
+    
+    const generateLinkUrl: string = `http://link.svc.${ENVIRONMENT}.anon.com/api/url?${params.toString()}`;
+    console.log(`Sending request to generate linkUrl`);
+    
+    const generateLinkUrlRes = await fetch(generateLinkUrl);
+    const { url: linkUrl } = await generateLinkUrlRes.json() as { url: string };
+  
+    // return the linkUrl to your application
+    return { linkUrl };
+  })
+
+  // Declare a route for the redirect url
+  fastify.get('/redirect', async (req, res) => {
+    const account = {
+      app: APP,
+      userId: APP_USER_ID,
+    };
+  
+    const client = new Client({
+      environment: ENVIRONMENT,
+      apiKey: API_KEY,
+    });
+  
+    console.log(`Requesting ${account.app} session for app user id "${APP_USER_ID}"...`);
+    try {
+      console.log("Setting up Anon browser with context...");
+      const { browserContext } = await setupAnonBrowserWithContext(
+        client,
+        account,
+        { type: "local", input: { headless: false } },
+      );
+      console.log("Anon browser setup complete.");
+  
+      console.log("Executing runtime script...");
+      await executeRuntimeScript({
+        client,
+        account,
+        target: { browserContext },
+        initialUrl: INITIAL_URL,
+        cleanupOptions: { 
+          closePage: true, 
+          closeBrowserContext: true 
+        },
+        run: RUN_ACTION,
+      });
+      console.log("Runtime script execution completed.");
+      process.exit(0);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }); 
+
+  // Run the server!
+  try {
+    await fastify.listen({ port: BACKEND_PORT })
+  } catch (err) {
+    fastify.log.error(err)
+    process.exit(1)
   }
 }
 
-const frontend = async () => {
+// Start your frontend server that launches Anon Link 
+const frontend = async () => {  
+  // Get the link url
+  const res = await fetch(`http://localhost:${BACKEND_PORT}/linkUrl`);
+  const { linkUrl } = await res.json() as { linkUrl: string };
+
   // Open your system's default web browser
   const openBrowser = (url: string) => {
       let command: string;
@@ -120,43 +168,7 @@ const frontend = async () => {
       exec(command);
   };
 
-  // Link your user's session
-  const { appUserIdToken }: { appUserIdToken: string } = await fetch(
-    `https://svc.${ENVIRONMENT}.anon.com/org/appUserIdToken`, 
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        appUserId: APP_USER_ID
-      })
-    }
-  ).then(res => res.json());
-
-  const clientId = getSdkClientIdFromIdToken(appUserIdToken);
-
-  const linkParams = {
-    app: APP,
-    clientId,
-    appUserIdToken,
-    environment: ENVIRONMENT,
-    company: "Anonymity Labs",
-    // Any logo url
-    companyLogo: "https://avatars.githubusercontent.com/u/132958123?s=48&v=4",
-    // ID of the Anon Link Extension 
-    // https://chromewebstore.google.com/detail/anon-link/lbgbplnejdpahnfmnphghjlbedpjjbgd
-    chromeExtensionId: 'nhidfambhijngahjehgmldpnanljilid',
-  };
-
-  const linkUrl = `https://link.svc.${ENVIRONMENT}.anon.com?${new URLSearchParams(linkParams).toString()}`
-
   openBrowser(linkUrl);
 }
 
-// wait 20 seconds
-
-frontend()
-await new Promise(resolve => setTimeout(resolve, 2000));
-backend()
+backend().then(frontend);
