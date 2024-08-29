@@ -34,7 +34,7 @@ function App() {
       // Update per the app you're testing with.
       app: "linkedin",
       company: "Anon Quickstart App",
-      companyLogo: "", // Your logo here
+      companyLogo: "https://pub-dae6836ea721478b89301a8e71d52a33.r2.dev/anon/dev-images/anon-bow-256x256.png",
       chromeExtensionId: "lbgbplnejdpahnfmnphghjlbedpjjbgd",
     };
 
