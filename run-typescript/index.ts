@@ -11,6 +11,9 @@ import { Page } from "playwright-core";
 import { fileURLToPath } from "url";
 import { APP_URLS, AppName, DO_DELETE_SESSION, NETWORK_TIMEOUT_MS } from "./actions/config.js";
 
+// Get your API Key at https://console.anon.com
+const API_KEY: string = "YOUR_API_KEY_HERE";
+
 console.log("Starting script execution...");
 
 // Load environment variables from parent .env file
@@ -20,10 +23,13 @@ dotenv.config({ path: path.resolve(__dirname, ".env") });
 console.log("Environment variables loaded.");
 
 // Configuration
-const APP_USER_ID = process.env.ANON_APP_USER_ID!;
-const API_KEY = process.env.ANON_API_KEY!;
-const ANON_ENV = process.env.ANON_ENV! as Environment;
+const APP_USER_ID = "quickstart-user";
+const ANON_ENV: Environment = "sandbox";
 const APP: AppName = "linkedin";
+
+if (API_KEY === "YOUR API KEY HERE") {
+  throw new Error("Paste your API key into index.ts");
+}
 
 // Choose your the action you want to run based on the app selected
 // Check out other out-of-the-box actions at https://github.com/anon-dot-com/actions
@@ -64,7 +70,7 @@ const sendMessageToConnections = (messageText: string, n: number) => async (page
  * Uncomment the code to try out your custom action
  */
 // runAction = sendMessageToConnections(
-//   `Hi Friend, I used the Anon SDK to send you this message. 
+//   `Hi Friend, I used the Anon SDK to send you this message.
 //   Try it out at https://docs.anon.com/docs/general/quickstart`,
 //   5);
 
@@ -87,7 +93,6 @@ const sendMessageToConnections = (messageText: string, n: number) => async (page
 
 console.log("Configuration set:");
 console.log(`APP_USER_ID: ${APP_USER_ID ? "Set" : "Not set"}`);
-console.log(`API_KEY: ${API_KEY ? "Set" : "Not set"}`);
 console.log(`ANON_ENV: ${ANON_ENV}`);
 console.log(`APP: ${APP}`);
 

@@ -1,34 +1,52 @@
 import AnonLink from "@anon/sdk-web-link-typescript";
+import { getSdkClientIdFromIdToken } from "./decode-jwt";
+
+// Get your API Key at https://console.anon.com
+const API_KEY: string = "YOUR API KEY HERE";
 
 function App() {
-  const onSuccess = () => {
-    console.log("success");
-  };
-  const onExit = (error: any) => {
-    anonLinkInstance.destroy();
-  };
+  const open = async () => {
+    const APP_USER_ID = "quickstart-user";
 
-  const config = {
-    // Please reference ../.env.example for variable definitions
-    environment: (process.env.REACT_APP_ANON_ENV as any) || "sandbox",
-    clientId: process.env.REACT_APP_ANON_SDKCLIENT_ID!,
-    appUserIdToken: process.env.REACT_APP_ANON_APP_USER_ID_TOKEN!,
-    // Update per the app you're testing with.
-    app: "linkedin",
-    company: process.env.REACT_APP_ANON_COMPANY_NAME!,
-    companyLogo: process.env.REACT_APP_ANON_COMPANY_LOGO!,
-    chromeExtensionId: process.env.REACT_APP_ANON_CHROME_EXTENSION_ID!,
-  };
-  console.log(config);
+    if (API_KEY === "YOUR API KEY HERE") {
+      throw new Error("Paste your API key into App.tsx");
+    }
 
-  // Initialize AnonLink with configuration settings.
-  const anonLinkInstance = AnonLink.init({
-    config,
-    onSuccess, // Callback function to handle success events.
-    onExit, // Callback function to handle exit or failure events.
-  });
+    const environment = "sandbox" as const;
 
-  const open = () => {
+    // Get appUserIdToken + clientId
+    const appUserIdToken = (await (await fetch(`https://svc.${environment}.anon.com/org/appUserIdToken`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        appUserId: APP_USER_ID
+      })
+    })).json()).appUserIdToken as string;
+    const clientId = getSdkClientIdFromIdToken(appUserIdToken);
+
+    const config = {
+      environment,
+      clientId,
+      appUserIdToken,
+      // Update per the app you're testing with.
+      app: "linkedin",
+      company: "Anon Quickstart App",
+      companyLogo: "https://pub-dae6836ea721478b89301a8e71d52a33.r2.dev/anon/dev-images/anon-bow-256x256.png",
+      chromeExtensionId: "lbgbplnejdpahnfmnphghjlbedpjjbgd",
+    };
+
+    // Initialize AnonLink with configuration settings.
+    const anonLinkInstance = AnonLink.init({
+      config,
+      // Callback function to handle success events.
+      onSuccess: () => console.log("success"),
+      // Callback function to handle exit or failure events.
+      onExit: (error: any) => anonLinkInstance.destroy(),
+    });
+
     anonLinkInstance.open();
   };
 
