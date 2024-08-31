@@ -70,9 +70,9 @@ You can set the ports used by the backend and frontend servers via environment v
 ## Project Structure
 
 - `index.ts`: Main entry point, contains both backend and frontend logic
-- `decode-jwt.ts`: Utility functions for working with JWTs
 - `package.json`: Project dependencies and scripts
 - `tsconfig.json`: TypeScript configuration
+- `.npmrc`: NPM configuration for accessing Anon's private packages
 
 ## Dependencies
 
@@ -80,6 +80,7 @@ This project uses several key dependencies:
 
 - `@anon/sdk-typescript`: Anon's SDK for TypeScript
 - `@anon/actions`: Pre-built actions for various platforms
+- `jwt-decode`: JWT decoding library
 - `fastify`: Fast and low overhead web framework for Node.js
 - `playwright`: Browser automation library
 
