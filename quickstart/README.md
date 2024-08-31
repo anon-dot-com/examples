@@ -62,6 +62,11 @@ For a more detailed walkthrough, you can follow the official quickstart guide at
 
 You can customize the automated action by modifying the `RUN_ACTION` constant in `index.ts`. Some examples are provided, such as creating a post or sending a message on LinkedIn.
 
+You can set the ports used by the backend and frontend servers via environment variables:
+
+- `BACKEND_PORT`: The port used by the backend server (default: 4001)
+- `FRONTEND_PORT`: The port used by the frontend server (default: 4002)
+
 ## Project Structure
 
 - `index.ts`: Main entry point, contains both backend and frontend logic

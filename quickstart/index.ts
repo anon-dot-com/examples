@@ -10,6 +10,7 @@ import Fastify from 'fastify'
 import { jwtDecode, type JwtPayload } from "jwt-decode";
 
 const API_KEY: string = process.argv[2];
+const ENVIRONMENT: Environment = "sandbox";
 
 if (!API_KEY) {
   console.error(`
@@ -25,7 +26,10 @@ if (!API_KEY) {
 const APP: string = "linkedin";
 const INITIAL_URL: string = "https://linkedin.com"
 const APP_USER_ID: string = "quickstart-user";
-const ENVIRONMENT: Environment = "sandbox";
+
+// Additional configuration
+const BACKEND_PORT: number = parseInt(process.env.BACKEND_PORT ?? "4001");
+const FRONTEND_PORT: number = parseInt(process.env.FRONTEND_PORT ?? "4002");
 
 // Choose your the action you want to run based on the app selected
 // Check out other out-of-the-box actions at https://github.com/anon-dot-com/actions
@@ -47,9 +51,6 @@ const RUN_ACTION = LinkedIn.createPost(
 //   // await page.goto("https://myactivity.google.com");
 //   await page.waitForTimeout(5000);
 // };
-    
-const BACKEND_PORT: number = 4001
-const FRONTEND_PORT: number = 4002
 
 // Start your frontend server that launches Anon Link 
 const frontend = async () => {  
