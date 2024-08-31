@@ -13,14 +13,14 @@ This project demonstrates how to quickly set up and use Anon's SDK for automatin
 - Generate link URLs for connecting user accounts
 - Set up and use Anon's browser context
 - Execute automated actions on LinkedIn (e.g., creating posts, sending messages)
-- Simple backend server using Fastify
+- Simple backend and frontend servers using Fastify
 - Frontend demo for initiating the Anon Link process
 
 ## Prerequisites
 
 - Node.js
 - Yarn package manager
-- An Anon API Key (obtainable from [console.anon.com](https://console.anon.com))
+- An Anon API key (obtainable from [console.anon.com](https://console.anon.com))
 
 ## Installation
 
@@ -42,28 +42,25 @@ This project demonstrates how to quickly set up and use Anon's SDK for automatin
    yarn install
    ```
 
-4. Set up your API Key:
-   Open `index.ts` and replace `"YOUR API KEY HERE"` with your actual Anon API Key.
-
 ## Usage
 
 1. Start the backend server:
 
    ```bash
-   yarn start
+   yarn run quickstart <YOUR API KEY HERE>
    ```
 
-   This will start the Fastify server on port 4001 and automatically open your default web browser to initiate the Anon Link process.
+   This will start the backend and frontend servers on ports 4001 and 4002 respectively, and automatically open your default web browser to initiate the Anon Link process.
 
 2. Follow the on-screen instructions to connect your LinkedIn account using Anon Link.
 
-3. Once connected, the script will automatically execute the chosen action (e.g., creating a post on LinkedIn).
+3. Once connected, the script will automatically create a post on LinkedIn using [Anon's actions library](https://github.com/anon-dot-com/actions).
 
 For a more detailed walkthrough, you can follow the official quickstart guide at [docs.anon.com/docs/quickstart](https://docs.anon.com/docs/quickstart).
 
 ## Customization
 
-You can customize the automated action by modifying the `RUN_ACTION` constant in `index.ts`. Some examples are provided, such as creating a post or sending a message.
+You can customize the automated action by modifying the `RUN_ACTION` constant in `index.ts`. Some examples are provided, such as creating a post or sending a message on LinkedIn.
 
 ## Project Structure
 
@@ -90,7 +87,3 @@ This project is licensed under the MIT License.
 ## Support
 
 For any questions or support, please contact [support@anon.com](mailto:support@anon.com).
-
----
-
-**Note**: This project is part of Anon's private beta. To request access, visit [https://anondotcom.typeform.com/request-access](https://anondotcom.typeform.com/request-access?typeform-source=docs.anon.com).
