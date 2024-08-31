@@ -146,10 +146,10 @@ const backend = async () => {
       console.log(`[backend]:  Generated appUserIdToken: \n${appUserIdToken}\n`);
     }
 
-    // get the sdk client id from the app user id token
+    // Get the sdk client id from the app user id token
     const { sdkClientId: clientId } = jwtDecode<JwtPayload & { sdkClientId: string }>(appUserIdToken);
 
-    // generate a random state for secure verification
+    // Generate a random state for secure verification
     const state = JSON.stringify({
       verification: "randomString"
     });
@@ -168,7 +168,7 @@ const backend = async () => {
     const generateLinkUrlRes = await fetch(generateLinkUrl);
     const { url: linkUrl } = await generateLinkUrlRes.json() as { url: string };
   
-    // return the linkUrl to your application
+    // Return the linkUrl to your application
     return { linkUrl };
   })
 
