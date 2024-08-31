@@ -6,8 +6,8 @@ import {
   executeRuntimeScript,
   setupAnonBrowserWithContext,
 } from "@anon/sdk-typescript";
-import { getSdkClientIdFromIdToken } from "./decode-jwt.js";
 import Fastify from 'fastify'
+import { jwtDecode, type JwtPayload } from "jwt-decode";
 
 const API_KEY: string = process.argv[2];
 
@@ -146,8 +146,8 @@ const backend = async () => {
       console.log(`[backend]:  Generated appUserIdToken: \n${appUserIdToken}\n`);
     }
 
-    // get the sdk client id
-    const clientId = getSdkClientIdFromIdToken(appUserIdToken);
+    // get the sdk client id from the app user id token
+    const { sdkClientId: clientId } = jwtDecode<JwtPayload & { sdkClientId: string }>(appUserIdToken);
 
     // generate a random state for secure verification
     const state = JSON.stringify({
