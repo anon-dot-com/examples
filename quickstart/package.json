@@ -24,7 +24,6 @@
     "@anon/actions": "^0.1.1",
     "@anon/sdk-typescript": "^0.6.0",
     "fastify": "^4.28.1",
-    "jwt-decode": "^4.0.0",
     "playwright": "^1.46.1"
   }
 }

@@ -80,7 +80,6 @@ This project uses several key dependencies:
 
 - `@anon/sdk-typescript`: Anon's SDK for TypeScript
 - `@anon/actions`: Pre-built actions for various platforms
-- `jwt-decode`: JWT decoding library
 - `fastify`: Fast and low overhead web framework for Node.js
 - `playwright`: Browser automation library
 
