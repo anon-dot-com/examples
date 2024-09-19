@@ -7,7 +7,6 @@ import {
   setupAnonBrowserWithContext,
 } from "@anon/sdk-typescript";
 import Fastify from "fastify";
-import { jwtDecode, type JwtPayload } from "jwt-decode";
 
 const API_KEY: string = process.argv[2];
 const ENVIRONMENT: Environment = "sandbox";
@@ -136,60 +135,33 @@ const backend = async () => {
 
   // Declare a route to get a link url
   fastify.get("/linkUrl", async (req, reply) => {
-    console.log(
-      `[backend]:  Generating appUserIdToken for app user id "${APP_USER_ID}"`,
-    );
-    const res = await fetch(
-      `http://svc.${ENVIRONMENT}.anon.com/org/appUserIdToken`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          appUserId: APP_USER_ID,
-        }),
-      },
-    );
-    const { appUserIdToken } = (await res.json()) as { appUserIdToken: string };
-    if (!appUserIdToken) {
-      console.error(
-        "[backend]:  Failed to generate appUserIdToken. Please check your API Key.",
-      );
-      reply.code(500).send("Failed to generate appUserIdToken");
-      process.exit(1);
-    } else {
-      console.log(
-        `[backend]:  Generated appUserIdToken: \n${appUserIdToken}\n`,
-      );
-    }
-
-    // Get the sdk client id from the app user id token
-    const { sdkClientId: clientId } = jwtDecode<
-      JwtPayload & { sdkClientId: string }
-    >(appUserIdToken);
-
-    // Generate a random state for secure verification
-    const state = JSON.stringify({
-      verification: "randomString",
-    });
-
     console.log(`[backend]:  Generating an Anon Link URL`);
     const params: URLSearchParams = new URLSearchParams({
-      clientId,
       app: APP,
-      appUserIdToken,
+      appUserId: APP_USER_ID,
       redirectUrl: `http://localhost:${FRONTEND_PORT}/redirect`,
-      state,
+      // Generate a state for secure verification
+      state: JSON.stringify({
+        verification: APP_USER_ID,
+      }),
     });
 
-    console.log(
-      `[backend]:  Sending request to Anon's API to generate an Anon Link URL`,
-    );
     const generateLinkUrl: string = `http://link.svc.${ENVIRONMENT}.anon.com/api/url?${params.toString()}`;
-    const generateLinkUrlRes = await fetch(generateLinkUrl);
-    const { url: linkUrl } = (await generateLinkUrlRes.json()) as {
+    const generateLinkUrlRes = await fetch(generateLinkUrl, {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`
+      }
+    });
+    const generateLinkUrlJson = await generateLinkUrlRes.json();
+    
+    // Forward errors
+    if (generateLinkUrlRes.status !== 200) {
+      return reply
+        .status(generateLinkUrlRes.status)
+        .send(generateLinkUrlJson)
+    }
+
+    const { url: linkUrl } = generateLinkUrlJson as {
       url: string;
     };
 
