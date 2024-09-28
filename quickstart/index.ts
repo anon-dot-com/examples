@@ -146,7 +146,7 @@ const backend = async () => {
       }),
     });
 
-    const generateLinkUrl: string = `http://link.svc.${ENVIRONMENT}.anon.com/api/url?${params.toString()}`;
+    const generateLinkUrl: string = `http://svc.${ENVIRONMENT}.anon.com/link/url?${params.toString()}`;
     const generateLinkUrlRes = await fetch(generateLinkUrl, {
       headers: {
         Authorization: `Bearer ${API_KEY}`
