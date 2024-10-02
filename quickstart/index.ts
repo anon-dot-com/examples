@@ -1,21 +1,16 @@
 import { exec } from "child_process";
 import type { Page } from "playwright";
-import {
-  Client,
-  Environment,
-  executeRuntimeScript,
-  setupAnonBrowserWithContext,
-} from "@anon/sdk-typescript";
 import Fastify from "fastify";
 
+import { AnonRuntime } from "@anon/sdk-typescript";
 const API_KEY: string = process.argv[2];
-const ENVIRONMENT: Environment = "sandbox";
+const ENVIRONMENT = "sandbox";
 
 if (!API_KEY) {
   console.error(`
     Usage: yarn run quickstart <API_KEY>
 
-    Please provide your Anon API Key as a command-line argument. 
+    Please provide your Anon API Key as a command-line argument.
     Get your API Key at https://console.anon.com
   `);
   process.exit(1);
@@ -153,7 +148,7 @@ const backend = async () => {
       }
     });
     const generateLinkUrlJson = await generateLinkUrlRes.json();
-    
+
     // Forward errors
     if (generateLinkUrlRes.status !== 200) {
       return reply
@@ -177,35 +172,23 @@ const backend = async () => {
       userId: APP_USER_ID,
     };
 
-    const client = new Client({
-      environment: ENVIRONMENT,
-      apiKey: API_KEY,
-    });
+    const anon = new AnonRuntime({ apiKey: API_KEY });
 
     console.log(
       `[backend]:  Requesting ${account.app} session for app user id "${APP_USER_ID}"...`,
     );
     try {
-      console.log("[backend]:  Setting up Anon browser with context...");
-      const { browserContext } = await setupAnonBrowserWithContext(
-        client,
-        account,
-        { type: "local", input: { headless: false } },
-      );
-      console.log("[backend]:  Anon browser setup complete.");
+
+      const { page } = await anon.browser({
+        appUserId: APP_USER_ID,
+        apps: ["linkedin"],
+      });
+
+      await page.goto("www.linkedin.com");
+
+      await RUN_ACTION(page as any);
 
       console.log("[backend]:  Executing runtime script...");
-      await executeRuntimeScript({
-        client,
-        account,
-        target: { browserContext },
-        initialUrl: INITIAL_URL,
-        cleanupOptions: {
-          closePage: true,
-          closeBrowserContext: true,
-        },
-        run: RUN_ACTION,
-      });
       console.log("[backend]:  Runtime script execution completed.");
       reply.code(200).send("Action completed");
     } catch (error) {
