@@ -21,7 +21,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@anon/actions": "^0.1.1",
+    "@anon/actions": "^0.2.1",
     "@anon/sdk-typescript": "^0.6.0",
     "fastify": "^4.28.1",
     "playwright": "^1.46.1"
