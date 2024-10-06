@@ -65,10 +65,13 @@ const frontend = async () => {
 
     if (!linkUrl) {
       console.error(
-        `[frontend]: Failed to get Anon Link URL. Please check your API Key. \n${JSON.stringify(
-          error,
-        )}\n`,
+        `[frontend]: Failed to get Anon Link URL. Please check your API Key.`,
       );
+      if (res.status === 500) {
+        console.error(`[frontend]: Please retry. 4-5 Attempts may be needed.`);
+      } else {
+        console.error(`[frontend]: ${JSON.stringify(error)}`);
+      }
       reply.code(500).send("Failed to get Anon Link URL");
       process.exit(1);
     }
