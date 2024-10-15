@@ -127,6 +127,7 @@ const frontend = async () => {
   try {
     await fastify.listen({ port: FRONTEND_PORT });
   } catch (err) {
+    console.error("Error starting frontend server:", err);
     fastify.log.error(err);
     process.exit(1);
   }
@@ -193,7 +194,7 @@ const backend = async () => {
       const { browserContext } = await setupAnonBrowserWithContext(
         client,
         account,
-        { type: "local", input: { headless: false } },
+        { type: "local", input: { headless: true } },
       );
       console.log("[backend]:  Anon browser setup complete.");
 
@@ -207,7 +208,7 @@ const backend = async () => {
           closePage: true,
           closeBrowserContext: true,
         },
-        run: RUN_ACTION,
+        run: RUN_ACTION as any,
       });
       console.log("[backend]:  Runtime script execution completed.");
       reply.code(200).send("Action completed");
@@ -221,6 +222,7 @@ const backend = async () => {
   try {
     await fastify.listen({ port: BACKEND_PORT });
   } catch (err) {
+    console.error("Error starting backend server:", err);
     fastify.log.error(err);
     process.exit(1);
   }
@@ -235,4 +237,13 @@ try {
 }
 
 // Open Anon Link in your default browser
-fetch(`http://localhost:${FRONTEND_PORT}/link`);
+try {
+  fetch(`http://localhost:${FRONTEND_PORT}/link`);
+} catch (error) {
+  if (error instanceof ReferenceError) {
+    console.error('Fetch is not available in this node environment. Please node 18 or higher. To upgrade node, run `nvm install 18`');
+    throw error;
+  } else {
+    throw error;
+  }
+}
