@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@anon/actions": "^0.2.1",
-    "@anon/sdk-typescript": "^0.6.0",
+    "@anon/sdk-typescript": "^0.7.3",
     "fastify": "^4.28.1",
     "playwright": "^1.46.1"
   }
