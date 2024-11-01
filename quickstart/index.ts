@@ -20,12 +20,12 @@ if (!API_KEY) {
 const APP_USER_ID: string = "quickstart-user";
 
 // Custom Integration:
-const APP: string = "my_new_integration";
-const INITIAL_URL: string = "https://example.com";
-const authUrl = "https://example.com"
-const checkUrl = "https://example.com/profile"
-const displayName = "My New Integration"
-const iconUrl = "https://example.com/favicon.ico"
+const APP: string = "crunchbase";
+const INITIAL_URL: string = "https://crunchbase.com";
+const authUrl = "https://crunchbase.com/login"
+const checkUrl = "https://crunchbase.com/home"
+const displayName = "Crunchbase"
+const iconUrl = "https://crunchbase.com/favicon.ico"
 
 // Additional configuration
 const BACKEND_PORT: number = parseInt(process.env.BACKEND_PORT ?? "4001");
