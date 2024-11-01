@@ -4,7 +4,7 @@ import Fastify from "fastify";
 
 import { AnonRuntime } from "@anon/sdk-typescript";
 const API_KEY: string = process.argv[2];
-const ENVIRONMENT = "local";
+const ENVIRONMENT = "sandbox";
 
 if (!API_KEY) {
   console.error(`
@@ -16,35 +16,24 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-// Pick which app you'd like to link
-const APP: string = "linkedin";
-const INITIAL_URL: string = "https://linkedin.com";
+// The ID of the user you'd like to connect
 const APP_USER_ID: string = "quickstart-user";
+
+// Custom Integration:
+const APP: string = "my_new_integration";
+const INITIAL_URL: string = "https://example.com";
+const authUrl = "https://example.com"
+const checkUrl = "https://example.com/profile"
+const displayName = "My New Integration"
+const iconUrl = "https://example.com/favicon.ico"
 
 // Additional configuration
 const BACKEND_PORT: number = parseInt(process.env.BACKEND_PORT ?? "4001");
 const FRONTEND_PORT: number = parseInt(process.env.FRONTEND_PORT ?? "4002");
 
-// Choose your the action you want to run based on the app selected
-// Check out other out-of-the-box actions at https://github.com/anon-dot-com/actions
-import { LinkedIn, NetworkHelper } from "@anon/actions";
-// const RUN_ACTION = LinkedIn.createPost(
-//   new NetworkHelper(5000 /* 5 seconds */),
-//   `I'm testing Anon.com and automatically generated this post in < 5 minutes.
-//   Find out more about using Anon to automate your agent actions at Anon.com.`,
-// );
-const RUN_ACTION = LinkedIn.sendMessage(
-  new NetworkHelper(5000 /* 5 seconds */),
-  "Kai Aichholz",
-  `I'm testing Anon.com and automatically send this message in < 5 minutes.
-  Find out more about using Anon to automate your agent actions at Anon.com.`
-);
-// const RUN_ACTION = async (page: Page) => {
-//   // perform any actions you'd like!
-//   await page.waitForTimeout(5000);
-//   // await page.goto("https://myactivity.google.com");
-//   await page.waitForTimeout(5000);
-// };
+const RUN_ACTION = async (page: Page) => {
+  // your action here
+}
 
 // Start your frontend server that launches Anon Link
 const frontend = async () => {
@@ -102,7 +91,7 @@ const frontend = async () => {
 
     const { liveStreamingUrl } = await fetch(`http://localhost:${BACKEND_PORT}/action`).then((r) => r.json()) as { liveStreamingUrl: string };
 
-    // TODO show the action liveStreamingUrl
+    // show the action via liveStreamingUrl
     reply.type("text/html").send(
       `<html>
         <body>
@@ -143,6 +132,10 @@ const backend = async () => {
     const params: URLSearchParams = new URLSearchParams({
       app: APP,
       appUserId: APP_USER_ID,
+      authUrl,
+      displayName,
+      iconUrl,
+      checkUrl,
       redirectUrl: `http://localhost:${FRONTEND_PORT}/redirect`,
       // Generate a state for secure verification
       state: JSON.stringify({
@@ -150,12 +143,13 @@ const backend = async () => {
       }),
     });
 
-    const generateLinkUrl: string = `http://svc.${ENVIRONMENT}.anon.com/link/url?${params.toString()}`;
+    const generateLinkUrl: string = `https://svc.${ENVIRONMENT}.anon.com/link/url?${params.toString()}`;
     const generateLinkUrlRes = await fetch(generateLinkUrl, {
       headers: {
         Authorization: `Bearer ${API_KEY}`
       }
     });
+    console.error(generateLinkUrlRes)
     const generateLinkUrlJson = await generateLinkUrlRes.json();
 
     // Forward errors
@@ -177,20 +171,20 @@ const backend = async () => {
   fastify.get("/action", async (req, reply) => {
     console.log(`[backend]:  Running action for app user id "${APP_USER_ID}"`);
 
-    const anon = new AnonRuntime({ apiKey: API_KEY, environment: "local" });
+    const anon = new AnonRuntime({ apiKey: API_KEY, environment: ENVIRONMENT as any });
 
     console.log(
       `[backend]:  Requesting ${APP} session for app user id "${APP_USER_ID}"...`,
     );
 
     try {
-      const { status } = await anon.getSessionStatus({app: "linkedin", appUserId: APP_USER_ID});
+      // const { status } = await anon.getSessionStatus({app: "linkedin", appUserId: APP_USER_ID});
 
-      console.log("status:", status)
+      // console.log("status:", status)
 
       const { result, liveStreamingUrl } = await anon.run({
         appUserId: APP_USER_ID,
-        apps: ["linkedin", ],
+        apps: [APP],
         action: async (page) => {
           await page.goto(INITIAL_URL)
           await RUN_ACTION(page as any);
