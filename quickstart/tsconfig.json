@@ -7,8 +7,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node16",
-    "paths": ["link:../../das/lib/sdk-typescript"]
+    "moduleResolution": "node16"
   },
   "include": ["index.ts"],
   "exclude": ["node_modules"]
