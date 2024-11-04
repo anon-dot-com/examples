@@ -178,6 +178,10 @@ const backend = async () => {
     );
 
     try {
+      // const { status } = await anon.getSessionStatus({app: "linkedin", appUserId: APP_USER_ID});
+
+      // console.log("status:", status)
+
       const { result, liveStreamingUrl } = await anon.run({
         appUserId: APP_USER_ID,
         apps: [APP],
