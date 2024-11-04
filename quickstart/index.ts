@@ -28,17 +28,17 @@ const FRONTEND_PORT: number = parseInt(process.env.FRONTEND_PORT ?? "4002");
 // Choose your the action you want to run based on the app selected
 // Check out other out-of-the-box actions at https://github.com/anon-dot-com/actions
 import { LinkedIn, NetworkHelper } from "@anon/actions";
-// const RUN_ACTION = LinkedIn.createPost(
-//   new NetworkHelper(5000 /* 5 seconds */),
-//   `I'm testing Anon.com and automatically generated this post in < 5 minutes.
-//   Find out more about using Anon to automate your agent actions at Anon.com.`,
-// );
-const RUN_ACTION = LinkedIn.sendMessage(
+const RUN_ACTION = LinkedIn.createPost(
   new NetworkHelper(5000 /* 5 seconds */),
-  "Kai Aichholz",
-  `I'm testing Anon.com and automatically send this message in < 5 minutes.
-  Find out more about using Anon to automate your agent actions at Anon.com.`
+  `I'm testing Anon.com and automatically generated this post in < 5 minutes.
+  Find out more about using Anon to automate your agent actions at Anon.com.`,
 );
+// const RUN_ACTION = LinkedIn.sendMessage(
+//   new NetworkHelper(5000 /* 5 seconds */),
+//   <YOUR CONNECTION'S NAME>,
+//   `I'm testing Anon.com and automatically send this message in < 5 minutes.
+//   Find out more about using Anon to automate your agent actions at Anon.com.`
+// );
 // const RUN_ACTION = async (page: Page) => {
 //   // perform any actions you'd like!
 //   await page.waitForTimeout(5000);
@@ -182,11 +182,7 @@ const backend = async () => {
     console.log(
       `[backend]:  Requesting ${APP} session for app user id "${APP_USER_ID}"...`,
     );
-
     try {
-      const { status } = await anon.getSessionStatus({app: "linkedin", appUserId: APP_USER_ID});
-
-      console.log("status:", status)
 
       const { result, liveStreamingUrl } = await anon.run({
         appUserId: APP_USER_ID,
