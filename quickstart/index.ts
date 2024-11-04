@@ -99,22 +99,11 @@ const frontend = async () => {
         req.query,
       )}`,
     );
-
-    const { liveStreamingUrl } = await fetch(`http://localhost:${BACKEND_PORT}/action`).then((r) => r.json()) as { liveStreamingUrl: string };
-
-    // TODO show the action liveStreamingUrl
     reply.type("text/html").send(
       `<html>
         <body>
           <img alt="Anon" src="https://pub-dae6836ea721478b89301a8e71d52a33.r2.dev/anon/dev-images/anon_logo-900%403x.png">
           <h1>Redirected from Anon Link!</h1>
-          <iframe
-            src=${liveStreamingUrl}
-            width="800"
-            height="600"
-            title="VNC Viewer"
-            className="w-full h-[600px]"
-          />
           <h2>Status: ${(req.query as any).status}</h2>
           <h3>State: ${(req.query as any).state}</h2>
         </body>
@@ -122,6 +111,8 @@ const frontend = async () => {
     );
 
     console.log("[frontend]: Calling your backend server to run an action");
+    const result = await fetch(`http://localhost:${BACKEND_PORT}/action`);
+    console.log(`[frontend]: ${await result.text()}`);
   });
 
   // Run the server!
@@ -176,31 +167,33 @@ const backend = async () => {
   // Declare a route to run an action
   fastify.get("/action", async (req, reply) => {
     console.log(`[backend]:  Running action for app user id "${APP_USER_ID}"`);
+    const account = {
+      app: APP,
+      userId: APP_USER_ID,
+    };
 
     const anon = new AnonRuntime({ apiKey: API_KEY, environment: "local" });
 
     console.log(
-      `[backend]:  Requesting ${APP} session for app user id "${APP_USER_ID}"...`,
+      `[backend]:  Requesting ${account.app} session for app user id "${APP_USER_ID}"...`,
     );
     try {
 
-      const { result, liveStreamingUrl } = await anon.run({
+      const { page } = await anon.browser({
         appUserId: APP_USER_ID,
-        apps: ["linkedin", ],
-        action: async (page) => {
-          await page.goto(INITIAL_URL)
-          await RUN_ACTION(page as any);
-        }
+        apps: ["linkedin"],
       });
 
-      console.log(liveStreamingUrl)
+      await page.goto("www.linkedin.com");
 
-      reply.code(200).send(JSON.stringify({ liveStreamingUrl }))
+      await RUN_ACTION(page as any);
 
       console.log("[backend]:  Executing runtime script...");
       console.log("[backend]:  Runtime script execution completed.");
+      reply.code(200).send("Action completed");
     } catch (error) {
       console.error("[backend]:  Error:", error);
+      reply.code(500).send("Error running action");
     }
   });
 
