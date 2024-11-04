@@ -4,7 +4,7 @@ import Fastify from "fastify";
 
 import { AnonRuntime } from "@anon/sdk-typescript";
 const API_KEY: string = process.argv[2];
-const ENVIRONMENT = "local";
+const ENVIRONMENT = "sandbox";
 
 if (!API_KEY) {
   console.error(`
@@ -172,7 +172,7 @@ const backend = async () => {
       userId: APP_USER_ID,
     };
 
-    const anon = new AnonRuntime({ apiKey: API_KEY, environment: "local" });
+    const anon = new AnonRuntime({ apiKey: API_KEY });
 
     console.log(
       `[backend]:  Requesting ${account.app} session for app user id "${APP_USER_ID}"...`,
