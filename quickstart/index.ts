@@ -1,21 +1,17 @@
 import { exec } from "child_process";
 import type { Page } from "playwright";
-import {
-  Client,
-  Environment,
-  executeRuntimeScript,
-  setupAnonBrowserWithContext,
-} from "@anon/sdk-typescript";
 import Fastify from "fastify";
 
+import { AnonRuntime } from "@anon/sdk-typescript";
+import { LinkedIn, NetworkHelper } from "@anon/actions";
 const API_KEY: string = process.argv[2];
-const ENVIRONMENT: Environment = "sandbox";
+const ENVIRONMENT = "sandbox";
 
 if (!API_KEY) {
   console.error(`
     Usage: yarn run quickstart <API_KEY>
 
-    Please provide your Anon API Key as a command-line argument. 
+    Please provide your Anon API Key as a command-line argument.
     Get your API Key at https://console.anon.com
   `);
   process.exit(1);
@@ -24,6 +20,8 @@ if (!API_KEY) {
 // Pick which app you'd like to link
 const APP: string = "linkedin";
 const INITIAL_URL: string = "https://linkedin.com";
+
+// The ID of the user you'd like to connect
 const APP_USER_ID: string = "quickstart-user";
 
 // Additional configuration
@@ -107,11 +105,22 @@ const frontend = async () => {
         req.query,
       )}`,
     );
+
+    const { liveStreamingUrl } = await fetch(`http://localhost:${BACKEND_PORT}/action`).then((r) => r.json()) as { liveStreamingUrl: string };
+
+    // show the action via liveStreamingUrl
     reply.type("text/html").send(
       `<html>
         <body>
           <img alt="Anon" src="https://pub-dae6836ea721478b89301a8e71d52a33.r2.dev/anon/dev-images/anon_logo-900%403x.png">
           <h1>Redirected from Anon Link!</h1>
+          <iframe
+            src=${liveStreamingUrl}
+            width="800"
+            height="600"
+            title="VNC Viewer"
+            className="w-full h-[600px]"
+          />
           <h2>Status: ${(req.query as any).status}</h2>
           <h3>State: ${(req.query as any).state}</h2>
         </body>
@@ -119,8 +128,6 @@ const frontend = async () => {
     );
 
     console.log("[frontend]: Calling your backend server to run an action");
-    const result = await fetch(`http://localhost:${BACKEND_PORT}/action`);
-    console.log(`[frontend]: ${await result.text()}`);
   });
 
   // Run the server!
@@ -150,14 +157,14 @@ const backend = async () => {
       }),
     });
 
-    const generateLinkUrl: string = `http://svc.${ENVIRONMENT}.anon.com/link/url?${params.toString()}`;
+    const generateLinkUrl: string = `https://svc.${ENVIRONMENT}.anon.com/link/url?${params.toString()}`;
     const generateLinkUrlRes = await fetch(generateLinkUrl, {
       headers: {
         Authorization: `Bearer ${API_KEY}`
       }
     });
     const generateLinkUrlJson = await generateLinkUrlRes.json();
-    
+
     // Forward errors
     if (generateLinkUrlRes.status !== 200) {
       return reply
@@ -176,45 +183,34 @@ const backend = async () => {
   // Declare a route to run an action
   fastify.get("/action", async (req, reply) => {
     console.log(`[backend]:  Running action for app user id "${APP_USER_ID}"`);
-    const account = {
-      app: APP,
-      userId: APP_USER_ID,
-    };
 
-    const client = new Client({
-      environment: ENVIRONMENT,
-      apiKey: API_KEY,
-    });
+    const anon = new AnonRuntime({ apiKey: API_KEY, environment: ENVIRONMENT as any });
 
     console.log(
-      `[backend]:  Requesting ${account.app} session for app user id "${APP_USER_ID}"...`,
+      `[backend]:  Requesting ${APP} session for app user id "${APP_USER_ID}"...`,
     );
-    try {
-      console.log("[backend]:  Setting up Anon browser with context...");
-      const { browserContext } = await setupAnonBrowserWithContext(
-        client,
-        account,
-        { type: "local", input: { headless: true } },
-      );
-      console.log("[backend]:  Anon browser setup complete.");
 
+    try {
       console.log("[backend]:  Executing runtime script...");
-      await executeRuntimeScript({
-        client,
-        account,
-        target: { browserContext },
-        initialUrl: INITIAL_URL,
-        cleanupOptions: {
-          closePage: true,
-          closeBrowserContext: true,
-        },
-        run: RUN_ACTION as any,
+
+      // typically you would await the result and then do something with it. For
+      // the purposes of demonstration, we instead return the liveStreamingUrl
+      // so that it can be displayed by the frontend, so you can watch your
+      // action be performed in real time.
+      const { result, liveStreamingUrl } = await anon.run({
+        appUserId: APP_USER_ID,
+        apps: [APP],
+        action: async (page) => {
+          await page.goto(INITIAL_URL)
+          await RUN_ACTION(page as any);
+        }
       });
+
+      reply.code(200).send(JSON.stringify({ liveStreamingUrl }))
+
       console.log("[backend]:  Runtime script execution completed.");
-      reply.code(200).send("Action completed");
     } catch (error) {
       console.error("[backend]:  Error:", error);
-      reply.code(500).send("Error running action");
     }
   });
 
