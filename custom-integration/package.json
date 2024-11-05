@@ -1,7 +1,7 @@
 {
   "name": "custom-integration",
   "version": "1.0.0",
-  "description": "Quickstart for using Anon Link and Runtime SDKs!",
+  "description": "Quickstart for building custom integrations using Anon Link and Runtime SDKs!",
   "main": "index.ts",
   "type": "module",
   "repository": "https://github.com/anon-dot-com/examples",
