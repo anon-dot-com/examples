@@ -1,0 +1,27 @@
+{
+  "name": "custom-integration",
+  "version": "1.0.0",
+  "description": "Quickstart for building custom integrations using Anon Link and Runtime SDKs!",
+  "main": "index.ts",
+  "type": "module",
+  "repository": "https://github.com/anon-dot-com/examples",
+  "author": "Anonymity Labs",
+  "license": "MIT",
+  "scripts": {
+    "dev": "yarn tsx index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "yarn playwright install"
+  },
+  "devDependencies": {
+    "@types/node": "^22.4.0",
+    "pino-pretty": "^11.2.2",
+    "ts-node": "^10.9.1",
+    "tsx": "^4.10.3",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@anon/sdk-typescript": "0.8.2",
+    "fastify": "^4.28.1",
+    "playwright": "^1.46.1"
+  }
+}
