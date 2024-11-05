@@ -34,6 +34,8 @@ const FRONTEND_PORT: number = parseInt(process.env.FRONTEND_PORT ?? "4002");
 
 const RUN_ACTION = async (page: Page) => {
   // your action here
+  // we will just wait for 30s to show the logged in session
+  await new Promise((resolve) => setTimeout(resolve, 30_000))
 }
 
 // Start your frontend server that launches Anon Link
@@ -150,7 +152,6 @@ const backend = async () => {
         Authorization: `Bearer ${API_KEY}`
       }
     });
-    console.error(generateLinkUrlRes)
     const generateLinkUrlJson = await generateLinkUrlRes.json();
 
     // Forward errors
