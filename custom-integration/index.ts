@@ -22,10 +22,11 @@ const APP_USER_ID: string = "quickstart-user";
 // Custom Integration:
 const APP: string = "crunchbase";
 const INITIAL_URL: string = "https://crunchbase.com";
-const authUrl = "https://crunchbase.com/login"
-const checkUrl = "https://crunchbase.com/home"
-const displayName = "Crunchbase"
-const iconUrl = "https://crunchbase.com/favicon.ico"
+// replace with any site you'd like to integrate, e.g. https://ebay.com/login
+const authUrl = "https://crunchbase.com/login";
+const checkUrl = "https://crunchbase.com/home";
+const displayName = "Crunchbase";
+const iconUrl = "https://crunchbase.com/favicon.ico";
 
 // Additional configuration
 const BACKEND_PORT: number = parseInt(process.env.BACKEND_PORT ?? "4001");
