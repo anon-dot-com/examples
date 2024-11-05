@@ -152,7 +152,6 @@ const backend = async () => {
         Authorization: `Bearer ${API_KEY}`
       }
     });
-    console.error(generateLinkUrlRes)
     const generateLinkUrlJson = await generateLinkUrlRes.json();
 
     // Forward errors
