@@ -1,6 +1,7 @@
 import { exec } from "child_process";
 import type { Page } from "playwright";
 import Fastify from "fastify";
+import cors from "@fastify/cors";
 
 import { AnonRuntime } from "@anon/sdk-typescript";
 import { LinkedIn, NetworkHelper } from "@anon/actions";
@@ -30,7 +31,6 @@ const FRONTEND_PORT: number = parseInt(process.env.FRONTEND_PORT ?? "4002");
 
 // Choose your the action you want to run based on the app selected
 // Check out other out-of-the-box actions at https://github.com/anon-dot-com/actions
-import { LinkedIn, NetworkHelper } from "@anon/actions";
 const RUN_ACTION = LinkedIn.createPost(
   new NetworkHelper(5000 /* 5 seconds */),
   `I'm testing Anon.com and automatically generated this post in < 5 minutes.
@@ -52,6 +52,8 @@ const RUN_ACTION = LinkedIn.createPost(
 // Start your frontend server that launches Anon Link
 const frontend = async () => {
   const fastify = Fastify();
+
+  fastify.register(cors);
 
   // Declare a route to start the Anon Link flow
   fastify.get("/link", async (req, reply) => {
@@ -106,30 +108,82 @@ const frontend = async () => {
       )}`,
     );
 
-    const { liveStreamingUrl } = await fetch(`http://localhost:${BACKEND_PORT}/action`).then((r) => r.json()) as { liveStreamingUrl: string };
+    reply.type("text/html").send(`
+    <html>
+      <head>
+        <style>
+          .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+          }
 
-    // show the action via liveStreamingUrl
-    reply.type("text/html").send(
-      `<html>
-        <body>
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+
+          .container {
+            text-align: center;
+            padding: 20px;
+          }
+
+          #iframeContainer {
+            display: none;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
           <img alt="Anon" src="https://pub-dae6836ea721478b89301a8e71d52a33.r2.dev/anon/dev-images/anon_logo-900%403x.png">
           <h1>Redirected from Anon Link!</h1>
-          <iframe
-            src=${liveStreamingUrl}
-            width="800"
-            height="600"
-            title="VNC Viewer"
-            className="w-full h-[600px]"
-          />
+          <div id="spinner" class="spinner"></div>
+          <div id="iframeContainer"></div>
           <h2>Status: ${(req.query as any).status}</h2>
-          <h3>State: ${(req.query as any).state}</h2>
-        </body>
-      </html>`,
-    );
+          <h3>State: ${(req.query as any).state}</h3>
+        </div>
+        <script>
+          async function fetchStreamingUrl() {
+            try {
+              document.getElementById('spinner').style.display = 'block';
 
-    console.log("[frontend]: Calling your backend server to run an action");
+              const response = await fetch("http://localhost:${BACKEND_PORT}/action");
+              const data = await response.json();
+
+              const iframeContainer = document.getElementById('iframeContainer');
+              iframeContainer.innerHTML = \`
+                <iframe
+                  src="\${data.liveStreamingUrl}"
+                  width="800"
+                  height="600"
+                  title="VNC Viewer"
+                  class="w-full h-[600px]"
+                />
+              \`;
+
+              iframeContainer.style.display = 'block';
+              document.getElementById('spinner').style.display = 'none';
+            } catch (error) {
+              console.error('Error fetching streaming URL:', error);
+              document.getElementById('spinner').style.display = 'none';
+              alert('Error loading streaming URL. Please try again.');
+            }
+          }
+
+          // Start fetching as soon as the page loads
+          fetchStreamingUrl();
+        </script>
+      </body>
+    </html>
+  `);
+
+    console.log("[frontend]: Serving initial HTML");
   });
-
   // Run the server!
   try {
     await fastify.listen({ port: FRONTEND_PORT });
@@ -143,6 +197,8 @@ const frontend = async () => {
 // Start your backend server that uses the Anon Runtime SDK
 const backend = async () => {
   const fastify = Fastify();
+
+  fastify.register(cors);
 
   // Declare a route to get a link url
   fastify.get("/linkUrl", async (req, reply) => {
