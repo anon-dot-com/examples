@@ -20,7 +20,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@anon/sdk-typescript": "0.8.2",
+    "@anon/sdk-typescript": "0.8.3",
     "fastify": "^4.28.1",
     "playwright": "^1.46.1"
   }
