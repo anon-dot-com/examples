@@ -1,7 +1,7 @@
 import Fastify from "fastify";
 import cors from "@fastify/cors";
 import { LinkedIn, NetworkHelper } from "@anon/actions";
-import { AnonRuntime, Environment } from "@anon/sdk-typescript";
+import { AnonRuntime, Environment, AppIntegration } from "@anon/sdk-typescript";
 import open from "open";
 
 const API_KEY = process.argv[2];
@@ -11,12 +11,10 @@ if (!API_KEY) {
 }
 
 // Basic configuration
-const config = {
-  port: 4000,
-  app: "linkedin",
-  userId: "quickstart-user",
-  environment: "sandbox" as Environment,
-};
+const port = 4000;
+const app: AppIntegration = "linkedin";
+const environment: Environment = "sandbox";
+const appUserId = "quickstart-user@example.com";
 
 // Single action example
 const postAction = LinkedIn.createPost(
@@ -31,16 +29,14 @@ async function startServer() {
   // Single endpoint to handle the entire flow
   fastify.get("/start", async (req, reply) => {
     const params = new URLSearchParams({
-      app: config.app,
-      appUserId: config.userId,
-      redirectUrl: `http://localhost:${config.port}/callback`,
-      state: config.userId,
+      app,
+      appUserId,
+      redirectUrl: `http://localhost:${port}/callback`,
+      state: appUserId,
     });
 
     const linkRes = await fetch(
-      `https://svc.${
-        config.environment
-      }.anon.com/link/url?${params.toString()}`,
+      `https://svc.${environment}.anon.com/link/url?${params.toString()}`,
       {
         headers: { Authorization: `Bearer ${API_KEY}` },
       },
@@ -56,14 +52,14 @@ async function startServer() {
   fastify.get("/callback", async (req, reply) => {
     const anon = new AnonRuntime({
       apiKey: API_KEY,
-      environment: config.environment,
+      environment,
     });
 
     // Run the action
     try {
       const { result } = await anon.run({
-        appUserId: config.userId,
-        apps: [config.app],
+        appUserId,
+        apps: [app],
         action: async (page) => {
           await page.goto("https://linkedin.com");
           await postAction(page as any);
@@ -85,11 +81,11 @@ async function startServer() {
     }
   });
 
-  await fastify.listen({ port: config.port });
-  console.log(`Server running at http://localhost:${config.port}`);
+  await fastify.listen({ port });
+  console.log(`Server running at http://localhost:${port}`);
 
   // Start the flow automatically
-  fetch(`http://localhost:${config.port}/start`);
+  fetch(`http://localhost:${port}/start`);
 }
 
 startServer().catch(console.error);
