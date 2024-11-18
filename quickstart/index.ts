@@ -30,12 +30,6 @@ async function startServer() {
 
   // Single endpoint to handle the entire flow
   fastify.get("/start", async (req, reply) => {
-    const anon = new AnonRuntime({
-      apiKey: API_KEY,
-      environment: config.environment,
-    });
-
-    // Generate link URL
     const params = new URLSearchParams({
       app: config.app,
       appUserId: config.userId,
@@ -52,10 +46,8 @@ async function startServer() {
       },
     );
 
-    const { url: linkUrl } = (await linkRes.json()) as { url: string };
-
-    // Open the link URL
-    await open(linkUrl);
+    const { url } = (await linkRes.json()) as { url: string };
+    await open(url);
 
     return { message: "Anon Link opened in browser" };
   });
@@ -77,6 +69,9 @@ async function startServer() {
           await postAction(page as any);
         },
       });
+
+      // Await the successful completion of the action
+      await result;
 
       return reply.type("text/html").send(`
         <h1>Action Completed!</h1>
