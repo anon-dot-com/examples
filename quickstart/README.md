@@ -85,10 +85,6 @@ This project uses several key dependencies:
 
 For a full list of dependencies, see `package.json`.
 
-## License
-
-This project is licensed under the MIT License.
-
 ## Support
 
 For any questions or support, please contact [support@anon.com](mailto:support@anon.com).
