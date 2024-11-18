@@ -16,7 +16,7 @@ const app: AppIntegration = "linkedin";
 const environment: Environment = "sandbox";
 const appUserId = "quickstart-user@example.com";
 
-// Single action example
+// Single action example, create a LinkedIn post
 const postAction = LinkedIn.createPost(
   new NetworkHelper(5000),
   "Testing Anon.com - automatically posted! Learn more at Anon.com",
@@ -48,7 +48,7 @@ async function startServer() {
     return { message: "Anon Link opened in browser" };
   });
 
-  // Simple callback endpoint
+  // Simple callback endpoint, run the action and show success/error message
   fastify.get("/callback", async (req, reply) => {
     const anon = new AnonRuntime({
       apiKey: API_KEY,
@@ -84,7 +84,7 @@ async function startServer() {
   await fastify.listen({ port });
   console.log(`Server running at http://localhost:${port}`);
 
-  // Start the flow automatically
+  // Automatically open the browser
   fetch(`http://localhost:${port}/start`);
 }
 
