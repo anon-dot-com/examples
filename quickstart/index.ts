@@ -44,14 +44,34 @@ async function startServer() {
     return { message: "Anon Link opened in browser" };
   });
 
-  // Simple callback endpoint, run the action and show success/error message
+  // Callback endpoint shows a button to create a LinkedIn post
   fastify.get("/callback", async (req, reply) => {
+    return reply.type("text/html").send(`
+      <button onclick="createPost()">Create LinkedIn Post</button>
+      <div id="result"></div>
+      <script>
+        async function createPost() {
+          const result = document.getElementById('result');
+          try {
+            result.textContent = 'Creating LinkedIn post...';
+            const response = await fetch('/create-post', { method: 'POST' });
+            const data = await response.json();
+            result.textContent = data.success ? 'Success! Check your LinkedIn profile for the new post.' : 'Failed: ' + data.error;
+          } catch (error) {
+            result.textContent = 'Error: ' + error.message;
+          }
+        }
+      </script>
+    `);
+  });
+
+  // New endpoint to handle the post creation
+  fastify.post("/create-post", async (req, reply) => {
     const anon = new AnonRuntime({
       apiKey: API_KEY,
       environment,
     });
 
-    // Run the action
     console.log("Creating LinkedIn post...");
     try {
       const { result } = await anon.run({
@@ -66,18 +86,15 @@ async function startServer() {
         },
       });
 
-      // Await the successful completion of the action
       await result;
-
-      return reply.type("text/html").send(`
-        <h1>Action Completed!</h1>
-        <p>Check your LinkedIn profile for the new post.</p>
-      `);
+      return { success: true };
     } catch (error) {
-      return reply.type("text/html").send(`
-        <h1>Error</h1>
-        <p>Failed to complete action: ${JSON.stringify(error)}</p>
-      `);
+      console.error("Post creation error:", error);
+      return {
+        success: false,
+        error:
+          error instanceof Error ? error.message : "Unknown error occurred",
+      };
     }
   });
 
