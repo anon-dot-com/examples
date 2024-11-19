@@ -16,12 +16,6 @@ const app: AppIntegration = "linkedin";
 const environment: Environment = "sandbox";
 const appUserId = "quickstart-user@example.com";
 
-// Single action example, create a LinkedIn post
-const postAction = LinkedIn.createPost(
-  new NetworkHelper(5000),
-  "Testing Anon.com - automatically posted! Learn more at Anon.com",
-);
-
 async function startServer() {
   const fastify = Fastify();
   fastify.register(cors);
@@ -43,6 +37,8 @@ async function startServer() {
     );
 
     const { url } = (await linkRes.json()) as { url: string };
+    console.log("Running Anon Link:");
+    console.log(url);
     await open(url);
 
     return { message: "Anon Link opened in browser" };
@@ -56,13 +52,17 @@ async function startServer() {
     });
 
     // Run the action
+    console.log("Creating LinkedIn post...");
     try {
       const { result } = await anon.run({
         appUserId,
         apps: [app],
         action: async (page) => {
           await page.goto("https://linkedin.com");
-          await postAction(page as any);
+          await LinkedIn.createPost(
+            new NetworkHelper(5000),
+            "Testing Anon.com - automatically posted! Learn more at Anon.com",
+          )(page as any);
         },
       });
 
@@ -82,7 +82,6 @@ async function startServer() {
   });
 
   await fastify.listen({ port });
-  console.log(`Server running at http://localhost:${port}`);
 
   // Automatically open the browser
   fetch(`http://localhost:${port}/start`);
