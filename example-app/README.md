@@ -30,10 +30,10 @@ This project demonstrates how to quickly set up and use Anon's SDK for automatin
    git clone https://github.com/anon-dot-com/examples.git
    ```
 
-2. Navigate to the quickstart directory:
+2. Navigate to the example directory:
 
    ```bash
-   cd examples/quickstart
+   cd examples/example
    ```
 
 3. Install dependencies:
@@ -47,7 +47,7 @@ This project demonstrates how to quickly set up and use Anon's SDK for automatin
 1. Start the backend server:
 
    ```bash
-   yarn run quickstart <YOUR API KEY HERE>
+   yarn start <YOUR API KEY HERE>
    ```
 
    This will start the backend and frontend servers on ports 4001 and 4002 respectively, and automatically open your default web browser to initiate the Anon Link process.
@@ -55,8 +55,6 @@ This project demonstrates how to quickly set up and use Anon's SDK for automatin
 2. Follow the on-screen instructions to connect your LinkedIn account using Anon Link.
 
 3. Once connected, the script will automatically create a post on LinkedIn using [Anon's actions library](https://github.com/anon-dot-com/actions).
-
-For a more detailed walkthrough, you can follow the official quickstart guide at [docs.anon.com/docs/quickstart](https://docs.anon.com/docs/quickstart).
 
 ## Customization
 
@@ -84,6 +82,10 @@ This project uses several key dependencies:
 - `playwright`: Browser automation library
 
 For a full list of dependencies, see `package.json`.
+
+## License
+
+This project is licensed under the MIT License.
 
 ## Support
 
