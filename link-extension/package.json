@@ -32,23 +32,10 @@
   },
   "manifest": {
     "host_permissions": [
-      "*://*.anon.com/*",
-      "https://*.instagram.com/*",
-      "https://*.facebook.com/*",
-      "https://*.linkedin.com/*",
-      "*://*.uber.com/*",
-      "*://*.delta.com/*",
-      "https://www.united.com/*",
-      "*://*.github.com/*",
-      "https://*.instacart.com/*",
-      "https://*.resy.com/*",
-      "https://*.opentable.com/*",
-      "https://*.amazon.com/*",
-      "https://*.netflix.com/*",
-      "https://*.x.com/*",
-      "https://*.twitter.com/*"
+      "<all_urls>"
     ],
     "permissions": [
+      "activeTab",
       "notifications",
       "scripting",
       "cookies"
