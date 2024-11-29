@@ -1,16 +1,15 @@
 {
-  "name": "browser-extension",
-  "displayName": "Anon Link",
-  "version": "0.4.2",
-  "description": "Your new magic swiss army knife for login.",
-  "author": "Anonymity Labs",
+  "name": "example-link-extension",
+  "displayName": "Custom Link Extension",
+  "version": "0.1.0",
+  "description": "An example for customzing the Anon Link chrome extension.",
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
     "package": "plasmo package --source-maps"
   },
   "dependencies": {
-    "@anon/sdk-browser-extension": "^0.7.0",
+    "@anon/sdk-browser-extension": "^0.8.0",
     "jose": "^5.2.4",
     "plasmo": "0.88.0",
     "react": "18.2.0",
@@ -32,23 +31,10 @@
   },
   "manifest": {
     "host_permissions": [
-      "*://*.anon.com/*",
-      "https://*.instagram.com/*",
-      "https://*.facebook.com/*",
-      "https://*.linkedin.com/*",
-      "*://*.uber.com/*",
-      "*://*.delta.com/*",
-      "https://www.united.com/*",
-      "*://*.github.com/*",
-      "https://*.instacart.com/*",
-      "https://*.resy.com/*",
-      "https://*.opentable.com/*",
-      "https://*.amazon.com/*",
-      "https://*.netflix.com/*",
-      "https://*.x.com/*",
-      "https://*.twitter.com/*"
+      "<all_urls>"
     ],
     "permissions": [
+      "activeTab",
       "notifications",
       "scripting",
       "cookies"
