@@ -1,7 +1,9 @@
 /* NOTE: This is a work in progress. */
 
+import { Page } from "playwright/test";
+
 export class OpenTableActions {
-  constructor(private page: any) {}
+  constructor(private page: Page) {}
 
   /** Selects a date from the date picker */
   async selectDate(date: string) {

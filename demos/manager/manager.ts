@@ -3,10 +3,16 @@ import { TwitterActions } from "../integrations/twitter";
 import { InstagramActions } from "../integrations/instagram";
 import { OpenTableActions } from "../integrations/opentable";
 import { LinkedInActions } from "../integrations/linkedin";
+
 type SupportedApp = "linkedin" | "twitter" | "instagram" | "opentable";
+type Actions =
+  | LinkedInActions
+  | TwitterActions
+  | InstagramActions
+  | OpenTableActions;
 
 export class IntegrationManager {
-  private actions: Record<string, any> = {};
+  private actions: Record<string, Actions> = {};
 
   constructor(private page: Page, apps: string[]) {
     // Initialize requested integrations

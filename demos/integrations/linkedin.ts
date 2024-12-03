@@ -144,6 +144,7 @@ export class LinkedInActions {
    * Removes a reaction from a LinkedIn post.
    * Must be called on a specific post URL
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async unreact(reaction: string = "like") {
     await this.page
       .getByRole("button", { name: "React Like", exact: true })
