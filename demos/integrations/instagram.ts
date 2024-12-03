@@ -1,5 +1,5 @@
-import { Page } from '@playwright/test';
-import { HelperActions } from '../manager/helpers';
+import { Page } from "@playwright/test";
+import { HelperActions } from "../manager/helpers";
 
 export class InstagramActions {
   private page: Page;
@@ -9,7 +9,6 @@ export class InstagramActions {
     this.page = page;
     this.helperActions = new HelperActions(this.page);
   }
-
 
   /** Posts an image to Instagram with an optional caption */
   async post(page: Page, imageUrl: string, caption?: string) {
@@ -21,21 +20,20 @@ export class InstagramActions {
     // Wait for the create button to be visible and click it
     await page.waitForSelector('svg[aria-label="New post"]');
     await page.click('svg[aria-label="New post"]');
-    
+
     // Wait for the Post button to appear and click it
     await page.waitForSelector('svg[aria-label="Post"]');
     await page.click('svg[aria-label="Post"]');
     await page.waitForTimeout(2000);
-  
+
     // Click upload image
     await page.waitForSelector('button:has-text("Select from computer")');
     await page.click('button:has-text("Select from computer")');
     await page.waitForTimeout(2000);
-  
-  
+
     // Handle file upload using the downloaded image
     await this.helperActions.uploadImage(imageBuffer);
-  
+
     // Click the Next button twice
     await page.waitForSelector('div[role="button"]:has-text("Next")');
     await page.click('div[role="button"]:has-text("Next")');
@@ -43,18 +41,15 @@ export class InstagramActions {
     await page.waitForSelector('div[role="button"]:has-text("Next")');
     await page.click('div[role="button"]:has-text("Next")');
     await page.waitForTimeout(2000);
-  
+
     // Write a caption
     await page.fill('div[aria-label="Write a caption..."]', caption ?? "");
-  
+
     // Click the Share button
     await page.waitForSelector('div[role="button"]:has-text("Share")');
     await page.click('div[role="button"]:has-text("Share")');
     await page.waitForTimeout(2000);
   }
-
-
-
 
   /**
    * Toggles the like status of the current post
@@ -64,19 +59,21 @@ export class InstagramActions {
     try {
       const isLiked = await this.page.evaluate(() => {
         // Find all SVGs with aria-label "Unlike"
-        const unlikeSvgs = Array.from(document.querySelectorAll('svg[aria-label="Unlike"]'));
+        const unlikeSvgs = Array.from(
+          document.querySelectorAll('svg[aria-label="Unlike"]'),
+        );
         // Get the largest one (main post button is typically 24x24)
         const mainUnlikeButton = unlikeSvgs
-          .filter(svg => svg.getAttribute('width') === '24')
-          .filter(svg => svg.getAttribute('height') === '24')[0];
+          .filter((svg) => svg.getAttribute("width") === "24")
+          .filter((svg) => svg.getAttribute("height") === "24")[0];
         return mainUnlikeButton !== undefined;
       });
-      
+
       if (isLiked !== shouldLike) {
         await (shouldLike ? this.like() : this.unlike());
       }
     } catch (error) {
-      console.error('Failed to toggle like:', error);
+      console.error("Failed to toggle like:", error);
       throw error;
     }
   }
@@ -88,37 +85,42 @@ export class InstagramActions {
     try {
       await this.page.evaluate(() => {
         // Find all SVGs with aria-label "Like"
-        const likeSvgs = Array.from(document.querySelectorAll('svg[aria-label="Like"]'));
+        const likeSvgs = Array.from(
+          document.querySelectorAll('svg[aria-label="Like"]'),
+        );
         // Filter for the largest ones (24x24)
         const mainLikeButton = likeSvgs
-          .filter(svg => svg.getAttribute('width') === '24')
-          .filter(svg => svg.getAttribute('height') === '24')[0]
+          .filter((svg) => svg.getAttribute("width") === "24")
+          .filter((svg) => svg.getAttribute("height") === "24")[0]
           ?.closest('div[role="button"]') as HTMLElement;
-        
+
         if (mainLikeButton) {
           mainLikeButton.click();
         } else {
-          throw new Error('Main post Like button not found');
+          throw new Error("Main post Like button not found");
         }
       });
 
       // Verify the action worked
       await this.page.waitForTimeout(1000);
       const success = await this.page.evaluate(() => {
-        const unlikeSvgs = Array.from(document.querySelectorAll('svg[aria-label="Unlike"]'));
-        return unlikeSvgs.some(svg => 
-          svg.getAttribute('width') === '24' && 
-          svg.getAttribute('height') === '24'
+        const unlikeSvgs = Array.from(
+          document.querySelectorAll('svg[aria-label="Unlike"]'),
+        );
+        return unlikeSvgs.some(
+          (svg) =>
+            svg.getAttribute("width") === "24" &&
+            svg.getAttribute("height") === "24",
         );
       });
-      
+
       if (!success) {
-        throw new Error('Like action failed to register');
+        throw new Error("Like action failed to register");
       }
-      
-      console.log('Post liked successfully');
+
+      console.log("Post liked successfully");
     } catch (error) {
-      console.error('Failed to like post:', error);
+      console.error("Failed to like post:", error);
       throw error;
     }
   }
@@ -130,42 +132,46 @@ export class InstagramActions {
     try {
       await this.page.evaluate(() => {
         // Find all SVGs with aria-label "Unlike"
-        const unlikeSvgs = Array.from(document.querySelectorAll('svg[aria-label="Unlike"]'));
+        const unlikeSvgs = Array.from(
+          document.querySelectorAll('svg[aria-label="Unlike"]'),
+        );
         // Filter for the largest ones (24x24)
         const mainUnlikeButton = unlikeSvgs
-          .filter(svg => svg.getAttribute('width') === '24')
-          .filter(svg => svg.getAttribute('height') === '24')[0]
+          .filter((svg) => svg.getAttribute("width") === "24")
+          .filter((svg) => svg.getAttribute("height") === "24")[0]
           ?.closest('div[role="button"]') as HTMLElement;
-        
+
         if (mainUnlikeButton) {
           mainUnlikeButton.click();
         } else {
-          throw new Error('Main post Unlike button not found');
+          throw new Error("Main post Unlike button not found");
         }
       });
 
       // Verify the action worked
       await this.page.waitForTimeout(1000);
       const success = await this.page.evaluate(() => {
-        const likeSvgs = Array.from(document.querySelectorAll('svg[aria-label="Like"]'));
-        return likeSvgs.some(svg => 
-          svg.getAttribute('width') === '24' && 
-          svg.getAttribute('height') === '24'
+        const likeSvgs = Array.from(
+          document.querySelectorAll('svg[aria-label="Like"]'),
+        );
+        return likeSvgs.some(
+          (svg) =>
+            svg.getAttribute("width") === "24" &&
+            svg.getAttribute("height") === "24",
         );
       });
-      
+
       if (!success) {
-        throw new Error('Unlike action failed to register');
+        throw new Error("Unlike action failed to register");
       }
-      
-      console.log('Post unliked successfully');
+
+      console.log("Post unliked successfully");
     } catch (error) {
-      console.error('Failed to unlike post:', error);
+      console.error("Failed to unlike post:", error);
       throw error;
     }
   }
 
-  
   /**
    * Posts a comment on the current post
    * @param commentText - Text to be posted as comment
@@ -173,21 +179,27 @@ export class InstagramActions {
   async comment(commentText: string) {
     try {
       // Wait for the comment section to be visible and ready
-      await this.page.waitForSelector('textarea[aria-label="Add a comment…"]', { state: 'visible', timeout: 5000 });
-      
+      await this.page.waitForSelector('textarea[aria-label="Add a comment…"]', {
+        state: "visible",
+        timeout: 5000,
+      });
+
       // Click directly on the textarea using a more specific selector
-      await this.page.locator('textarea[aria-label="Add a comment…"]').first().click();
-      
+      await this.page
+        .locator('textarea[aria-label="Add a comment…"]')
+        .first()
+        .click();
+
       // Small delay to ensure the input is ready
       await this.page.waitForTimeout(500);
-      
+
       // Fill and submit
-      await this.page.getByPlaceholder('Add a comment…').fill(commentText);
-      await this.page.getByRole('button', { name: 'Post' }).click();
-      
-      console.log('Comment posted successfully');
+      await this.page.getByPlaceholder("Add a comment…").fill(commentText);
+      await this.page.getByRole("button", { name: "Post" }).click();
+
+      console.log("Comment posted successfully");
     } catch (error) {
-      console.error('Failed to post comment:', error);
+      console.error("Failed to post comment:", error);
       throw error;
     }
   }
@@ -201,13 +213,14 @@ export class InstagramActions {
    */
   async toggleSave(shouldSave: boolean = true) {
     try {
-      const isSaved = await this.page.locator('svg[aria-label="Remove"]').count() > 0;
-      
+      const isSaved =
+        (await this.page.locator('svg[aria-label="Remove"]').count()) > 0;
+
       if (isSaved !== shouldSave) {
         await (shouldSave ? this.save() : this.unsave());
       }
     } catch (error) {
-      console.error('Failed to toggle save:', error);
+      console.error("Failed to toggle save:", error);
       throw error;
     }
   }
@@ -218,9 +231,9 @@ export class InstagramActions {
   async save() {
     try {
       await this.page.locator('svg[aria-label="Save"]').click();
-      console.log('Post saved successfully');
+      console.log("Post saved successfully");
     } catch (error) {
-      console.error('Failed to save post:', error);
+      console.error("Failed to save post:", error);
       throw error;
     }
   }
@@ -231,9 +244,9 @@ export class InstagramActions {
   async unsave() {
     try {
       await this.page.locator('svg[aria-label="Remove"]').click();
-      console.log('Post unsaved successfully');
+      console.log("Post unsaved successfully");
     } catch (error) {
-      console.error('Failed to unsave post:', error);
+      console.error("Failed to unsave post:", error);
       throw error;
     }
   }
@@ -246,26 +259,28 @@ export class InstagramActions {
     try {
       // Click share button
       await this.page.locator('svg[aria-label="Share"]').click();
-      
+
       // Type username in search
-      await this.page.getByPlaceholder('Search').click();
-      await this.page.getByPlaceholder('Search').fill(username);
-      
+      await this.page.getByPlaceholder("Search").click();
+      await this.page.getByPlaceholder("Search").fill(username);
+
       // Wait a bit for search results and click first result
       await this.page.waitForTimeout(1000);
-      
+
       // Target the checkbox input specifically
-      await this.page.locator('input[name="ContactSearchResultCheckbox"]').first().click();
-      
+      await this.page
+        .locator('input[name="ContactSearchResultCheckbox"]')
+        .first()
+        .click();
+
       // Click send
-      await this.page.getByRole('button', { name: 'Send' }).click();
-      console.log('Post shared successfully');
+      await this.page.getByRole("button", { name: "Send" }).click();
+      console.log("Post shared successfully");
     } catch (error) {
-      console.error('Failed to share post:', error);
+      console.error("Failed to share post:", error);
       throw error;
     }
   }
-
 
   /**
    * Toggles the follow status for the current profile
@@ -273,11 +288,16 @@ export class InstagramActions {
    */
   async toggleFollow(shouldFollow: boolean = true) {
     try {
-      const hasFollowButton = await this.page.getByRole('button', { name: 'Follow' }).count() > 0;
-      const hasFollowingButton = await this.page.getByRole('button', { name: 'Following' }).count() > 0;
-      
+      const hasFollowButton =
+        (await this.page.getByRole("button", { name: "Follow" }).count()) > 0;
+      const hasFollowingButton =
+        (await this.page.getByRole("button", { name: "Following" }).count()) >
+        0;
+
       if (!hasFollowButton && !hasFollowingButton) {
-        console.log('No follow/following button found - skipping follow action');
+        console.log(
+          "No follow/following button found - skipping follow action",
+        );
         return;
       }
 
@@ -286,7 +306,7 @@ export class InstagramActions {
         await (shouldFollow ? this.follow() : this.unfollow());
       }
     } catch (error) {
-      console.log('Failed to toggle follow - skipping action:', error);
+      console.log("Failed to toggle follow - skipping action:", error);
     }
   }
 
@@ -295,15 +315,15 @@ export class InstagramActions {
    */
   async follow() {
     try {
-      const followButton = this.page.getByRole('button', { name: 'Follow' });
-      if (await followButton.count() > 0) {
+      const followButton = this.page.getByRole("button", { name: "Follow" });
+      if ((await followButton.count()) > 0) {
         await followButton.click();
-        console.log('User followed successfully');
+        console.log("User followed successfully");
       } else {
-        console.log('Follow button not found - skipping action');
+        console.log("Follow button not found - skipping action");
       }
     } catch (error) {
-      console.log('Failed to follow user - skipping action:', error);
+      console.log("Failed to follow user - skipping action:", error);
     }
   }
 
@@ -312,16 +332,18 @@ export class InstagramActions {
    */
   async unfollow() {
     try {
-      const followingButton = this.page.getByRole('button', { name: 'Following' });
-      if (await followingButton.count() > 0) {
+      const followingButton = this.page.getByRole("button", {
+        name: "Following",
+      });
+      if ((await followingButton.count()) > 0) {
         await followingButton.click();
-        await this.page.getByRole('button', { name: 'Unfollow' }).click();
-        console.log('User unfollowed successfully');
+        await this.page.getByRole("button", { name: "Unfollow" }).click();
+        console.log("User unfollowed successfully");
       } else {
-        console.log('Following button not found - skipping action');
+        console.log("Following button not found - skipping action");
       }
     } catch (error) {
-      console.log('Failed to unfollow user - skipping action:', error);
+      console.log("Failed to unfollow user - skipping action:", error);
     }
   }
-} 
+}
