@@ -19,7 +19,7 @@ export class LinkedInActions {
     }
 
     /** Posts content to LinkedIn with optional image */
-    async postToLinkedIn(caption: string, imageUrl?: string) {
+    async post(caption: string, imageUrl?: string) {
         await this.page.goto("https://linkedin.com");
         
         // Wait for and click the "Start a post" button

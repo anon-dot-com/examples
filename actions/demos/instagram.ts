@@ -12,7 +12,7 @@ export class InstagramActions {
 
 
   /** Posts an image to Instagram with an optional caption */
-  async postToInstagram(page: Page, imageUrl: string, caption?: string) {
+  async post(page: Page, imageUrl: string, caption?: string) {
     await page.goto("https://instagram.com");
 
     // Download image
@@ -55,20 +55,13 @@ export class InstagramActions {
 
 
 
-  
-  /* 
-  Like functions 
-  */
 
   /**
    * Toggles the like status of the current post
-   * @param on - Boolean indicating desired like state (true to like, false to unlike)
-   * @returns Promise<void>
-   * @throws Error if like operation fails
+   * @param shouldLike - Boolean indicating desired like state (true to like, false to unlike)
    */
-  async toggleLike(on: boolean = true) {
+  async toggleLike(shouldLike: boolean = true) {
     try {
-      // Using JavaScript evaluation to find the main post's like button
       const isLiked = await this.page.evaluate(() => {
         // Find all SVGs with aria-label "Unlike"
         const unlikeSvgs = Array.from(document.querySelectorAll('svg[aria-label="Unlike"]'));
@@ -79,14 +72,8 @@ export class InstagramActions {
         return mainUnlikeButton !== undefined;
       });
       
-      if (isLiked) {
-        if (!on) {
-          await this.unlike();
-        }
-      } else {
-        if (on) {
-          await this.like();
-        }
+      if (isLiked !== shouldLike) {
+        await (shouldLike ? this.like() : this.unlike());
       }
     } catch (error) {
       console.error('Failed to toggle like:', error);
@@ -96,8 +83,6 @@ export class InstagramActions {
 
   /**
    * Likes the current post
-   * @returns Promise<void>
-   * @throws Error if like operation fails
    */
   async like() {
     try {
@@ -140,8 +125,6 @@ export class InstagramActions {
 
   /**
    * Unlikes the current post
-   * @returns Promise<void>
-   * @throws Error if unlike operation fails
    */
   async unlike() {
     try {
@@ -182,14 +165,10 @@ export class InstagramActions {
     }
   }
 
-  /* 
-  Comment functions 
-  */
+  
   /**
    * Posts a comment on the current post
    * @param commentText - Text to be posted as comment
-   * @returns Promise<void>
-   * @throws Error if comment operation fails
    */
   async comment(commentText: string) {
     try {
@@ -218,24 +197,15 @@ export class InstagramActions {
   */
   /**
    * Toggles the save/bookmark status of the current post
-   * @param on - Boolean indicating desired save state (true to save, false to unsave)
-   * @returns Promise<void>
-   * @throws Error if save operation fails
+   * @param shouldSave - Boolean indicating desired save state (true to save, false to unsave)
    */
-  async toggleSave(on: boolean = true) {
+  async toggleSave(shouldSave: boolean = true) {
     try {
-      const container = this.page.locator('div.x1xp8e9x.x13fuv20.x178xt8z');
-      const isSaved = await container.locator('svg[aria-label="Remove"]').count() > 0;
+      const isSaved = await this.page.locator('svg[aria-label="Remove"]').count() > 0;
       
-      if (isSaved) {
-        if (!on) {
-          await this.unsave();
-        }
-      } else {
-        if (on) {
-          await this.save();
-        }
-    }
+      if (isSaved !== shouldSave) {
+        await (shouldSave ? this.save() : this.unsave());
+      }
     } catch (error) {
       console.error('Failed to toggle save:', error);
       throw error;
@@ -244,13 +214,10 @@ export class InstagramActions {
 
   /**
    * Saves/bookmarks the current post
-   * @returns Promise<void>
-   * @throws Error if save operation fails
    */
   async save() {
     try {
-      const container = this.page.locator('div.x1xp8e9x.x13fuv20.x178xt8z');
-      await container.locator('svg[aria-label="Save"]').click();
+      await this.page.locator('svg[aria-label="Save"]').click();
       console.log('Post saved successfully');
     } catch (error) {
       console.error('Failed to save post:', error);
@@ -260,13 +227,10 @@ export class InstagramActions {
 
   /**
    * Removes the save/bookmark from the current post
-   * @returns Promise<void>
-   * @throws Error if unsave operation fails
    */
   async unsave() {
     try {
-      const container = this.page.locator('div.x1xp8e9x.x13fuv20.x178xt8z');
-      await container.locator('svg[aria-label="Remove"]').click();
+      await this.page.locator('svg[aria-label="Remove"]').click();
       console.log('Post unsaved successfully');
     } catch (error) {
       console.error('Failed to unsave post:', error);
@@ -274,20 +238,14 @@ export class InstagramActions {
     }
   }
 
-  /* 
-  Share functions 
-  */
   /**
    * Shares the current post with specified user
    * @param username - Username to share the post with
-   * @returns Promise<void>
-   * @throws Error if share operation fails
    */
   async share(username: string) {
     try {
       // Click share button
-      const container = this.page.locator('div.x1xp8e9x.x13fuv20.x178xt8z');
-      await container.locator('svg[aria-label="Share"]').click();
+      await this.page.locator('svg[aria-label="Share"]').click();
       
       // Type username in search
       await this.page.getByPlaceholder('Search').click();
@@ -308,18 +266,13 @@ export class InstagramActions {
     }
   }
 
-  /* 
-  Follow functions 
-  */
+
   /**
    * Toggles the follow status for the current profile
-   * @param on - Boolean indicating desired follow state (true to follow, false to unfollow)
-   * @returns Promise<void>
-   * Note: Silently skips if follow/unfollow fails
+   * @param shouldFollow - Boolean indicating desired follow state (true to follow, false to unfollow)
    */
-  async toggleFollow(on: boolean = true) {
+  async toggleFollow(shouldFollow: boolean = true) {
     try {
-      // Check if follow/following button exists at all
       const hasFollowButton = await this.page.getByRole('button', { name: 'Follow' }).count() > 0;
       const hasFollowingButton = await this.page.getByRole('button', { name: 'Following' }).count() > 0;
       
@@ -329,15 +282,8 @@ export class InstagramActions {
       }
 
       const isFollowing = hasFollowingButton;
-      
-      if (isFollowing) {
-        if (!on) {
-          await this.unfollow();
-        }
-      } else {
-        if (on) {
-          await this.follow();
-        }
+      if (isFollowing !== shouldFollow) {
+        await (shouldFollow ? this.follow() : this.unfollow());
       }
     } catch (error) {
       console.log('Failed to toggle follow - skipping action:', error);
@@ -346,8 +292,6 @@ export class InstagramActions {
 
   /**
    * Follows the current profile
-   * @returns Promise<void>
-   * Note: Silently skips if follow operation fails
    */
   async follow() {
     try {
@@ -365,8 +309,6 @@ export class InstagramActions {
 
   /**
    * Unfollows the current profile
-   * @returns Promise<void>
-   * Note: Silently skips if unfollow operation fails
    */
   async unfollow() {
     try {

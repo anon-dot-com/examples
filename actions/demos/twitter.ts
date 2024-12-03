@@ -11,7 +11,7 @@ export class TwitterActions {
   }
 
   /** Posts a new tweet with optional image */
-  async postToTwitter(caption: string, imageUrl?: string) {
+  async post(caption: string, imageUrl?: string) {
     await this.page.goto("https://x.com");
 
       // Wait for 3 seconds before clicking post button
@@ -215,14 +215,11 @@ export class TwitterActions {
    * Toggles bookmark status for the current tweet.
    * Must be called on a specific tweet.
    */
-  async toggleBookmark() {
+  async toggleBookmark(shouldBookmark: boolean = true) {
     try {
       const isBookmarked = await this.page.getByTestId('removeBookmark').count() > 0;
-      
-      if (isBookmarked) {
-        await this.removeBookmark();
-      } else {
-        await this.addBookmark();
+      if (isBookmarked !== shouldBookmark) {
+        await (shouldBookmark ? this.addBookmark() : this.removeBookmark());
       }
     } catch (error) {
       console.error('Failed to toggle bookmark:', error);
@@ -262,18 +259,11 @@ export class TwitterActions {
    * Toggles like status for the current tweet.
    * Must be called on a specific tweet.
    */
-  async toggleLike(on: boolean = true) {
+  async toggleLike(shouldLike: boolean = true) {
     try {
       const isLiked = await this.page.getByTestId('unlike').count() > 0;
-      
-      if (isLiked) {
-        if (!on) {
-          await this.unlike();
-        }
-      } else {
-        if (on) {
-          await this.like();
-        }
+      if (isLiked !== shouldLike) {
+        await (shouldLike ? this.like() : this.unlike());
       }
     } catch (error) {
       console.error('Failed to toggle like:', error);

@@ -1,8 +1,8 @@
 import { Page } from '@playwright/test';
-import { TwitterActions } from '../integrations/twitter';
-import { InstagramActions } from '../integrations/instagram';
-import { OpenTableActions } from '../integrations/opentable';
-import { LinkedInActions } from '../integrations/linkedin';
+import { TwitterActions } from '../demos/twitter';
+import { InstagramActions } from '../demos/instagram';
+import { OpenTableActions } from '../demos/opentable';
+import { LinkedInActions } from '../demos/linkedin';
 type SupportedApp = 'linkedin' | 'twitter' | 'instagram' | 'opentable';
 
 export class IntegrationManager {

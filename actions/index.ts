@@ -1,10 +1,16 @@
 import { AnonRuntime } from "@anon/sdk-typescript";
 import { IntegrationManager } from "./manager/manager";
 
-const anon = new AnonRuntime({ apiKey: "" });
+const anon = new AnonRuntime({ 
+  apiKey: process.env.ANON_API_KEY ?? (() => {
+    throw new Error('ANON_API_KEY environment variable is required')
+  })()
+});
 
 // The username of the user whose account to use
-const appUserId = "";
+const appUserId = process.env.ANON_APP_USER_ID ?? (() => {
+  throw new Error('ANON_APP_USER_ID environment variable is required')
+})();
 // The app sessions to inject
 const apps = ["linkedin"];
 
@@ -16,9 +22,8 @@ const action = async (page) => {
 
   // to use a specific integration, use the syntax integrations.$integrationName.$methodName()
   // note: this syntax will only work if the integration is in the apps array and the app is supported in the integrations folder
-  await integrations.linkedin.postToLinkedIn("Hello, world!");
+  await integrations.linkedin.post("Hello, world!");
 }
-
 
 // Run the action
 (async () => {
