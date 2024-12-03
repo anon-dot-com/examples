@@ -18,13 +18,7 @@ export class LinkedInActions {
         this.helperActions = new HelperActions(page);
     }
 
-    /**
-     * Posts content to LinkedIn with optional image
-     * @param caption - Text content of the post
-     * @param imageUrl - Optional URL of image to include in post
-     * @returns Promise<void>
-     * @throws Error if any step of posting process fails
-     */
+    /** Posts content to LinkedIn with optional image */
     async postToLinkedIn(caption: string, imageUrl?: string) {
         await this.page.goto("https://linkedin.com");
         
@@ -60,13 +54,7 @@ export class LinkedInActions {
       
       }
 
-    /**
-     * Reacts to a LinkedIn post with specified reaction type
-     * @param reaction - Type of reaction ('like', 'celebrate', 'support', 'funny', 'love', 'insightful', 'curious')
-     * @returns Promise<void>
-     * @throws Error if reaction fails
-     * @requires Must be called on a specific post URL
-     */
+    /** Reacts to a LinkedIn post with specified reaction type */
     async react(reaction: LinkedInReactionType) {
         await this.page.evaluate((reactionType) => {
             // Find all reaction buttons
@@ -87,13 +75,7 @@ export class LinkedInActions {
         }, reaction);
     }
 
-    /**
-     * Comments on a LinkedIn post
-     * @param comment - Text content of the comment
-     * @returns Promise<void>
-     * @throws Error if comment submission fails
-     * @requires Must be called on a specific post URL
-     */
+    /** Comments on a LinkedIn post. Must be called on a specific post URL */
     async comment(comment: string) {
         await this.page.getByLabel('Comment', { exact: true }).click();
         await this.page.getByLabel('Text editor for creating').fill(comment);
@@ -101,13 +83,7 @@ export class LinkedInActions {
         await this.page.locator('button.comments-comment-box__submit-button--cr').click();
     }
 
-    /**
-     * Sends the current post as a direct message to a specified user
-     * @param name - Name of the user to send the message to
-     * @returns Promise<void>
-     * @throws Error if message sending fails
-     * @requires Must be called on a specific post URL
-     */
+    /** Sends the current post as a direct message to a specified user. Must be called on a specific post URL */
     async sendAsDM(name: string) {
         await this.page.getByLabel('Send in a private message').click();
         await this.page.getByPlaceholder('Type a name').fill(name);
@@ -115,13 +91,9 @@ export class LinkedInActions {
         await this.page.getByRole('button', { name: 'Send' }).click();
     }
 
-    /**
-     * Reposts a LinkedIn post with optional custom message
-     * @param instant - If true, reposts immediately; if false, allows adding thoughts
-     * @param thoughts - Optional custom message to add when reposting (used only if instant is false)
-     * @returns Promise<void>
-     * @throws Error if repost operation fails
-     * @requires Must be called on a specific post URL
+    /** 
+     * Reposts a LinkedIn post with optional custom message.
+     * Must be called on a specific post URL
      */
     async repostPost(instant: boolean = true, thoughts: string = "") {
         await this.page.getByRole('button', { name: 'Repost', exact: true }).click();
@@ -137,12 +109,9 @@ export class LinkedInActions {
         }
     }
 
-    /**
-     * Removes a reaction from a LinkedIn post
-     * @param reaction - Type of reaction to remove (defaults to "like")
-     * @returns Promise<void>
-     * @throws Error if unreact operation fails
-     * @requires Must be called on a specific post URL
+    /** 
+     * Removes a reaction from a LinkedIn post.
+     * Must be called on a specific post URL
      */
     async unreact(reaction: string = "like") {
         await this.page.getByRole('button', { name: 'React Like', exact: true }).first().hover();

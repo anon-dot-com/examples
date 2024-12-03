@@ -10,13 +10,7 @@ export class TwitterActions {
     this.helperActions = new HelperActions(this.page);
   }
 
-  /**
-   * Posts a new tweet with optional image
-   * @param caption - Text content of the tweet
-   * @param imageUrl - Optional URL of image to include in tweet
-   * @returns Promise<void>
-   * @throws Error if posting fails
-   */
+  /** Posts a new tweet with optional image */
   async postToTwitter(caption: string, imageUrl?: string) {
     await this.page.goto("https://x.com");
 
@@ -49,12 +43,9 @@ export class TwitterActions {
       await this.helperActions.wait(2);
   }
 
-  /**
-   * Posts a reply to the current tweet
-   * @param commentText - Text content of the reply
-   * @returns Promise<void>
-   * @throws Error if reply fails
-   * @requires Must be called on a specific tweet
+  /** 
+   * Posts a reply to the current tweet.
+   * Must be called on a specific tweet.
    */
   async reply(commentText: string) {
     try {
@@ -77,11 +68,9 @@ export class TwitterActions {
     }
 }
 
-  /**
-   * Toggles the retweet status of the current tweet
-   * @returns Promise<void>
-   * @throws Error if toggle operation fails
-   * @requires Must be called on a specific tweet
+  /** 
+   * Toggles the retweet status of the current tweet.
+   * Must be called on a specific tweet.
    */
   async toggleRetweet() {
     // Check if tweet is already retweeted using the first retweet button
@@ -94,14 +83,9 @@ export class TwitterActions {
     }
   }
 
-  /**
-   * Retweets the current tweet, optionally as a quote tweet
-   * @param options - Optional configuration object
-   * @param options.text - Optional text for quote tweet
-   * @param options.imageUrl - Optional image URL for quote tweet
-   * @returns Promise<void>
-   * @throws Error if retweet operation fails
-   * @requires Must be called on a specific tweet
+  /** 
+   * Retweets the current tweet, optionally as a quote tweet.
+   * Must be called on a specific tweet.
    */
   async retweet(options?: { text?: string; imageUrl?: string }) {
     try {
@@ -132,11 +116,9 @@ export class TwitterActions {
     }
   }
 
-  /**
-   * Removes retweet from the current tweet
-   * @returns Promise<void>
-   * @throws Error if unretweet operation fails
-   * @requires Must be called on a specific tweet
+  /** 
+   * Removes retweet from the current tweet.
+   * Must be called on a specific tweet.
    */
   async unretweet() {
     try {
@@ -149,11 +131,9 @@ export class TwitterActions {
     }
   }
 
-  /**
-   * Toggles follow status for the current profile
-   * @returns Promise<void>
-   * @throws Error if toggle operation fails
-   * @requires Must be called on a profile or within a relevant people section
+  /** 
+   * Toggles follow status for the current profile.
+   * Must be called on a profile or within a relevant people section.
    */
   async toggleFollow() {
     try {
@@ -175,11 +155,9 @@ export class TwitterActions {
     }
   }
 
-  /**
-   * Follows a profile from the "Relevant people" section
-   * @returns Promise<void>
-   * @throws Error if follow operation fails
-   * @requires Must be called within a relevant people section
+  /** 
+   * Follows a profile from the "Relevant people" section.
+   * Must be called within a relevant people section.
    */
   async follow() {
     try {
@@ -207,11 +185,9 @@ export class TwitterActions {
     }
   }
 
-  /**
-   * Unfollows the current profile
-   * @returns Promise<void>
-   * @throws Error if unfollow operation fails
-   * @requires Must be called on a profile you're following
+  /** 
+   * Unfollows the current profile.
+   * Must be called on a profile you're following.
    */
   async unfollow() {
     try {
@@ -235,11 +211,9 @@ export class TwitterActions {
     }
   }
 
-  /**
-   * Toggles bookmark status for the current tweet
-   * @returns Promise<void>
-   * @throws Error if toggle operation fails
-   * @requires Must be called on a specific tweet
+  /** 
+   * Toggles bookmark status for the current tweet.
+   * Must be called on a specific tweet.
    */
   async toggleBookmark() {
     try {
@@ -256,11 +230,9 @@ export class TwitterActions {
     }
   }
   
-  /**
-   * Bookmarks the current tweet
-   * @returns Promise<void>
-   * @throws Error if bookmark operation fails
-   * @requires Must be called on a specific tweet
+  /** 
+   * Bookmarks the current tweet.
+   * Must be called on a specific tweet.
    */
   async addBookmark() {
     try {
@@ -272,11 +244,9 @@ export class TwitterActions {
     }
   }
   
-  /**
-   * Removes bookmark from the current tweet
-   * @returns Promise<void>
-   * @throws Error if bookmark removal fails
-   * @requires Must be called on a bookmarked tweet
+  /** 
+   * Removes bookmark from the current tweet.
+   * Must be called on a bookmarked tweet.
    */
   async removeBookmark() {
     try {
@@ -288,11 +258,9 @@ export class TwitterActions {
     }
   }
 
-  /**
-   * Toggles like status for the current tweet
-   * @returns Promise<void>
-   * @throws Error if toggle operation fails
-   * @requires Must be called on a specific tweet
+  /** 
+   * Toggles like status for the current tweet.
+   * Must be called on a specific tweet.
    */
   async toggleLike(on: boolean = true) {
     try {
@@ -313,11 +281,9 @@ export class TwitterActions {
     }
   }
   
-  /**
-   * Likes the current tweet
-   * @returns Promise<void>
-   * @throws Error if like operation fails
-   * @requires Must be called on a specific tweet
+  /** 
+   * Likes the current tweet.
+   * Must be called on a specific tweet.
    */
   async like() {
     try {
@@ -329,11 +295,9 @@ export class TwitterActions {
     }
   }
   
-  /**
-   * Removes like from the current tweet
-   * @returns Promise<void>
-   * @throws Error if unlike operation fails
-   * @requires Must be called on a liked tweet
+  /** 
+   * Removes like from the current tweet.
+   * Must be called on a liked tweet.
    */
   async unlike() {
     try {
@@ -348,11 +312,9 @@ export class TwitterActions {
 
 
 
-  /**
-   * Gets the shareable link for the current tweet
-   * @returns Promise<void>
-   * @throws Error if getting link fails
-   * @requires Must be called on a specific tweet
+  /** 
+   * Gets the shareable link for the current tweet.
+   * Must be called on a specific tweet.
    */
   async getLink() {
     await this.page.getByLabel(/\d+/).getByLabel('Share post').click();
@@ -363,11 +325,7 @@ export class TwitterActions {
   }
 
 
-  /**
-   * Navigates to the user's profile page
-   * @returns Promise<boolean> - Returns true if navigation successful
-   * @throws Error if navigation fails
-   */
+  /** Navigates to the user's profile page */
   async clickProfileButton() {
     try {
       // Wait for the profile button to be visible

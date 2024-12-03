@@ -3,7 +3,7 @@
 export class OpenTableActions {
     constructor(private page: any) {}
 
-    // fix the logic in this function
+    /** Selects a date from the date picker */
     async selectDate(date: string) {
         await this.page.getByTestId('day-picker-overlay').click();
         // wait 2 seconds
@@ -30,20 +30,24 @@ export class OpenTableActions {
         await this.page.getByLabel(dateLabel).click();
     }
 
+    /** Selects a time slot from available options */
     async selectTime(time: string) {
         await this.page.locator('[data-test="time-picker"]').selectOption(time);
     }
 
+    /** Selects party size */
     async selectPartySize(size: string) {
         await this.page.locator('[data-test="party-size-picker"]').selectOption(size);
     }
 
+    /** Searches for and selects a restaurant by name */
     async searchAndSelectRestaurant(restaurantName: string) {
         await this.page.locator('[data-test="search-autocomplete-input"]').click();
         await this.page.locator('[data-test="search-autocomplete-input"]').fill(restaurantName);
         await this.page.locator('[data-test="freetext-autocomplete-item"]').click();
     }
 
+    /** Selects a time slot from available options */
     async selectTimeSlot(slotNumber: number = 3) {
         await this.page.locator('[data-test="pinned-restaurant-card"]')
             .getByTestId(`time-slot-${slotNumber}`)
@@ -52,6 +56,7 @@ export class OpenTableActions {
         await this.page.locator('[data-test="seatingOption-default-button"]').click();
     }
 
+    /** Agrees to restaurant terms and conditions */
     async agreeToTerms() {
         await this.page.locator('label')
             .filter({ hasText: 'I agree to the restaurant’s' })
@@ -59,14 +64,12 @@ export class OpenTableActions {
             .click();
     }
 
+    /** Completes the reservation process */
     async completeReservation() {
         await this.page.locator('[data-test="complete-reservation-button"]').click();
     }
 
-
-
-
-    // Convenience method to perform a complete reservation
+    /** Makes a complete reservation with the given options */
     async makeReservation(options: {
         date: Date,
         time: string,
@@ -82,7 +85,5 @@ export class OpenTableActions {
         await this.agreeToTerms();
         await this.completeReservation();
     }
-
-
 
 }

@@ -11,13 +11,7 @@ export class InstagramActions {
   }
 
 
-  /**
-   * Posts an image to Instagram with an optional caption
-   * @param page - Playwright Page object
-   * @param imageUrl - URL of the image to be posted
-   * @param caption - Optional caption text for the post
-   * @returns Promise<void>
-   */
+  /** Posts an image to Instagram with an optional caption */
   async postToInstagram(page: Page, imageUrl: string, caption?: string) {
     await page.goto("https://instagram.com");
 
