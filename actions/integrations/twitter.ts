@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { HelperActions } from './helpers';
+import { HelperActions } from '../manager/helpers';
 
 export class TwitterActions {
   private page: Page;

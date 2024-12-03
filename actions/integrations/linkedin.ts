@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { HelperActions } from '../integrations/helpers';
+import { HelperActions } from '../manager/helpers';
 
 
 /* Post-specific functions:

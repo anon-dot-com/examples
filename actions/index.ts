@@ -1,5 +1,5 @@
 import { AnonRuntime } from "@anon/sdk-typescript";
-import { IntegrationManager } from "./integrations/manager";
+import { IntegrationManager } from "./manager/manager";
 
 const anon = new AnonRuntime({ apiKey: "" });
 
