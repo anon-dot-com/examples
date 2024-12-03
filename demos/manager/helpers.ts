@@ -1,11 +1,11 @@
-import { Page } from '@playwright/test';
+import { Page } from "@playwright/test";
 
 export class HelperActions {
   constructor(private page: Page) {}
 
   // write a function to wait X seconds, with a default of 2 seconds
   async wait(seconds: number = 2): Promise<void> {
-    await new Promise(resolve => setTimeout(resolve, seconds * 1000));
+    await new Promise((resolve) => setTimeout(resolve, seconds * 1000));
   }
 
   /**
@@ -30,12 +30,11 @@ export class HelperActions {
     if (fileInput) {
       await fileInput.setInputFiles({
         name: `image-${Date.now()}.jpg`,
-        mimeType: 'image/jpeg',
-        buffer: imageBuffer
+        mimeType: "image/jpeg",
+        buffer: imageBuffer,
       });
     } else {
-      throw new Error('File input element not found');
+      throw new Error("File input element not found");
     }
   }
-
 }
