@@ -10,6 +10,7 @@ const anon = new AnonRuntime({
     (() => {
       throw new Error("ANON_API_KEY environment variable is required");
     })(),
+  environment: "sandbox"
 });
 
 // The username of the user whose account to use

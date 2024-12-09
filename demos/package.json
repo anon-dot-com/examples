@@ -4,7 +4,8 @@
   "scripts": {
     "lint": "eslint .",
     "fix": "eslint --fix .",
-    "run": "ts-node index.ts"
+    "run": "ts-node index.ts",
+    "start": "ts-node index.ts"
   },
   "dependencies": {
     "@anon/sdk-typescript": "^0.8.3",
