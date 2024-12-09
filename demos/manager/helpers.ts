@@ -1,9 +1,12 @@
-import { Page } from "@playwright/test";
+import { Page } from "playwright";
 
 export class HelperActions {
   constructor(private page: Page) {}
 
-  // write a function to wait X seconds, with a default of 2 seconds
+  /**
+   * Waits for X seconds, with a default of 2 seconds
+   * @param seconds - The number of seconds to wait
+   */
   async wait(seconds: number = 2): Promise<void> {
     await new Promise((resolve) => setTimeout(resolve, seconds * 1000));
   }

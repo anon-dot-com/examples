@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import type { Page } from "playwright";
 import { TwitterActions } from "../integrations/twitter";
 import { InstagramActions } from "../integrations/instagram";
 import { OpenTableActions } from "../integrations/opentable";

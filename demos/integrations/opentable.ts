@@ -1,11 +1,12 @@
-/* NOTE: This is a work in progress. */
-
-import { Page } from "playwright/test";
+import type { Page } from "playwright";
+/* Note: This is a work in progress. */
 
 export class OpenTableActions {
   constructor(private page: Page) {}
 
-  /** Selects a date from the date picker */
+  /** 
+   * Selects a date from the date picker 
+   */
   async selectDate(date: string) {
     await this.page.getByTestId("day-picker-overlay").click();
     // wait 2 seconds
@@ -38,19 +39,25 @@ export class OpenTableActions {
     await this.page.getByLabel(dateLabel).click();
   }
 
-  /** Selects a time slot from available options */
+  /** 
+   * Selects a time slot from available options
+   */
   async selectTime(time: string) {
     await this.page.locator('[data-test="time-picker"]').selectOption(time);
   }
 
-  /** Selects party size */
+  /** 
+   * Selects party size 
+   */
   async selectPartySize(size: string) {
     await this.page
       .locator('[data-test="party-size-picker"]')
       .selectOption(size);
   }
 
-  /** Searches for and selects a restaurant by name */
+  /** 
+   * Searches for and selects a restaurant by name 
+   */
   async searchAndSelectRestaurant(restaurantName: string) {
     await this.page.locator('[data-test="search-autocomplete-input"]').click();
     await this.page
@@ -59,7 +66,9 @@ export class OpenTableActions {
     await this.page.locator('[data-test="freetext-autocomplete-item"]').click();
   }
 
-  /** Selects a time slot from available options */
+  /** 
+   * Selects a time slot from available options 
+   */
   async selectTimeSlot(slotNumber: number = 3) {
     await this.page
       .locator('[data-test="pinned-restaurant-card"]')
@@ -71,7 +80,9 @@ export class OpenTableActions {
       .click();
   }
 
-  /** Agrees to restaurant terms and conditions */
+  /** 
+   * Agrees to restaurant terms and conditions 
+   */
   async agreeToTerms() {
     await this.page
       .locator("label")
@@ -80,14 +91,18 @@ export class OpenTableActions {
       .click();
   }
 
-  /** Completes the reservation process */
+  /** 
+   * Completes the reservation process 
+   */
   async completeReservation() {
     await this.page
       .locator('[data-test="complete-reservation-button"]')
       .click();
   }
 
-  /** Makes a complete reservation with the given options */
+  /** 
+   * Makes a complete reservation with the given options 
+   */
   async makeReservation(options: {
     date: Date;
     time: string;
@@ -95,7 +110,7 @@ export class OpenTableActions {
     restaurantName: string;
     timeSlot?: number;
   }) {
-    // await this.selectDate(options.date);
+    await this.selectDate(options.date.toISOString());
     await this.selectTime(options.time);
     await this.selectPartySize(options.partySize);
     await this.searchAndSelectRestaurant(options.restaurantName);

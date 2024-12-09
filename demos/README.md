@@ -7,7 +7,7 @@
 # Actions Demos
 
 To get started, 
-1. Add your app user id and api key to the .env file
+1. Add your `ANON_APP_USER_ID` and `ANON_API_KEY` to the `.env` file
 
 
 2. Install the dependencies.

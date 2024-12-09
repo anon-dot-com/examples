@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { Page } from "playwright";
 import { HelperActions } from "../manager/helpers";
 
 export class TwitterActions {
@@ -10,7 +10,9 @@ export class TwitterActions {
     this.helperActions = new HelperActions(this.page);
   }
 
-  /** Posts a new tweet with optional image */
+  /** 
+   * Posts a new tweet with optional image 
+   */
   async post(caption: string, imageUrl?: string) {
     await this.page.goto("https://x.com");
 
@@ -335,7 +337,9 @@ export class TwitterActions {
     console.log("Copied link:", clipboardText);
   }
 
-  /** Navigates to the user's profile page */
+  /** 
+   * Navigates to the user's profile page 
+   */
   async clickProfileButton() {
     try {
       // Wait for the profile button to be visible

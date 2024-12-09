@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import type { Page } from "playwright";
 import { HelperActions } from "../manager/helpers";
 
 export class InstagramActions {
@@ -10,7 +10,9 @@ export class InstagramActions {
     this.helperActions = new HelperActions(this.page);
   }
 
-  /** Posts an image to Instagram with an optional caption */
+  /** 
+   * Posts an image to Instagram with an optional caption 
+   */
   async post(page: Page, imageUrl: string, caption?: string) {
     await page.goto("https://instagram.com");
 
@@ -204,9 +206,6 @@ export class InstagramActions {
     }
   }
 
-  /* 
-  Save/Bookmark functions 
-  */
   /**
    * Toggles the save/bookmark status of the current post
    * @param shouldSave - Boolean indicating desired save state (true to save, false to unsave)

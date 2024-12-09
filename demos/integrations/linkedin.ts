@@ -1,11 +1,9 @@
-import { Page } from "@playwright/test";
+import type { Page } from "playwright";
 import { HelperActions } from "../manager/helpers";
 
-/* Post-specific functions:
-    all functions below must be performed on the url of the post, not on the feed page
-*/
 
-/* enumerate reaction types and make sure this doesn't break with bad inputs */
+
+/* Enumerate reaction types and make sure this doesn't break with bad inputs */
 export type LinkedInReactionType =
   | "like"
   | "celebrate"
@@ -24,7 +22,9 @@ export class LinkedInActions {
     this.helperActions = new HelperActions(page);
   }
 
-  /** Posts content to LinkedIn with optional image */
+  /** 
+   * Posts content to LinkedIn with optional image 
+   */
   async post(caption: string, imageUrl?: string) {
     await this.page.goto("https://linkedin.com");
 
@@ -69,7 +69,9 @@ export class LinkedInActions {
     await this.helperActions.wait(2);
   }
 
-  /** Reacts to a LinkedIn post with specified reaction type */
+  /** 
+   * Reacts to a LinkedIn post with specified reaction type 
+   */
   async react(reaction: LinkedInReactionType) {
     await this.page.evaluate((reactionType) => {
       // Find all reaction buttons
@@ -96,7 +98,9 @@ export class LinkedInActions {
     }, reaction);
   }
 
-  /** Comments on a LinkedIn post. Must be called on a specific post URL */
+  /** 
+   * Comments on a LinkedIn post. Must be called on a specific post URL 
+   */
   async comment(comment: string) {
     await this.page.getByLabel("Comment", { exact: true }).click();
     await this.page.getByLabel("Text editor for creating").fill(comment);
@@ -106,7 +110,10 @@ export class LinkedInActions {
       .click();
   }
 
-  /** Sends the current post as a direct message to a specified user. Must be called on a specific post URL */
+  /** 
+   * Sends the current post as a direct message to a specified user. 
+   * Must be called on a specific post URL 
+   */
   async sendAsDM(name: string) {
     await this.page.getByLabel("Send in a private message").click();
     await this.page.getByPlaceholder("Type a name").fill(name);
@@ -144,7 +151,6 @@ export class LinkedInActions {
    * Removes a reaction from a LinkedIn post.
    * Must be called on a specific post URL
    */
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async unreact(reaction: string = "like") {
     await this.page
       .getByRole("button", { name: "React Like", exact: true })
