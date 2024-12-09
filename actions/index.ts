@@ -1,5 +1,9 @@
+import * as dotenv from 'dotenv';
 import { AnonRuntime } from "@anon/sdk-typescript";
 import { IntegrationManager } from "./manager/manager";
+
+// Load environment variables from .env file
+dotenv.config();
 
 const anon = new AnonRuntime({ 
   apiKey: process.env.ANON_API_KEY ?? (() => {
@@ -15,7 +19,7 @@ const appUserId = process.env.ANON_APP_USER_ID ?? (() => {
 const apps = ["linkedin"];
 
 // The action to be performed
-const action = async (page) => {
+const action = async (page: any) => {
   const integrations = new IntegrationManager(page, apps);
   
   await page.goto("https://linkedin.com");
