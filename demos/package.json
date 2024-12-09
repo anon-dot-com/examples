@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "lint": "eslint .",
-    "fix": "eslint --fix ."
+    "fix": "eslint --fix .",
+    "run": "ts-node index.ts"
   },
   "dependencies": {
     "@anon/sdk-typescript": "^0.8.3",
