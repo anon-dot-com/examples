@@ -10,14 +10,14 @@ To get started,
 1. Add your `ANON_APP_USER_ID` and `ANON_API_KEY` to the `.env` file
 
 2. Install the dependencies.
-```sh
-npm install
-```
+    ```sh
+    npm install
+    ```
 
 3. Run the action
-```sh
-npm start
-```
+    ```sh
+    npm start
+    ```
 
 ## Trying Different Demos
 
