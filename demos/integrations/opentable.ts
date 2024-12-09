@@ -9,7 +9,7 @@ export class OpenTableActions {
    */
   async selectDate(date: string) {
     await this.page.getByTestId("day-picker-overlay").click();
-    // wait 2 seconds
+    // Wait 2 seconds
     await this.page.waitForTimeout(2000);
     // Format the date into the expected label format
     const dateLabel = date;

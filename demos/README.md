@@ -4,11 +4,10 @@
   <img alt="Anon" src="https://pub-dae6836ea721478b89301a8e71d52a33.r2.dev/anon/dev-images/anon_logo-900%403x.png">
 </picture>
 
-# Actions Demos
+# Anon Actions Demos
 
 To get started, 
 1. Add your `ANON_APP_USER_ID` and `ANON_API_KEY` to the `.env` file
-
 
 2. Install the dependencies.
 ```sh
@@ -20,9 +19,7 @@ npm install
 npm start
 ```
 
-
-
-# Trying different Demos
+## Trying Different Demos
 
 To try different demos, head over to the index.ts file, and:
 

@@ -1,8 +1,6 @@
 import type { Page } from "playwright";
 import { HelperActions } from "../manager/helpers";
 
-
-
 /* Enumerate reaction types and make sure this doesn't break with bad inputs */
 export type LinkedInReactionType =
   | "like"
